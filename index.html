@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base href="./">
+<title>Dominic McWazzer – Insuetam Creatives Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--ink:#0D0D0B;--ink2:#1A1A18;--ink3:#252522;--ink4:#333330;
+--paper:#F5F0E6;--paper2:#EDE8DC;--paper3:#E2DDD1;--paper4:#D5D0C4;
+--text-d:#F0EBE0;--text2-d:#B8B3A8;--text3-d:#6E6A62;
+--text-l:#0D0D0B;--text2-l:#3A3733;--text3-l:#7A7570;
+--gold:#B8921A;--gold2:#9A7A14;--gold-dim:rgba(184,146,26,.12);--gold-glow:rgba(184,146,26,.06);
+--r:10px;--rl:16px;
+--fd:'Bebas Neue',sans-serif;
+--fb:'Cormorant Garamond',serif;
+--fm:'Space Mono',monospace;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--paper);color:var(--text-l);font-family:var(--fb);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--gold);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* LIGHTBOX */
+.lightbox-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;cursor:zoom-out;backdrop-filter:blur(6px)}
+.lightbox-overlay.open{display:flex}
+.lightbox-overlay img,.lightbox-overlay video{max-width:92vw;max-height:90vh;object-fit:contain;border-radius:6px;cursor:default}
+.lightbox-close{position:absolute;top:1.2rem;right:1.6rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;z-index:10000;line-height:1;opacity:.7;transition:opacity .2s}
+.lightbox-close:hover{opacity:1}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 3rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);background:rgba(245,240,230,.9);border-bottom:1px solid rgba(13,13,11,.07);transition:all .4s}
+nav.scrolled{background:rgba(245,240,230,.98);border-bottom-color:rgba(184,146,26,.2)}
+.logo{display:flex;align-items:center;gap:.65rem}
+.logo img{height:36px;width:auto}
+.logo-text{font-family:var(--fd);font-size:1rem;letter-spacing:.1em;color:var(--ink);line-height:1}
+.logo-text small{display:block;font-family:var(--fm);font-size:.48rem;color:var(--text3-l);letter-spacing:.15em}
+nav ul{list-style:none;display:flex;gap:1.6rem}
+nav ul a{font-size:.62rem;font-weight:700;color:var(--text2-l);letter-spacing:.1em;text-transform:uppercase;transition:color .3s;position:relative;font-family:var(--fm)}
+nav ul a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+nav ul a:hover{color:var(--ink)}
+nav ul a:hover::after{width:100%}
+.nav-toggle{display:none;background:none;border:none;color:var(--ink);font-size:1.4rem;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 6rem 4rem;position:relative;overflow:hidden;background:var(--ink)}
+.hero-video-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.18;filter:brightness(.7) contrast(1.1)}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(184,146,26,.018) 40px,rgba(184,146,26,.018) 41px);pointer-events:none;z-index:0}
+.hero-bg-logo{position:absolute;right:3rem;top:50%;transform:translateY(-50%);width:min(520px,48vw);opacity:.12;pointer-events:none;z-index:0}
+.hero-content{position:relative;z-index:2}
+.hero-eyebrow{font-family:var(--fm);font-size:.62rem;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.4rem;display:flex;align-items:center;gap:.8rem}
+.hero-eyebrow::before{content:'';width:30px;height:1px;background:var(--gold)}
+.hero-brand-name{font-family:var(--fd);font-size:clamp(1.5rem,3vw,2.6rem);letter-spacing:.25em;color:var(--gold);margin-bottom:.2rem;line-height:1}
+.hero h1{font-family:var(--fd);font-size:clamp(4.5rem,10vw,9rem);color:var(--paper);line-height:.88;letter-spacing:.05em;margin-bottom:.2rem}
+.hero-sub{font-family:var(--fb);font-style:italic;font-size:clamp(.95rem,1.4vw,1.15rem);color:var(--text2-d);margin-top:1.5rem;margin-bottom:2.5rem;max-width:540px;line-height:1.75;font-weight:300}
+.hero-sub strong{color:var(--text-d);font-weight:500;font-style:normal}
+.hero-actions{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.8rem;font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:all .3s;cursor:pointer;border:none;font-family:var(--fm)}
+.btn-primary{background:var(--gold);color:#fff}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(184,146,26,.35)}
+.btn-outline{background:transparent;color:var(--paper);border:1px solid rgba(245,240,230,.2)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:2.5rem;border-top:1px solid rgba(245,240,230,.07);flex-wrap:wrap}
+.stat-num{font-family:var(--fd);font-size:3rem;color:var(--gold);letter-spacing:.04em;line-height:1}
+.stat-label{font-size:.6rem;color:var(--text3-d);text-transform:uppercase;letter-spacing:.14em;margin-top:.15rem;font-family:var(--fm)}
+
+/* SECTIONS */
+section{padding:6rem 6rem;background:var(--paper);color:var(--text-l)}
+.section-label{font-family:var(--fm);font-size:.62rem;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem}
+.section-label::before{content:'';width:26px;height:1px;background:var(--gold)}
+.section-title{font-family:var(--fd);font-size:clamp(2.2rem,4.5vw,4.2rem);letter-spacing:.07em;margin-bottom:.6rem;line-height:.95}
+.section-desc{font-size:1.05rem;color:var(--text2-l);max-width:640px;line-height:1.78;margin-bottom:3rem;font-weight:300}
+
+/* MY STORY */
+#story{background:var(--ink);color:var(--text-d)}
+#story .section-desc{color:var(--text2-d)}
+#story .section-title{color:var(--text-d)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.story-text p{color:var(--text2-d);line-height:1.9;margin-bottom:1.4rem;font-size:1.05rem}
+.story-text p:first-of-type::first-letter{font-family:var(--fd);font-size:3.5rem;color:var(--gold);float:left;line-height:.75;margin-right:.4rem;margin-top:.3rem}
+.story-sidebar{display:flex;flex-direction:column;gap:1rem}
+.info-card{background:rgba(245,240,230,.04);border:1px solid rgba(245,240,230,.07);border-radius:var(--r);padding:1.2rem;transition:border-color .3s}
+.info-card:hover{border-color:rgba(184,146,26,.22)}
+.info-card h4{font-family:var(--fm);font-size:.68rem;font-weight:700;margin-bottom:.65rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
+.info-tags{display:flex;flex-wrap:wrap;gap:.3rem}
+.tag{font-size:.62rem;padding:.2rem .52rem;background:rgba(184,146,26,.1);color:var(--gold);font-weight:700;letter-spacing:.04em;font-family:var(--fm)}
+.tag.warm{background:rgba(220,100,40,.1);color:#DC6428}
+.tag.cool{background:rgba(40,120,200,.1);color:#2880C0}
+.tag.rose{background:rgba(180,40,80,.1);color:#B42850}
+.tag.gold{background:rgba(184,146,26,.1);color:var(--gold)}
+
+/* DISCIPLINES */
+#disciplines{background:var(--paper)}
+.disc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1px;border:1px solid var(--paper3);background:var(--paper3)}
+.disc-card{background:var(--paper);padding:1.8rem 1.4rem;transition:background .28s;position:relative;cursor:pointer;border:none}
+.disc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .28s}
+.disc-card:hover{background:var(--paper2)}
+.disc-card:hover::before{transform:scaleX(1)}
+.disc-icon{font-size:1.2rem;margin-bottom:.8rem;display:block;color:var(--gold)}
+.disc-name{font-family:var(--fd);font-size:1.25rem;letter-spacing:.06em;margin-bottom:.3rem;color:var(--ink)}
+.disc-sub{font-size:.82rem;color:var(--text3-l);line-height:1.55}
+
+/* TIMELINE */
+#journey{background:var(--paper2)}
+.timeline{position:relative;padding-left:2.5rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--gold),rgba(184,146,26,.04))}
+.tl-item{position:relative;margin-bottom:2.5rem;padding-left:1.8rem}
+.tl-item::before{content:'';position:absolute;left:-2.85rem;top:.55rem;width:9px;height:9px;background:var(--paper2);border:2px solid var(--gold)}
+.tl-item.current::before{background:var(--gold)}
+.tl-date{font-family:var(--fm);font-size:.62rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
+.tl-role{font-family:var(--fd);font-size:1.5rem;letter-spacing:.05em;margin:.2rem 0 .1rem;color:var(--ink)}
+.tl-company{color:var(--text2-l);font-size:.9rem;margin-bottom:.5rem;font-style:italic}
+.tl-desc{color:var(--text3-l);font-size:.92rem;line-height:1.75;max-width:560px}
+.tl-skills{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.5rem}
+
+/* SELECTED WORK */
+#work{background:var(--ink)}
+#work .section-title{color:var(--text-d)}
+#work .section-desc{color:var(--text2-d)}
+.portfolio-filter{display:flex;gap:.4rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.filter-btn{padding:.38rem .95rem;font-size:.6rem;font-weight:700;background:transparent;color:var(--text3-d);border:1px solid rgba(245,240,230,.09);cursor:pointer;transition:all .3s;font-family:var(--fm);letter-spacing:.08em;text-transform:uppercase}
+.filter-btn:hover,.filter-btn.active{background:var(--gold-dim);color:var(--gold);border-color:rgba(184,146,26,.32)}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:1px;background:rgba(245,240,230,.05)}
+.project-card{background:var(--ink2);overflow:hidden;transition:background .28s;position:relative;cursor:pointer}
+.project-card:hover{background:var(--ink3)}
+.card-visual{height:190px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center top}
+.card-visual .overlay{position:absolute;inset:0;background:linear-gradient(to top,var(--ink2) 15%,rgba(0,0,0,.4) 70%,transparent);z-index:2}
+.card-badge{position:absolute;top:.8rem;left:.8rem;z-index:3;font-family:var(--fm);font-size:.52rem;padding:.22rem .55rem;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);color:var(--text2-d);border:1px solid rgba(255,255,255,.07);letter-spacing:.06em;text-transform:uppercase}
+.card-discipline{position:absolute;top:.8rem;right:.8rem;z-index:3;font-family:var(--fm);font-size:.52rem;padding:.2rem .52rem;background:rgba(184,146,26,.15);color:var(--gold);border:1px solid rgba(184,146,26,.25);letter-spacing:.06em;text-transform:uppercase}
+.card-body{padding:1.2rem 1.4rem 1.4rem}
+.card-client{font-family:var(--fm);font-size:.58rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.35rem}
+.card-title{font-family:var(--fd);font-size:1.2rem;letter-spacing:.04em;margin-bottom:.4rem;line-height:1.15;color:var(--text-d)}
+.card-desc{font-size:.85rem;color:var(--text3-d);line-height:1.65;margin-bottom:.7rem}
+.card-tags{display:flex;flex-wrap:wrap;gap:.22rem}
+.card-tag{font-size:.56rem;padding:.16rem .45rem;background:rgba(245,240,230,.05);color:var(--text3-d);font-family:var(--fm)}
+.card-spec{font-size:.63rem;color:var(--text3-d);margin-top:.5rem;padding-top:.5rem;border-top:1px solid rgba(245,240,230,.05);font-family:var(--fm);letter-spacing:.02em}
+.card-spec strong{color:var(--text2-d)}
+.card-cta{display:flex;align-items:center;gap:.3rem;margin-top:.7rem;padding-top:.6rem;border-top:1px solid rgba(184,146,26,.1);font-family:var(--fm);font-size:.58rem;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;opacity:0;transform:translateY(4px);transition:all .25s}
+.project-card:hover .card-cta{opacity:1;transform:translateY(0)}
+
+/* CASE STUDIES */
+#casestudies{background:var(--paper2)}
+.case-study{margin-bottom:3.5rem;background:var(--paper);border:1px solid var(--paper3);border-radius:var(--rl);overflow:hidden}
+.case-header{padding:2.5rem;display:grid;grid-template-columns:1.2fr 1fr;gap:2.5rem;align-items:center}
+.case-brand{font-family:var(--fd);font-size:2.2rem;letter-spacing:.06em;margin-bottom:.4rem}
+.case-subtitle{color:var(--text2-l);font-size:.92rem;margin-bottom:1rem;line-height:1.65}
+.case-meta{display:flex;gap:1.5rem;flex-wrap:wrap}
+.case-meta-item{display:flex;flex-direction:column;gap:.1rem}
+.case-meta-label{font-family:var(--fm);font-size:.56rem;color:var(--text3-l);letter-spacing:.1em;text-transform:uppercase}
+.case-meta-value{font-size:.82rem;font-weight:600;color:var(--text-l);font-family:var(--fm)}
+.case-visual{background:var(--ink);border-radius:var(--r);min-height:240px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background-size:cover;background-position:center}
+.case-visual::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.52);z-index:0}
+.case-visual .glyph{font-family:var(--fd);font-size:5rem;opacity:.08;position:absolute;z-index:1}
+.case-icon-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;padding:1.3rem;position:relative;z-index:2}
+.case-icon-card{background:rgba(255,255,255,.06);border-radius:var(--r);padding:.7rem;text-align:center;border:1px solid rgba(255,255,255,.08)}
+.case-icon-card .num{font-family:var(--fd);font-size:1.5rem;color:var(--gold)}
+.case-icon-card .lbl{font-size:.54rem;color:rgba(245,240,230,.45);margin-top:.12rem;text-transform:uppercase;letter-spacing:.06em;font-family:var(--fm)}
+.case-content{padding:0 2.5rem 2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.case-section h3{font-family:var(--fd);font-size:1.2rem;letter-spacing:.06em;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;color:var(--ink)}
+.case-section h3 .cs-dot{width:5px;height:5px;background:var(--gold)}
+.case-section p,.case-section li{font-size:.9rem;color:var(--text2-l);line-height:1.75}
+.case-section ul{list-style:none;padding:0}
+.case-section li{position:relative;padding-left:1rem;margin-bottom:.35rem}
+.case-section li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:.7rem}
+.case-deliverables{margin-top:.8rem;padding:.8rem;background:var(--gold-glow);border:1px solid rgba(184,146,26,.14);border-radius:var(--r);font-size:.75rem;color:var(--text2-l);line-height:1.9}
+.case-deliverables strong{color:var(--gold);font-family:var(--fm);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}
+.case-disciplines{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.8rem}
+
+/* WRECK ROOM */
+#wreckroom{background:var(--ink)}
+#wreckroom .section-title{color:var(--text-d)}
+#wreckroom .section-desc{color:var(--text2-d)}
+.wr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:rgba(245,240,230,.04)}
+.wr-card{background:var(--ink2);padding:1.6rem;transition:background .28s;position:relative;overflow:hidden;cursor:pointer}
+.wr-card:hover{background:var(--ink3)}
+.wr-card::after{content:'';position:absolute;top:0;right:0;width:80px;height:80px;background:radial-gradient(circle at top right,rgba(184,146,26,.04),transparent 70%);pointer-events:none}
+.wr-type{font-family:var(--fm);font-size:.58rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem}
+.wr-name{font-family:var(--fd);font-size:1.4rem;letter-spacing:.05em;margin-bottom:.35rem;color:var(--text-d)}
+.wr-desc{font-size:.88rem;color:var(--text3-d);line-height:1.65;margin-bottom:.8rem}
+.wr-deliverables{display:flex;flex-wrap:wrap;gap:.25rem}
+.wr-card.featured{border-left:2px solid var(--gold)}
+.wr-featured-badge{position:absolute;top:.8rem;right:.8rem;font-family:var(--fm);font-size:.5rem;padding:.18rem .42rem;background:rgba(184,146,26,.12);color:var(--gold);border:1px solid rgba(184,146,26,.2);letter-spacing:.06em;text-transform:uppercase}
+.wr-disciplines{display:flex;flex-wrap:wrap;gap:.25rem;margin-top:.5rem;padding-top:.5rem;border-top:1px solid rgba(245,240,230,.05)}
+
+/* SKILLS */
+#skills{background:var(--paper)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem}
+.skill-group{background:var(--paper2);border:1px solid var(--paper3);border-radius:var(--rl);padding:1.4rem;transition:border-color .3s}
+.skill-group:hover{border-color:rgba(184,146,26,.22)}
+.skill-group h3{font-family:var(--fd);font-size:1.2rem;letter-spacing:.06em;margin-bottom:.9rem;padding-bottom:.6rem;border-bottom:1px solid var(--paper3);color:var(--ink)}
+.skill-item{display:flex;align-items:center;justify-content:space-between;padding:.45rem 0;border-bottom:1px solid var(--paper3)}
+.skill-item:last-child{border-bottom:none}
+.skill-name{font-size:.88rem;color:var(--text2-l)}
+.skill-bar{width:80px;height:2px;background:var(--paper3);border-radius:10px;overflow:hidden}
+.skill-fill{height:100%;background:var(--gold);border-radius:10px}
+
+/* CONTACT */
+#contact{background:var(--ink);text-align:center}
+#contact .section-label{justify-content:center}
+#contact .section-title{color:var(--text-d)}
+#contact .section-desc{color:var(--text2-d)}
+.contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
+.contact-card{display:flex;align-items:center;gap:.8rem;padding:.9rem 1.3rem;background:rgba(245,240,230,.04);border:1px solid rgba(245,240,230,.07);transition:all .3s;font-size:.9rem}
+.contact-card:hover{border-color:rgba(184,146,26,.3);transform:translateY(-2px);color:var(--text-d)}
+.contact-card .c-icon{width:34px;height:34px;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:700;font-size:.82rem;font-family:var(--fm)}
+
+/* FOOTER */
+footer{padding:2.5rem 6rem;border-top:1px solid rgba(245,240,230,.05);display:flex;justify-content:space-between;align-items:center;font-size:.7rem;color:var(--text3-d);background:var(--ink);font-family:var(--fm);letter-spacing:.06em}
+
+/* BRAND BORDER ACCENTS */
+.grad-vodacom{border-top:2px solid #e60000}
+.grad-o2{border-top:2px solid #0050aa}
+.grad-samsung{border-top:2px solid #1428a0}
+.grad-virgin{border-top:2px solid #c41230}
+.grad-endesa{border-top:2px solid #00a84f}
+.grad-orange{border-top:2px solid #ff7900}
+.grad-a1{border-top:2px solid #a1145a}
+.grad-vf{border-top:2px solid #e60000}
+.grad-mena{background:linear-gradient(135deg,#0f0a14,#1a1028,#0f0a14);border-top:2px solid #8b5cf6}
+.grad-internal{border-top:2px solid #60a5fa}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.92);backdrop-filter:blur(14px);display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:2rem 1rem;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{background:var(--paper);border:1px solid var(--paper3);border-radius:var(--rl);width:100%;max-width:880px;margin:auto;position:relative;overflow:hidden;transform:translateY(30px);transition:transform .35s ease;color:var(--text-l)}
+.modal-overlay.open .modal-box{transform:translateY(0)}
+.modal-close{position:absolute;top:1rem;right:1rem;z-index:10;background:var(--ink);border:1px solid rgba(255,255,255,.1);color:var(--text-d);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;transition:all .22s;line-height:1}
+.modal-close:hover{background:var(--gold);border-color:var(--gold);color:#fff}
+.modal-hero-wrap{height:280px;overflow:hidden;position:relative;background:var(--ink)}
+.modal-hero-wrap img,.modal-hero-wrap video{width:100%;height:100%;object-fit:cover;display:block}
+.modal-hero-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(transparent,var(--paper));pointer-events:none}
+.modal-body{padding:1.8rem 2.4rem 2.4rem}
+.modal-client{font-family:var(--fm);font-size:.58rem;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.3rem}
+.modal-title{font-family:var(--fd);font-size:clamp(1.4rem,3vw,2.2rem);letter-spacing:.05em;line-height:1.05;margin-bottom:1.2rem;color:var(--ink)}
+.modal-meta{display:flex;gap:1.5rem;flex-wrap:wrap;padding:.85rem 1.1rem;background:var(--paper2);border-radius:var(--r);margin-bottom:1.6rem;border:1px solid var(--paper3)}
+.modal-meta-item .m-label{font-family:var(--fm);font-size:.54rem;color:var(--text3-l);letter-spacing:.1em;text-transform:uppercase}
+.modal-meta-item .m-value{font-size:.8rem;font-weight:600;margin-top:.12rem;color:var(--text-l);font-family:var(--fm)}
+.modal-section{margin-bottom:1.5rem}
+.modal-section h3{font-family:var(--fd);font-size:1.15rem;letter-spacing:.06em;margin-bottom:.65rem;display:flex;align-items:center;gap:.45rem;color:var(--ink)}
+.modal-section h3::before{content:'';display:inline-block;width:3px;height:1em;background:var(--gold);flex-shrink:0}
+.modal-section p{font-size:.9rem;color:var(--text2-l);line-height:1.8}
+.modal-ul{padding:0;list-style:none;margin:.5rem 0 0}
+.modal-ul li{font-size:.86rem;color:var(--text2-l);line-height:1.7;padding-left:1.15rem;position:relative;margin-bottom:.3rem}
+.modal-ul li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:.7rem;top:.06em}
+.modal-deliv{background:var(--gold-glow);border:1px solid rgba(184,146,26,.15);border-radius:var(--r);padding:.9rem 1.1rem;font-size:.78rem;color:var(--text2-l);line-height:1.9;margin-top:.8rem}
+.modal-deliv strong{color:var(--gold);font-family:var(--fm);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.35rem}
+.modal-tags-row{display:flex;flex-wrap:wrap;gap:.28rem;margin-top:.9rem}
+.modal-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.6rem;margin-top:.8rem}
+.modal-gallery img,.modal-gallery video{height:115px;object-fit:cover;border-radius:4px;width:100%;border:1px solid var(--paper3);display:block;background:var(--paper2)}
+.modal-dl-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.1rem}
+.modal-dl-btn{display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .88rem;font-size:.66rem;font-weight:700;background:var(--gold-dim);color:var(--gold);border:1px solid rgba(184,146,26,.2);transition:all .22s;font-family:var(--fm);letter-spacing:.06em}
+.modal-dl-btn:hover{background:var(--gold);color:#fff}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero{padding:7rem 3rem 3rem}
+  section{padding:4.5rem 3rem}
+  nav{padding:.9rem 2rem}
+  nav ul{gap:1rem}
+  .story-grid,.case-header,.case-content{grid-template-columns:1fr}
+  footer{padding:2rem 3rem}
+  .hero-bg-logo{display:none}
+}
+@media(max-width:640px){
+  .hero{padding:6rem 1.5rem 2rem}
+  section{padding:3.5rem 1.5rem}
+  nav{padding:.7rem 1.2rem}
+  nav ul{display:none}
+  nav ul.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(245,240,230,.98);padding:1.5rem;gap:1rem;border-bottom:1px solid rgba(184,146,26,.15)}
+  .nav-toggle{display:block}
+  .portfolio-grid,.wr-grid,.skills-grid,.disc-grid{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem}
+  .hero-stats>div{min-width:40%}
+  .case-header{padding:1.5rem}
+  .case-content{padding:0 1.5rem 1.5rem;gap:1.5rem}
+  footer{flex-direction:column;gap:.8rem;text-align:center;padding:1.5rem}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0}
+.project-card,.wr-card,.disc-card{cursor:pointer}
+.project-card:hover .card-cta,.wr-card:hover .wr-cta{opacity:1;transform:translateY(0)}
+.card-cta{display:flex;align-items:center;gap:.3rem;margin-top:.7rem;padding-top:.6rem;border-top:1px solid rgba(184,146,26,.1);font-family:var(--fm);font-size:.58rem;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;opacity:0;transform:translateY(4px);transition:all .25s}
+@media(max-width:640px){.modal-body{padding:1.3rem 1.4rem}.modal-hero-wrap{height:200px}.modal-meta{gap:1rem}.modal-gallery{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="logo">
+    <img src="Insuetam Creatives logo/logo-nav.webp" alt="Insuetam Creatives">
+    <div class="logo-text">INSUETAM<small>CREATIVES · PORTFOLIO</small></div>
+  </a>
+  <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  <ul>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#disciplines">Disciplines</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#casestudies">Cases</a></li>
+    <li><a href="#wreckroom">Wreck Room</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <video class="hero-video-bg" autoplay muted loop playsinline><source src="Showreel, hero background video loop.mp4" type="video/mp4"></video>
+  <div class="hero-bg-logo"><img src="Insuetam Creatives logo/logo-hero.webp" alt=""></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Insuetam Creatives · Founder &amp; Creative Director</div>
+    <div class="hero-brand-name">Dominic McWazzer</div>
+    <h1>CREATIVE<br>DESIGNER</h1>
+    <p class="hero-sub"><em>Creative thinking. Purposeful design.</em><br><strong>Animator, Illustrator &amp; UX Designer</strong> — a multidisciplinary creative telling brand stories through motion graphics, campaign visuals, and digital strategy for global brands across Africa, Europe &amp; the Middle East.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-primary">View My Work →</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">15+</div><div class="stat-label">Global Brands</div></div>
+      <div><div class="stat-num">10+</div><div class="stat-label">Countries Served</div></div>
+      <div><div class="stat-num">4+</div><div class="stat-label">Years Experience</div></div>
+      <div><div class="stat-num">18+</div><div class="stat-label">Projects Shown</div></div>
+    </div>
+  </div>
+</section>
+<!-- â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ MY STORY â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ -->
+<section id="story">
+  <div class="section-label">My Story</div>
+  <div class="section-title">From animation to global brands.</div>
+  <div class="story-grid">
+    <div class="story-text">
+      <p>Every creative has an origin story. Mine began at AFDA Film School in Johannesburg, where I earned my Bachelor of Arts in Motion Picture Medium, specialising in Animation and Special Effects. That foundation in visual storytelling â€" understanding how frame, composition, and movement create meaning â€" became the lens through which I approach every project today.</p>
+      <p>After graduating in 2022, I cut my teeth at Cloud Juice Vape Shop, where I wasn't just a graphic designer â€" I was the entire creative department. I directed product packaging, managed e-commerce platforms on OpenCart and WordPress, ran email marketing campaigns, and designed everything from in-store signage to social media graphics. It taught me the power of owning an entire brand's visual identity end-to-end.</p>
+      <p>In January 2024, I joined Mondia Digital's UX/UI and creative design team, where my work suddenly scaled from one local brand to fifteen global ones. I now design hero banners, off-portal landing pages, competition graphics, marketing presentations, and educational videos for brands like Vodacom, Vodafone, O2, Orange, Samsung, A1, Virgin Media, and Endesa â€" serving audiences across South Africa, Germany, Austria, the UK, Spain, Romania, Saudi Arabia, the UAE, and Kuwait.</p>
+      <p>Parallel to this, I run my independent studio Wreck Room, where I take on branding, illustration, animation, and digital strategy projects â€" from Afrocentric fashion ventures to OTT gospel streaming platforms. I integrate AI tools like ChatGPT and Freepik AI into my workflows to deliver creative solutions that are both efficient and impactful.</p>
+      <p>What drives me is the belief that great design isn't decoration â€" it's communication. Every banner, every landing page, every brand identity is a conversation between a business and its audience. My job is to make that conversation unforgettable.</p>
+    </div>
+    <div class="story-sidebar">
+      <div class="info-card">
+        <h4><span class="icon">âœ¦</span> Design Tools</h4>
+        <div class="info-tags">
+          <span class="tag">Figma</span><span class="tag">Photoshop</span><span class="tag">Illustrator</span><span class="tag">After Effects</span><span class="tag">Premiere Pro</span><span class="tag">Blender</span><span class="tag">DaVinci Resolve</span><span class="tag">Adobe XD</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <h4><span class="icon">âœ¦</span> AI &amp; Workflow</h4>
+        <div class="info-tags">
+          <span class="tag cool">ChatGPT</span><span class="tag cool">AI Image Generators</span><span class="tag cool">Freepik AI</span><span class="tag cool">Figma Make</span><span class="tag cool">VWO A/B Testing</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <h4><span class="icon">âœ¦</span> Global Reach</h4>
+        <div class="info-tags">
+          <span class="tag warm">Vodacom</span><span class="tag warm">Vodafone</span><span class="tag warm">O2</span><span class="tag warm">Orange</span><span class="tag warm">Samsung</span><span class="tag warm">A1</span><span class="tag warm">Virgin Media</span><span class="tag warm">Endesa</span><span class="tag warm">Zain</span><span class="tag warm">Du</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <h4><span class="icon">âœ¦</span> Education</h4>
+        <div class="info-tags">
+          <span class="tag gold">BA Media &amp; Motion Picture â€" AFDA (2022)</span><span class="tag gold">Animation &amp; Special Effects</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <h4><span class="icon">âœ¦</span> Languages</h4>
+        <div class="info-tags">
+          <span class="tag rose">English (C2)</span><span class="tag rose">Setswana (C2)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ DISCIPLINES â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ -->
+<section id="disciplines" style="background:var(--bg2)">
+  <div class="section-label">Creative Disciplines</div>
+  <div class="section-title">Eight crafts, one vision.</div>
+  <div class="section-desc">My work spans eight interconnected creative disciplines â€" each honed through real projects for global brands, startups, and independent clients. Together they form a complete creative toolkit.</div>
+  <div class="disc-grid">
+    <div class="disc-card anim"><span class="disc-icon">â—ˆ</span><div class="disc-name">UX Design</div><div class="disc-sub">User flows, wireframes, prototyping, dark/light modes, Figma, app marketplace integration</div></div>
+    <div class="disc-card anim"><span class="disc-icon">â—‰</span><div class="disc-name">Graphic Design</div><div class="disc-sub">Hero banners, campaign creatives, display ads, competition graphics, packaging</div></div>
+    <div class="disc-card anim"><span class="disc-icon">â—«</span><div class="disc-name">Web Design</div><div class="disc-sub">Landing pages, off-portal campaigns, WordPress, OpenCart, e-commerce</div></div>
+    <div class="disc-card anim"><span class="disc-icon">â—†</span><div class="disc-name">Creative Design</div><div class="disc-sub">Campaign concepts, Ramadan themes, cultural events, seasonal creatives</div></div>
+    <div class="disc-card anim"><span class="disc-icon">â–¶</span><div class="disc-name">Video Editing</div><div class="disc-sub">Educational videos, social reels, short-form content, app walkthroughs</div></div>
+    <div class="disc-card anim"><span class="disc-icon">â—Ž</span><div class="disc-name">Motion Design</div><div class="disc-sub">Animation, motion graphics, explainer videos, After Effects, Blender 3D</div></div>
+    <div class="disc-card anim"><span class="disc-icon">â–</span><div class="disc-name">Presentation Design</div><div class="disc-sub">GTM strategy decks, partnership proposals, All-Hands visuals, pitch decks</div></div>
+    <div class="disc-card anim"><span class="disc-icon">â¬¡</span><div class="disc-name">Brand Enhancement</div><div class="disc-sub">Brand identity, design systems, brand guidelines, visual consistency, CI compliance</div></div>
+  </div>
+</section>
+
+<!-- â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ JOURNEY â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ -->
+<section id="journey">
+  <div class="section-label">Career Journey</div>
+  <div class="section-title">The path so far.</div>
+  <div class="section-desc">Each role sharpened different disciplines â€" from animation roots through e-commerce ownership to global telecoms design at scale.</div>
+  <div class="timeline">
+    <div class="tl-item current">
+      <div class="tl-date">Jan 2024 â€" Present</div>
+      <div class="tl-role">UX/UI &amp; Creative Designer</div>
+      <div class="tl-company">Mondia Digital Â· Midrand, South Africa</div>
+      <div class="tl-desc">Contributing to the UX/UI and creative design team across Mondia's global marketplace platform. Designing hero banners, off-portal landing pages, competition graphics, social media creatives, and campaign assets for Vodacom vLive, Playinc, Kaboodle, Mum &amp; Baby, MyMuze, and Vodacom Music. Working on international campaigns for O2 Germany, Vodafone Germany, Virgin Media UK, Endesa Spain, Orange Spain &amp; Romania, A1 Austria, Samsung Spain, Zain KSA, Du UAE, Mobily KSA, and STC. Designed Ramadan campaigns across all MENA portals. Delivering via Jira with VWO A/B testing.</div>
+      <div class="tl-skills"><span class="tag">UX Design</span><span class="tag">Graphic Design</span><span class="tag">Web Design</span><span class="tag warm">Campaign</span><span class="tag warm">Presentation</span><span class="tag warm">Video</span><span class="tag warm">Brand</span></div>
+    </div>
+    <div class="tl-item current">
+      <div class="tl-date">May 2024 â€" Present</div>
+      <div class="tl-role">Freelance Graphic Designer &amp; Video Editor</div>
+      <div class="tl-company">Web Guru Africa Â· Remote</div>
+      <div class="tl-desc">Social media reels, short-form videos, and marketing creatives for Vodacom subsidiary services including Game Go and Celebrity Corner.</div>
+      <div class="tl-skills"><span class="tag">Video Editing</span><span class="tag">Motion Design</span><span class="tag warm">Social Media</span></div>
+    </div>
+    <div class="tl-item current">
+      <div class="tl-date">Jun 2019 â€" Present</div>
+      <div class="tl-role">Freelance Designer &amp; Video Editor</div>
+      <div class="tl-company">Westside Kam &amp; WESTSIDE Â· Pretoria</div>
+      <div class="tl-desc">High-quality clothing mockups, typography-driven print materials, lookbook visuals, and brand identity design for a streetwear label.</div>
+      <div class="tl-skills"><span class="tag">Graphic Design</span><span class="tag">Brand Enhancement</span><span class="tag warm">Fashion</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Oct 2022 â€" Jan 2024</div>
+      <div class="tl-role">Graphic Designer, Social Media &amp; Email Marketing</div>
+      <div class="tl-company">Cloud Juice Vape Shop Â· Centurion</div>
+      <div class="tl-desc">Directed all creative assets â€" print materials, product packaging, digital campaigns, e-commerce content via OpenCart and WordPress, social media graphics, and email marketing campaigns driving measurable sales growth. Full creative ownership of the brand.</div>
+      <div class="tl-skills"><span class="tag">Graphic Design</span><span class="tag">Web Design</span><span class="tag cool">E-Commerce</span><span class="tag cool">Packaging</span><span class="tag cool">Email Marketing</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Jan 2021 â€" Jul 2022</div>
+      <div class="tl-role">Illustrator &amp; Animator</div>
+      <div class="tl-company">Tsego Foundation Â· Remote</div>
+      <div class="tl-desc">Educational explainer videos and illustrated posters for children's learning initiatives. Accessible storytelling through vibrant animation.</div>
+      <div class="tl-skills"><span class="tag">Motion Design</span><span class="tag">Creative Design</span><span class="tag rose">Animation</span><span class="tag rose">Illustration</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Jun 2020 â€" Aug 2021</div>
+      <div class="tl-role">Freelance Designer</div>
+      <div class="tl-company">Busa Shabangu Â· Remote</div>
+      <div class="tl-desc">Promotional posters, logo design, and demographic-targeted campaign materials for a music artist.</div>
+      <div class="tl-skills"><span class="tag">Graphic Design</span><span class="tag">Brand Enhancement</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ SELECTED WORK â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ -->
+<section id="work" style="background:var(--bg2)">
+  <div class="section-label">Selected Work</div>
+  <div class="section-title">Projects by discipline.</div>
+  <div class="section-desc">Each project is tagged with the disciplines it exercised â€" filter by skill to see how each craft appears across different brands and contexts.</div>
+  <div class="portfolio-filter">
+    <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+    <button class="filter-btn" onclick="filterProjects('ux')">UX Design</button>
+    <button class="filter-btn" onclick="filterProjects('graphic')">Graphic</button>
+    <button class="filter-btn" onclick="filterProjects('web')">Web Design</button>
+    <button class="filter-btn" onclick="filterProjects('video')">Video</button>
+    <button class="filter-btn" onclick="filterProjects('motion')">Motion</button>
+    <button class="filter-btn" onclick="filterProjects('presentation')">Presentations</button>
+    <button class="filter-btn" onclick="filterProjects('brand')">Branding</button>
+    <button class="filter-btn" onclick="filterProjects('creative')">Creative</button>
+  </div>
+  <div class="portfolio-grid">
+
+    <!-- Playinc Disney/Marvel -->
+    <div class="project-card anim" data-cat="graphic creative brand">
+      <div class="card-visual grad-vodacom" style="background-image:url('ZA/Playinc ZA %26 Arcade/Playinc Creatives/1366x768 - Arcade HERO Banner.webp')"><div class="overlay"></div><div class="card-badge">South Africa</div><div class="card-discipline">Graphic + Creative</div></div>
+      <div class="card-body">
+        <div class="card-client">Vodacom ZA â€" Playinc</div>
+        <div class="card-title">Disney, Marvel &amp; Nickelodeon Campaign Creatives</div>
+        <div class="card-desc">Hero banners and promotional images for the Playinc gaming platform featuring Disney Games, Marvel, and Nickelodeon â€" highlighting R4,000 cash prize draws and R1,000 Arcade Powerwall competitions.</div>
+        <div class="card-tags"><span class="card-tag">Hero Banners</span><span class="card-tag">Gamification</span><span class="card-tag">Prize Campaigns</span><span class="card-tag">Brand CI</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Led creative direction across all banner formats <strong>Â·</strong> Desktop 768Ã—338 Â· Mobile Â· Scroller 500Ã—500 Â· Portal 1920Ã—1080</div>
+      </div>
+    </div>
+
+    <!-- Playinc Arcade Competitions -->
+    <div class="project-card anim" data-cat="graphic creative">
+      <div class="card-visual grad-vodacom" style="background-image:url('ZA/Playinc ZA %26 Arcade/Playinc Arcade Comps/1920x1080_GooDisplNATIVE_01.webp')"><div class="overlay"></div><div class="card-badge">South Africa</div><div class="card-discipline">Graphic + Creative</div></div>
+      <div class="card-body">
+        <div class="card-client">Vodacom ZA â€" Playinc Arcade</div>
+        <div class="card-title">Arcade Competition Creatives â€" Snake Vs Block, Power Wall, Street Racer</div>
+        <div class="card-desc">Competition campaign graphics with branded prize campaigns â€" Samsung Series S consoles, Nintendo Switch, and Takealot vouchers as prizes (R20,000+ total value).</div>
+        <div class="card-tags"><span class="card-tag">Competition Graphics</span><span class="card-tag">Arcade</span><span class="card-tag">Prize Draw</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Designed all competition visuals, prize-branded assets, and portal + social format adaptations</div>
+      </div>
+    </div>
+
+    <!-- Maneno & Ubbu -->
+    <div class="project-card anim" data-cat="web graphic creative">
+      <div class="card-visual grad-vodacom" style="background-image:url('ZA/Vlive Campaigns %2B Landing Page Flows/Off-Portal and On-Portal Flows/Maneno 3.webp')"><div class="overlay"></div><div class="card-badge">South Africa</div><div class="card-discipline">Web + Graphic</div></div>
+      <div class="card-body">
+        <div class="card-client">Vodacom ZA â€" vLive</div>
+        <div class="card-title">Maneno &amp; Ubbu â€" Full Off-Portal Acquisition Campaign Flows</div>
+        <div class="card-desc">Complete off-portal acquisition LP flows for new service launches â€" Maneno (reading) and Ubbu (kids coding). Landing pages with accept/decline CTAs, welcome/error states, and 20+ display banner sizes.</div>
+        <div class="card-tags"><span class="card-tag">Landing Pages</span><span class="card-tag">User Flows</span><span class="card-tag">20+ Banner Sizes</span><span class="card-tag">Education</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Designed complete acquisition flows + 20+ banner format variations <strong>Â·</strong> 300Ã—250 Â· 728Ã—90 Â· 970Ã—250 Â· 160Ã—600 Â· 320Ã—50</div>
+      </div>
+    </div>
+
+    <!-- vLive Campaigns -->
+    <div class="project-card anim" data-cat="graphic brand web">
+      <div class="card-visual grad-vodacom" style="background-image:url('ZA/Vlive Campaigns %2B Landing Page Flows/Vlive Banner HD.webp')"><div class="overlay"></div><div class="card-badge">South Africa</div><div class="card-discipline">Graphic + Web</div></div>
+      <div class="card-body">
+        <div class="card-client">Vodacom ZA â€" vLive</div>
+        <div class="card-title">vLive Portal Campaigns â€" Banners, Landing Pages &amp; Partner Launches</div>
+        <div class="card-desc">Ongoing campaign design for the vLive portal â€" hero banners, partner LP flows, off-portal acquisition campaigns for Babbel, StudySmarter, Soulm8, Montessori, MyMastery, Tinder, ZEE5, and LesMills+.</div>
+        <div class="card-tags"><span class="card-tag">Hero Banners</span><span class="card-tag">Landing Pages</span><span class="card-tag">Partner Campaigns</span><span class="card-tag">Multi-Format</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> 50+ banner designs across desktop, mobile, skyscraper, and social formats</div>
+      </div>
+    </div>
+
+    <!-- Vodacom Music Presentations -->
+    <div class="project-card anim" data-cat="presentation brand">
+      <div class="card-visual grad-vodacom" style="background-image:url('ZA/Vodacom Music and My Muze/Old Assets/Trace X VodaMusic iPad.webp');background-position:center top"><div class="overlay"></div><div class="card-badge">South Africa</div><div class="card-discipline">Presentation</div></div>
+      <div class="card-body">
+        <div class="card-client">Vodacom ZA â€" Music</div>
+        <div class="card-title">GTM Strategy, Trace+ Partnership &amp; Campaign Presentations</div>
+        <div class="card-desc">Designed and polished three major Vodacom Music presentations â€" Go-To-Market strategy deck, Vodacom Music Ã— Trace+ partnership proposal, and the campaign strategy presentation.</div>
+        <div class="card-tags"><span class="card-tag">GTM Strategy</span><span class="card-tag">Partnership Decks</span><span class="card-tag">Campaign Planning</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Full design of 3 strategic presentations â€" layout, infographics, branded templates</div>
+      </div>
+    </div>
+
+    <!-- Vodacom Music Video & Artist Campaigns -->
+    <div class="project-card anim" data-cat="video motion creative graphic">
+      <div class="card-visual grad-vodacom"><video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1"><source src="ZA/Vodacom Music and My Muze/VMusic Product Video_2.mp4" type="video/mp4"></video><div class="overlay"></div><div class="card-badge">South Africa</div><div class="card-discipline">Video + Motion + Graphic</div></div>
+      <div class="card-body">
+        <div class="card-client">Vodacom ZA â€" Music &amp; MyMuze</div>
+        <div class="card-title">Product Video, Artist Campaigns &amp; MyMuze Visual Identity</div>
+        <div class="card-desc">Produced the Vodacom Music product video, Reece Effect and Tshwala Bam engagement videos, and campaign artwork for Blxckie, DJ Tira, and seasonal events. Designed MyMuze playlist covers and portal banners.</div>
+        <div class="card-tags"><span class="card-tag">Product Video</span><span class="card-tag">Artist Campaigns</span><span class="card-tag">Playlist Covers</span><span class="card-tag">Engagement Reels</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Video production + motion design, campaign artwork, and ongoing visual identity for Vodacom Music ecosystem</div>
+      </div>
+    </div>
+
+    <!-- O2 Germany -->
+    <div class="project-card anim" data-cat="web graphic brand video">
+      <div class="card-visual grad-o2" style="background-color:#001f4e"><video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1"><source src="Europe/Germany/o2 DE/o2-TV-Ad-FINAL.mp4" type="video/mp4"></video><div class="overlay"></div><div class="card-badge">Germany</div><div class="card-discipline">Web + Graphic + TV</div></div>
+      <div class="card-body">
+        <div class="card-client">O2 Germany (TelefÃ³nica)</div>
+        <div class="card-title">Off-Portal Landing Pages, Banner Campaigns &amp; TV Ad</div>
+        <div class="card-desc">Acquisition campaign landing pages, Smadex banner sets, and TV advertisement for O2's marketplace â€" 7Mind, Gymondo, Les Mills, Fastic, and gaming verticals.</div>
+        <div class="card-tags"><span class="card-tag">Landing Pages</span><span class="card-tag">Smadex</span><span class="card-tag">TV Ad</span><span class="card-tag">Localisation DE</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Designed acquisition LPs, programmatic banner sets, and storyboarded TV ad <strong>Â·</strong> mENT / Monsooq platforms</div>
+      </div>
+    </div>
+
+    <!-- Virgin Media UK -->
+    <div class="project-card anim" data-cat="web graphic">
+      <div class="card-visual grad-virgin" style="background-image:url('Europe/Virgin Media o2 UK/VM UK- Getmo Designs.webp');background-position:center top"><div class="overlay"></div><div class="card-badge">United Kingdom</div><div class="card-discipline">Web + Graphic</div></div>
+      <div class="card-body">
+        <div class="card-client">Virgin Media o2 UK</div>
+        <div class="card-title">Service Launch Campaigns â€" 7Mind, Edoki, Getmo</div>
+        <div class="card-desc">Off-portal landing pages and Smadex banner campaigns for new service launches â€" 7Mind mindfulness, Edoki kids education, and Getmo gaming.</div>
+        <div class="card-tags"><span class="card-tag">Landing Pages</span><span class="card-tag">Smadex Banners</span><span class="card-tag">Service Launch</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Designed 3 acquisition LPs + multi-format Smadex banner sets for programmatic distribution</div>
+      </div>
+    </div>
+
+    <!-- Samsung Spain -->
+    <div class="project-card anim" data-cat="graphic brand">
+      <div class="card-visual grad-samsung" style="background-image:url('Europe/Spain/Samsung/1200x628-responsive.webp');background-position:center center"><div class="overlay"></div><div class="card-badge">Spain</div><div class="card-discipline">Graphic + Brand</div></div>
+      <div class="card-body">
+        <div class="card-client">Samsung Spain</div>
+        <div class="card-title">Marketplace Banners, Wallet Push Notifications &amp; SMADEX</div>
+        <div class="card-desc">Off-portal banners and SMADEX adaptations for Samsung's marketplace. Wallet subscription push notification designs under strict Samsung brand guidelines â€" colour primitives, Samsung Sharp Sans, visual hierarchy.</div>
+        <div class="card-tags"><span class="card-tag">SMADEX</span><span class="card-tag">Push Notifications</span><span class="card-tag">Samsung Brand</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Designed 40+ banners for 7+ partners, Samsung Wallet push formats, all passed Samsung brand review</div>
+      </div>
+    </div>
+
+    <!-- BBVA Spain -->
+    <div class="project-card anim" data-cat="graphic brand">
+      <div class="card-visual grad-internal" style="background-image:url('Europe/Spain/BBVA/1200x628 - V2.webp');background-position:center center"><div class="overlay"></div><div class="card-badge">Spain</div><div class="card-discipline">Graphic + Brand</div></div>
+      <div class="card-body">
+        <div class="card-client">BBVA Spain</div>
+        <div class="card-title">Financial Services Marketplace â€" Campaign Banners</div>
+        <div class="card-desc">Off-portal banner campaigns and responsive ad creatives for BBVA's financial services marketplace â€" multi-format display and social adaptations under BBVA brand governance.</div>
+        <div class="card-tags"><span class="card-tag">Display Banners</span><span class="card-tag">Responsive Ads</span><span class="card-tag">Financial Services</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Designed responsive banner suite across 1080Ã—1920, 1200Ã—628, and 320Ã—480 formats</div>
+      </div>
+    </div>
+
+    <!-- Orange Romania & Spain -->
+    <div class="project-card anim" data-cat="ux web graphic video">
+      <div class="card-visual grad-orange"><video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1"><source src="Europe/Orange Spain %26 Romania/OREG Jetpack Joyride Promo Video.mp4" type="video/mp4"></video><div class="overlay"></div><div class="card-badge">Romania &amp; Spain</div><div class="card-discipline">UX + Web + Video</div></div>
+      <div class="card-body">
+        <div class="card-client">Orange Romania &amp; Spain</div>
+        <div class="card-title">App Marketplace Integration, Partner LPs &amp; Promo Videos</div>
+        <div class="card-desc">UI/UX design for integrating Mondia's marketplace into the My Orange App â€" in-app flows, dark/light modes, Romanian localisation. Off-portal landing pages for Fastic, 7Mind, Kidjo. Jetpack Joyride promotional video.</div>
+        <div class="card-tags"><span class="card-tag">App UI/UX</span><span class="card-tag">Landing Pages</span><span class="card-tag">Promo Video</span><span class="card-tag">Figma Prototype</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Full UX flow design (dark + light mode) + 3 acquisition LPs + promotional video production</div>
+      </div>
+    </div>
+
+    <!-- Endesa Spain -->
+    <div class="project-card anim" data-cat="graphic brand video">
+      <div class="card-visual grad-endesa" style="background-image:url('Europe/Spain/Endesa/1200x628-responsive.webp')"><div class="overlay"></div><div class="card-badge">Spain</div><div class="card-discipline">Graphic + Video</div></div>
+      <div class="card-body">
+        <div class="card-client">Endesa Spain</div>
+        <div class="card-title">Para Ti Marketplace â€" Multi-Partner Banners &amp; Getmo Video</div>
+        <div class="card-desc">Campaign banners, UI assets, and product video for Endesa's Para Ti marketplace â€" Vaia, Getmo Games (Alsa Spain), Acontra+, and generic marketplace services via Adyen payment processing.</div>
+        <div class="card-tags"><span class="card-tag">Off-Portal Banners</span><span class="card-tag">Product Video</span><span class="card-tag">Energy Sector</span><span class="card-tag">Adyen</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Designed partner banners + produced Getmo Ã— Alsa Spain product video</div>
+      </div>
+    </div>
+
+    <!-- A1 Austria -->
+    <div class="project-card anim" data-cat="web graphic">
+      <div class="card-visual grad-a1" style="background-image:url('Europe/A1 Austria/1200x1200.webp');background-position:center top"><div class="overlay"></div><div class="card-badge">Austria</div><div class="card-discipline">Web + Graphic</div></div>
+      <div class="card-body">
+        <div class="card-client">A1 Austria</div>
+        <div class="card-title">Off-Portal LPs, Native Banners &amp; Dynamic Landing Pages</div>
+        <div class="card-desc">Acquisition landing pages, native banner campaigns, and dynamic responsive landing pages for A1 Austria's fitness and education partners â€" Gymondo, Les Mills, and Kidjo.</div>
+        <div class="card-tags"><span class="card-tag">Landing Pages</span><span class="card-tag">Native Banners</span><span class="card-tag">Dynamic LPs</span><span class="card-tag">Fitness</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Designed campaign pages, native ad creatives, and responsive LP variants (LG/MD/XS breakpoints)</div>
+      </div>
+    </div>
+
+    <!-- Vodafone Germany -->
+    <div class="project-card anim" data-cat="ux brand web">
+      <div class="card-visual grad-vf" style="background-image:url('Europe/Germany/Vodafone DE/Stage%2B.webp');background-position:center center"><div class="overlay"></div><div class="card-badge">Germany</div><div class="card-discipline">UX + Brand + Web</div></div>
+      <div class="card-body">
+        <div class="card-client">Vodafone Germany</div>
+        <div class="card-title">Games Vertical Upgrade, Stage+ &amp; LP Campaigns</div>
+        <div class="card-desc">Visual upgrade of VFDE's games vertical from legacy mENT to Monsooq/Getmo. Designed Stage+ portal assets, responsive landing pages, and multi-format banner campaigns.</div>
+        <div class="card-tags"><span class="card-tag">UI Design</span><span class="card-tag">Design System</span><span class="card-tag">Gaming</span><span class="card-tag">Responsive LPs</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Led design system migration (mENT â†' Monsooq/Getmo) + responsive LP design across breakpoints</div>
+      </div>
+    </div>
+
+    <!-- Monsooq Product Promo -->
+    <div class="project-card anim" data-cat="ux video web brand">
+      <div class="card-visual grad-vf" style="background-color:#0a0a1a"><video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1"><source src="Other videos/Monsooq Demo VR002.mp4" type="video/mp4"></video><div class="overlay"></div><div class="card-badge">Germany</div><div class="card-discipline">UX + Video + Brand</div></div>
+      <div class="card-body">
+        <div class="card-client">Mondia Digital &mdash; Monsooq</div>
+        <div class="card-title">Monsooq Gaming Platform &mdash; Product Promo Video &amp; UX</div>
+        <div class="card-desc">Product demonstration video and platform UX for Monsooq &mdash; Mondia's white-label gaming marketplace deployed across European and MENA operators including Vodafone, O2, and Orange.</div>
+        <div class="card-tags"><span class="card-tag">Product Video</span><span class="card-tag">Gaming Platform</span><span class="card-tag">White-Label</span><span class="card-tag">UX Design</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Produced product demo video + UI/UX design for multi-operator gaming marketplace</div>
+      </div>
+    </div>
+
+    <!-- MENA Ramadan -->
+    <div class="project-card anim" data-cat="creative graphic web brand">
+      <div class="card-visual grad-mena" style="background-image:url('Middle East/Ramadan/1200x628_GooDisplNATIVE_01.webp')"><div class="overlay"></div><div class="card-badge">MENA Region</div><div class="card-discipline">Creative + Web</div></div>
+      <div class="card-body">
+        <div class="card-client">Zain KSA Â· Du UAE Â· Mobily Â· STC</div>
+        <div class="card-title">Ramadan Campaign Theme &amp; MENA Portal Designs</div>
+        <div class="card-desc">Ramadan 2024 campaign theme across all MENA portals. Login page redesigns, homepage updates, promo banners, and Zain Zone Sport Club competition with Red Sea cruise prizes. Full bilingual Arabic + English design.</div>
+        <div class="card-tags"><span class="card-tag">Ramadan Theme</span><span class="card-tag">Multi-Tenant</span><span class="card-tag">Arabic + English</span><span class="card-tag">Competitions</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Designed unified Ramadan theme across 4 operators, landing pages, and bilingual banner campaigns</div>
+      </div>
+    </div>
+
+    <!-- Mum & Baby -->
+    <div class="project-card anim" data-cat="graphic creative brand motion">
+      <div class="card-visual grad-vodacom"><video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1"><source src="ZA/Mum %26 Baby/Mum %26 baby HERO.mp4" type="video/mp4"></video><div class="overlay"></div><div class="card-badge">South Africa</div><div class="card-discipline">Graphic + Motion</div></div>
+      <div class="card-body">
+        <div class="card-client">Vodacom ZA â€" Mum &amp; Baby</div>
+        <div class="card-title">Dis-Chem Baby City Competition &amp; Hero Video</div>
+        <div class="card-desc">Hero banner campaign for the Mum &amp; Baby portal â€" R1,000 Dis-Chem Baby City voucher prize competition. Produced the animated hero banner video (After Effects) and a 20K competition creative suite.</div>
+        <div class="card-tags"><span class="card-tag">Hero Banners</span><span class="card-tag">Competition</span><span class="card-tag">Motion</span><span class="card-tag">Parenting</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> After Effects hero video + full competition creative suite across portal formats</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ CASE STUDIES â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ -->
+<section id="casestudies">
+  <div class="section-label">Case Studies</div>
+  <div class="section-title">Deep dives into premium work.</div>
+  <div class="section-desc">Each case study shows how multiple disciplines come together on a single brand â€" with real delivery specs and creative process.</div>
+
+  <!-- CASE 1: Vodacom vLive -->
+  <div class="case-study anim">
+    <div class="case-header">
+      <div>
+        <div class="case-brand" style="color:#e60000">Vodacom vLive &amp; Playinc</div>
+        <div class="case-subtitle">End-to-end creative for South Africa's leading digital entertainment portal â€" gaming, music, video, education, and lifestyle content across multiple verticals.</div>
+        <div class="case-meta">
+          <div class="case-meta-item"><div class="case-meta-label">Client</div><div class="case-meta-value">Vodacom SA</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Role</div><div class="case-meta-value">Creative Designer</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Duration</div><div class="case-meta-value">Jan 2024 â€" Ongoing</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Verticals</div><div class="case-meta-value">vLive Â· Playinc Â· MyMuze Â· Mum&amp;Baby Â· Kaboodle</div></div>
+        </div>
+        <div class="case-disciplines"><span class="tag">Graphic Design</span><span class="tag warm">Creative Design</span><span class="tag cool">Video Editing</span><span class="tag rose">Presentation</span><span class="tag gold">Web Design</span><span class="tag">Brand Enhancement</span></div>
+      </div>
+      <div class="case-visual" style="background-image:url('ZA/Vlive Campaigns %2B Landing Page Flows/Vlive Banner HD.webp');border-radius:var(--radius)">
+        <span class="glyph" style="color:#e60000">VL</span>
+        <div class="case-icon-grid">
+          <div class="case-icon-card"><div class="num">50+</div><div class="lbl">Hero Banners</div></div>
+          <div class="case-icon-card"><div class="num">25+</div><div class="lbl">Campaigns</div></div>
+          <div class="case-icon-card"><div class="num">12</div><div class="lbl">Jira Tickets</div></div>
+          <div class="case-icon-card"><div class="num">20+</div><div class="lbl">Banner Sizes</div></div>
+          <div class="case-icon-card"><div class="num">3</div><div class="lbl">Presentations</div></div>
+          <div class="case-icon-card"><div class="num">R20K+</div><div class="lbl">Prize Values</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="case-content">
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> The Challenge</h3>
+        <p>Vodacom's vLive ecosystem serves millions of South African users across gaming (Playinc), music (MyMuze, Vodacom Music via Hungama), kids (Kaboodle), education (Mum &amp; Baby, Maneno, Ubbu), and lifestyle. The platform demanded a constant pipeline of high-quality campaign creatives â€" hero banners, in-app promotions, Arcade competition graphics, off-portal acquisition flows, presentations, educational videos, and social content â€" all adhering to Vodacom's CI guidelines through Jira-tracked workflows with strict acceptance criteria.</p>
+        <div class="case-deliverables">
+          <strong>Key Deliverables:</strong><br>
+          Playinc Disney/Marvel/Nickelodeon campaign creatives across all portal formats<br>
+          Vodacom Music GTM Strategy, Trace+ Partnership, and Campaign Strategy presentations<br>
+          Educational product video (1min + 15/30s social cuts)<br>
+          Snake Vs Block, Power Wall, and Street Racer arcade competition graphics<br>
+          Maneno + Ubbu off-portal LP flows with 20+ banner format variations<br>
+          MyMuze playlist covers, Ntokozo Mbambo campaign, Youth/Women's Month creatives<br>
+          Mum &amp; Baby hero video (After Effects) + Dis-Chem Baby City competition suite
+        </div>
+      </div>
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> My Contribution</h3>
+        <ul>
+          <li>Designed hero banners across Desktop (768Ã—338), Mobile (446Ã—353), Scroller (500Ã—500), and Portal (1920Ã—1080) formats</li>
+          <li>Created Arcade competition graphics for Snake Vs Block, Power Wall, and Street Racer â€" Samsung Series S, Nintendo Switch, Takealot vouchers</li>
+          <li>Built complete off-portal acquisition LP flows for Maneno and Ubbu with 20+ banner format variations</li>
+          <li>Designed and polished the Vodacom Music GTM Strategy, Trace+ Partnership, and Campaign Strategy presentations â€" all directly assigned</li>
+          <li>Produced educational video (1min + 15/30s social cuts) featuring app walkthroughs, UX journeys, real-life usage</li>
+          <li>Created MyMuze campaign concepts â€" Ntokozo Mbambo Experience, Youth/Women's Month</li>
+          <li>Designed playlist covers and Vodacom Music visual assets via Hungama</li>
+          <li>Collaborated with LiveOps, Product, and Marketing via Jira with defined acceptance criteria</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 2: European Telecoms -->
+  <div class="case-study anim">
+    <div class="case-header">
+      <div>
+        <div class="case-brand" style="color:#0050aa">O2 Â· Vodafone Â· A1 Â· Virgin Media</div>
+        <div class="case-subtitle">Localised acquisition campaigns and portal UI assets for four of Europe's largest operators â€" landing pages, banners, design system upgrades, and multi-format Smadex campaigns.</div>
+        <div class="case-meta">
+          <div class="case-meta-item"><div class="case-meta-label">Clients</div><div class="case-meta-value">O2 DE Â· VFDE Â· A1 AT Â· VM UK</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Markets</div><div class="case-meta-value">DACH Â· UK</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Testing</div><div class="case-meta-value">VWO A/B</div></div>
+        </div>
+        <div class="case-disciplines"><span class="tag">Web Design</span><span class="tag warm">Graphic Design</span><span class="tag cool">UX Design</span><span class="tag rose">Brand Enhancement</span></div>
+      </div>
+      <div class="case-visual" style="background-image:url('Europe/Germany/Vodafone DE/Stage%2B.webp');border-radius:var(--radius)">
+        <span class="glyph" style="color:#0050aa">Oâ‚‚</span>
+        <div class="case-icon-grid">
+          <div class="case-icon-card"><div class="num">4</div><div class="lbl">Operators</div></div>
+          <div class="case-icon-card"><div class="num">15+</div><div class="lbl">Partner LPs</div></div>
+          <div class="case-icon-card"><div class="num">60+</div><div class="lbl">Banner Variants</div></div>
+          <div class="case-icon-card"><div class="num">3</div><div class="lbl">Languages</div></div>
+          <div class="case-icon-card"><div class="num">2</div><div class="lbl">Design Systems</div></div>
+          <div class="case-icon-card"><div class="num">A/B</div><div class="lbl">VWO Testing</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="case-content">
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> The Challenge</h3>
+        <p>Each operator runs large-scale marketplaces with strict brand standards, unique portal design systems (mENT and Monsooq), and localisation requirements. O2 and Vodafone serve the DACH market in German; A1 targets Austria; Virgin Media requires English-market campaigns. The VFDE games vertical needed a full visual upgrade from mENT to Monsooq/Getmo. All campaigns distributed via Smadex programmatic with multi-format adaptations.</p>
+        <div class="case-deliverables">
+          <strong>Key Deliverables:</strong><br>
+          O2 Germany â€" acquisition LPs, Smadex banners, TV advertisement, hero banner updates<br>
+          Vodafone Germany â€" games vertical design upgrade (mENT â†' Monsooq/Getmo)<br>
+          A1 Austria â€" Gymondo/Les Mills off-portal LPs, native banners, dynamic landing pages<br>
+          Virgin Media UK â€" 7Mind, Edoki, and Getmo service launch LPs + Smadex campaigns
+        </div>
+      </div>
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> My Contribution</h3>
+        <ul>
+          <li>Designed acquisition LPs for 7Mind, Gymondo, Les Mills, Fastic, Edoki, and Getmo across four operators</li>
+          <li>Created multi-format Smadex banner sets for programmatic distribution</li>
+          <li>Supported VFDE games vertical upgrade from mENT to Monsooq/Getmo</li>
+          <li>Updated O2 Extras hero banners on the portal</li>
+          <li>Contributed UI/UX assets for mENT and Monsooq design systems</li>
+          <li>Worked within VWO A/B testing frameworks for LP optimisation</li>
+          <li>Localised designs for German, Spanish, Romanian, and English markets</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 3: Samsung & Endesa -->
+  <div class="case-study anim">
+    <div class="case-header">
+      <div>
+        <div class="case-brand" style="color:#1428a0">Samsung &amp; Endesa Marketplaces</div>
+        <div class="case-subtitle">Off-portal banners, wallet push notifications, SMADEX adaptations, and marketplace UI assets â€" premium campaign design under strict brand governance for enterprise clients in Spain.</div>
+        <div class="case-meta">
+          <div class="case-meta-item"><div class="case-meta-label">Clients</div><div class="case-meta-value">Samsung ES Â· Endesa ES</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Payments</div><div class="case-meta-value">Samsung Pay Â· Adyen</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Partners</div><div class="case-meta-value">7+ Services</div></div>
+        </div>
+        <div class="case-disciplines"><span class="tag">Graphic Design</span><span class="tag warm">Brand Enhancement</span><span class="tag cool">UX Design</span></div>
+      </div>
+      <div class="case-visual" style="background-image:url('Europe/Spain/Samsung/1200x628-responsive.webp');border-radius:var(--radius)">
+        <span class="glyph" style="color:#1428a0">SM</span>
+        <div class="case-icon-grid">
+          <div class="case-icon-card"><div class="num">7+</div><div class="lbl">Partners</div></div>
+          <div class="case-icon-card"><div class="num">40+</div><div class="lbl">Banners</div></div>
+          <div class="case-icon-card"><div class="num">2</div><div class="lbl">Platforms</div></div>
+          <div class="case-icon-card"><div class="num">ES</div><div class="lbl">Market</div></div>
+          <div class="case-icon-card"><div class="num">PDP</div><div class="lbl">Page Designs</div></div>
+          <div class="case-icon-card"><div class="num">Push</div><div class="lbl">Notifications</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="case-content">
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> The Challenge</h3>
+        <p>Samsung Spain's marketplace required banners for every partner launch adhering to Samsung's meticulous brand guidelines â€" colour primitives, Samsung Sharp Sans typography, spacing, visual hierarchy. Samsung Pay with Adyen payment processing demanded high-trust visual design. Wallet push notification formats needed mobile adaptation. Endesa's Para Ti marketplace â€" an i-framed integration within their energy customer portal â€" required distinct visual identity while maintaining platform consistency.</p>
+        <div class="case-deliverables">
+          <strong>Key Deliverables:</strong><br>
+          Samsung â€" partner banner campaigns for 7+ services, Wallet push notifications, SMADEX adaptations<br>
+          Endesa â€" Para Ti marketplace banners for Vaia, Getmo, Acontra+, and Getmo Ã— Alsa product video<br>
+          BBVA â€" responsive display banner campaigns across multiple formats
+        </div>
+      </div>
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> My Contribution</h3>
+        <ul>
+          <li>Designed off-portal banners for Vaia, 7Mind, Les Mills, Getmo, Fastic, Kidjo</li>
+          <li>Created SMADEX programmatic format adaptations for Samsung Generic campaign</li>
+          <li>Designed Samsung Wallet subscription push notification formats</li>
+          <li>Produced PDP assets for Kidjo and Vaia in the marketplace</li>
+          <li>Created Endesa Para Ti marketplace assets â€" Vaia, Getmo, Acontra+, Generic</li>
+          <li>All designs passed Samsung brand review before deployment</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ WRECK ROOM â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ -->
+<section id="wreckroom" style="background:var(--bg2)">
+  <div class="section-label">Wreck Room Studio</div>
+  <div class="section-title">Independent &amp; freelance work.</div>
+  <div class="section-desc">Beyond Mondia â€" branding, digital strategy, animation, fashion, and creative projects delivered through the Wreck Room banner.</div>
+  <div class="wr-grid">
+    <div class="wr-card featured anim" style="padding:0;overflow:hidden">
+      <div class="wr-featured-badge" style="top:.8rem;right:.8rem">Full Strategy</div>
+      <div style="height:140px;background-image:url('Wreck Room/About Us.webp');background-size:cover;background-position:center top"></div>
+      <div style="padding:1.2rem 1.6rem 1.6rem">
+      <div class="wr-type">Digital Strategy &amp; Platform Design</div>
+      <div class="wr-name">Glory+ Christian Content Platform</div>
+      <div class="wr-desc">Comprehensive digital strategy and branding for an OTT gospel content platform â€" brand naming (Glory+, FaithStream, The Light Network), logo concepts, Muvi platform architecture, 6-month marketing plan, subscription models, content strategy (30% movies, 30% sermons, 10% podcasts), revenue model with telco partnerships, and R940K budget planning.</div>
+      <div class="wr-deliverables"><span class="tag gold">Digital Strategy</span><span class="tag gold">Brand Identity</span><span class="tag">Platform Design</span><span class="tag">OTT Architecture</span><span class="tag warm">Revenue Model</span></div>
+      <div class="wr-disciplines"><span class="tag cool">Brand Enhancement</span><span class="tag cool">Web Design</span><span class="tag cool">Presentation</span></div>
+      </div>
+    </div>
+    <div class="wr-card anim" style="padding:0;overflow:hidden">
+      <div style="height:140px;background-image:url('ZA/Vodacom Music and My Muze/Old Assets/Banner - Hero.webp');background-size:cover;background-position:center"></div>
+      <div style="padding:1.2rem 1.6rem 1.6rem">
+        <div class="wr-type">Branding &amp; Consulting</div>
+        <div class="wr-name">Citrine Consulting</div>
+        <div class="wr-desc">Full brand identity â€" logo, brand guidelines, colour palette, typography system, and collateral for print and digital.</div>
+        <div class="wr-deliverables"><span class="tag">Logo</span><span class="tag">Brand Guidelines</span><span class="tag warm">Collateral</span><span class="tag warm">Typography</span></div>
+        <div class="wr-disciplines"><span class="tag cool">Brand Enhancement</span><span class="tag cool">Graphic Design</span></div>
+      </div>
+    </div>
+    <div class="wr-card anim" style="padding:0;overflow:hidden">
+      <div style="height:140px;background-image:url('Wreck Room/Candy Crest Ceremonial Logo.webp');background-size:cover;background-position:center"></div>
+      <div style="padding:1.2rem 1.6rem 1.6rem">
+      <div class="wr-type">Gaming &amp; Illustration</div>
+      <div class="wr-name">Candy Crest</div>
+      <div class="wr-desc">Character design, illustration, and visual identity for a gaming-inspired project â€" vibrant colour theory with playful 2D illustration and branding.</div>
+      <div class="wr-deliverables"><span class="tag">Character Design</span><span class="tag">Illustration</span><span class="tag cool">Visual Identity</span></div>
+      <div class="wr-disciplines"><span class="tag rose">Creative Design</span><span class="tag rose">Brand Enhancement</span></div>
+      </div>
+    </div>
+    <div class="wr-card anim">
+      <div class="wr-type">Streetwear &amp; Fashion</div>
+      <div class="wr-name">Westside Kam &amp; WESTSIDE</div>
+      <div class="wr-desc">Ongoing since 2019 â€" clothing mockups, typography-driven print materials, lookbook visuals, and social media content for a streetwear brand.</div>
+      <div class="wr-deliverables"><span class="tag">Mockups</span><span class="tag">Typography</span><span class="tag rose">Print</span><span class="tag rose">Social Media</span></div>
+      <div class="wr-disciplines"><span class="tag cool">Graphic Design</span><span class="tag cool">Brand Enhancement</span></div>
+    </div>
+    <div class="wr-card anim">
+      <div class="wr-type">E-Commerce &amp; Packaging</div>
+      <div class="wr-name">Cloud Juice Vape Shop</div>
+      <div class="wr-desc">Full creative direction â€" product packaging, signage, digital campaigns, OpenCart/WordPress CMS, email marketing driving sales growth over 15 months.</div>
+      <div class="wr-deliverables"><span class="tag">Packaging</span><span class="tag">E-Commerce</span><span class="tag cool">Email</span><span class="tag cool">CMS</span></div>
+      <div class="wr-disciplines"><span class="tag rose">Web Design</span><span class="tag rose">Graphic Design</span><span class="tag rose">Brand Enhancement</span></div>
+    </div>
+    <div class="wr-card anim">
+      <div class="wr-type">Music &amp; Promotions</div>
+      <div class="wr-name">Busa Shabangu</div>
+      <div class="wr-desc">Promotional posters and logo design â€" demographic-targeted strategies and visually distinctive marketing materials.</div>
+      <div class="wr-deliverables"><span class="tag">Posters</span><span class="tag">Logo</span><span class="tag warm">Artist Branding</span></div>
+      <div class="wr-disciplines"><span class="tag cool">Graphic Design</span><span class="tag cool">Brand Enhancement</span></div>
+    </div>
+    <div class="wr-card featured anim" style="padding:0;overflow:hidden">
+      <div class="wr-featured-badge" style="top:.8rem;right:.8rem">AFDA Film</div>
+      <div style="height:200px;position:relative;overflow:hidden">
+        <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover"><source src="Wreck Room/Shango/Shango trailer with Title.mp4" type="video/mp4"></video>
+      </div>
+      <div style="padding:1.2rem 1.6rem 1.6rem">
+        <div class="wr-type" style="color:var(--accent)">Animation &amp; Art Direction</div>
+        <div class="wr-name">SHANGO â€" Animated Short Film</div>
+        <div class="wr-desc">Graduation film from AFDA (2022). Art directed and designed this animated short â€" concept art, character design, visual effects, and motion sequences. "The Battle Starts Within" â€" a high-concept Afrofuturist animated narrative.</div>
+        <div class="wr-deliverables"><span class="tag">Art Direction</span><span class="tag">Animation</span><span class="tag rose">VFX</span><span class="tag rose">Character Design</span></div>
+        <div class="wr-disciplines"><span class="tag cool">Motion Design</span><span class="tag cool">Creative Design</span></div>
+      </div>
+    </div>
+
+
+    <!-- NKAPE -->
+    <div class="wr-card featured anim" style="padding:0;overflow:hidden;grid-column:1/-1">
+      <div class="wr-featured-badge" style="top:.8rem;right:.8rem">Brand Ecosystem Â· Featured</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;height:260px">
+        <div style="background-image:url('Wreck Room/Nkape/NKape hero slide.webp');background-size:cover;background-position:center top"></div>
+        <div style="background-image:url('Wreck Room/Nkape/freepik__highfidelity-mobile-app-ui-for-nkape-in-dark-mode-__40712.webp');background-size:cover;background-position:center top"></div>
+      </div>
+      <div style="padding:1.4rem 1.8rem 1.8rem">
+        <div class="wr-type" style="color:var(--gold)">App UX Â· Brand Identity Â· Strategy Â· Pitch Decks</div>
+        <div class="wr-name">NKAPE â€" African Delivery Platform</div>
+        <div class="wr-desc">Complete brand ecosystem and UX strategy for Nkape â€" an Afrocentric delivery app targeting urban South African youth. Built the brand from concept to launch: identity system, CI &amp; brand guidelines, full app UX/UI design, GTM strategy, MTN Kasi-Mile pitch deck, Fastjet partnership proposal, Drive Sessions music activation, and the "Drive the Culture" marketing deck.</div>
+        <div class="wr-deliverables" style="margin-bottom:.7rem"><span class="tag">App UX/UI</span><span class="tag warm">MTN Kasi-Mile Pitch</span><span class="tag warm">Fastjet Partnership</span><span class="tag">GTM Strategy</span><span class="tag gold">CI &amp; Brand Guidelines</span><span class="tag rose">Drive the Culture Deck</span><span class="tag rose">Drive Sessions Launch</span><span class="tag">UX Strategy Deck</span></div>
+        <div class="wr-disciplines"><span class="tag cool">UX/UI Design</span><span class="tag cool">Brand Strategy</span><span class="tag cool">Art Direction</span><span class="tag gold">Pitch Decks &amp; Presentations</span></div>
+      </div>
+    </div>
+
+    <!-- LAY & SLAY -->
+    <div class="wr-card featured anim" style="padding:0;overflow:hidden">
+      <div class="wr-featured-badge" style="top:.8rem;right:.8rem">Fashion Startup</div>
+      <div style="height:220px;position:relative;overflow:hidden">
+        <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover"><source src="Presentations %26 Guidelines/Lay %26 Slay SLide Deck V3.mp4" type="video/mp4"></video>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,var(--bg2))"></div>
+      </div>
+      <div style="padding:1.2rem 1.6rem 1.6rem">
+        <div class="wr-type" style="color:var(--rose)">Fashion Â· Beauty Â· Branding</div>
+        <div class="wr-name">Lay &amp; Slay â€" Beauty Brand Concept</div>
+        <div class="wr-desc">Full brand concept, visual identity, and investor pitch for a bold African-inspired beauty and fashion startup. Developed the look-and-feel document, concept strategy, animated slide decks (V1â€"V3), title sequence, and brand identity from the ground up.</div>
+        <div class="wr-deliverables" style="margin-bottom:.7rem"><span class="tag rose">Animated Pitch Deck</span><span class="tag rose">Look &amp; Feel Doc</span><span class="tag rose">Concept Document</span><span class="tag">Title Sequence</span><span class="tag rose">Brand Identity</span></div>
+        <div class="wr-disciplines"><span class="tag rose">Brand Strategy</span><span class="tag rose">Creative Design</span><span class="tag rose">Motion Design</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ SKILLS â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ -->
+<section id="skills">
+  <div class="section-label">Capabilities</div>
+  <div class="section-title">Tools &amp; expertise.</div>
+  <div class="section-desc">Technical proficiency across design, motion, AI tools, web platforms, and creative strategy.</div>
+  <div class="skills-grid">
+    <div class="skill-group anim">
+      <h3>Design &amp; Prototyping</h3>
+      <div class="skill-item"><span class="skill-name">Figma</span><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Adobe Photoshop</span><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Adobe Illustrator</span><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Adobe XD</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+    </div>
+    <div class="skill-group anim">
+      <h3>Motion &amp; Video</h3>
+      <div class="skill-item"><span class="skill-name">After Effects</span><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Premiere Pro</span><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">DaVinci Resolve</span><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Blender (3D)</span><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+    </div>
+    <div class="skill-group anim">
+      <h3>AI &amp; Workflow</h3>
+      <div class="skill-item"><span class="skill-name">ChatGPT / AI Tools</span><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Freepik AI / Image Gen</span><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Figma Make (AI)</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">VWO A/B Testing</span><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+    </div>
+    <div class="skill-group anim">
+      <h3>Web &amp; Platforms</h3>
+      <div class="skill-item"><span class="skill-name">WordPress</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">OpenCart</span><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">HTML/CSS</span><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Jira / Confluence</span><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+    </div>
+    <div class="skill-group anim">
+      <h3>Creative Strategy</h3>
+      <div class="skill-item"><span class="skill-name">Brand Identity</span><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Campaign Design</span><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Digital Strategy</span><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Art Direction</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ CONTACT â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ -->
+<section id="contact">
+  <div class="section-label">Get in Touch</div>
+  <div class="section-title">Let's build something great.</div>
+  <div class="section-desc" style="margin-left:auto;margin-right:auto;text-align:center">Open to freelance, contract, and creative collaborations. Based in Pretoria, South Africa â€" working globally.</div>
+  <div class="contact-links">
+    <a href="mailto:dominic.mcwazzer2011@gmail.com" class="contact-card">
+      <div class="c-icon">âœ‰</div>
+      <div><div style="font-weight:600;margin-bottom:2px">Email</div><div style="color:var(--text3);font-size:.75rem">dominic.mcwazzer2011@gmail.com</div></div>
+    </a>
+    <a href="tel:+27718293297" class="contact-card">
+      <div class="c-icon">â˜Ž</div>
+      <div><div style="font-weight:600;margin-bottom:2px">Phone</div><div style="color:var(--text3);font-size:.75rem">+27 71 829 3297</div></div>
+    </a>
+    <a href="https://www.linkedin.com/in/dominic-mcwazzer-87050a257/" target="_blank" class="contact-card">
+      <div class="c-icon">in</div>
+      <div><div style="font-weight:600;margin-bottom:2px">LinkedIn</div><div style="color:var(--text3);font-size:.75rem">dominic-mcwazzer</div></div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div>Â© 2026 Dominic McWazzer â€" All rights reserved.</div>
+  <a href="#hero" style="color:var(--text3);transition:color .3s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text3)'">Back to Top â†'</a>
+</footer>
+
+<!-- ─────────── LIGHTBOX ─────────── -->
+<div class="lightbox-overlay" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+  <div id="lightboxContent"></div>
+</div>
+
+<!-- ─────────── MODAL ─────────── -->
+<div class="modal-overlay" id="caseModal" onclick="if(event.target===this)closeCase()">
+  <div class="modal-box" id="caseBox">
+    <button class="modal-close" onclick="closeCase()">&#x2715;</button>
+    <div class="modal-hero-wrap" id="caseHero"></div>
+    <div class="modal-body">
+      <div class="modal-client" id="caseClient"></div>
+      <div class="modal-title" id="caseTitle"></div>
+      <div class="modal-meta" id="caseMeta"></div>
+      <div id="caseSections"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
+    document.querySelector('nav ul')?.classList.remove('open');
+  });
+});
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
+});
+function filterProjects(cat){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.project-card').forEach(c=>{
+    const show=cat==='all'||c.dataset.cat.includes(cat);
+    c.style.display=show?'':'none';
+    if(show)c.style.animation='fadeUp .5s ease forwards';
+  });
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.style.animation='fadeUp .6s ease forwards';obs.unobserve(e.target);}
+  });
+},{threshold:.08});
+document.querySelectorAll('.anim').forEach(el=>obs.observe(el));
+
+// ─── PROJECT DATA ───
+const PROJECTS=[
+{title:'Disney, Marvel & Nickelodeon Campaign Creatives',client:'Vodacom ZA \u2014 Playinc',heroImg:'ZA/Playinc ZA & Arcade/Playinc Creatives/1366x768 - Arcade HERO Banner.webp',market:'South Africa',role:'Graphic Designer',year:'2024',tags:['Hero Banners','Gamification','Prize Campaigns','Brand CI'],overview:'Full-format creative suite for the Playinc gaming platform featuring Disney Games, Marvel, and Nickelodeon IP. Covers R4\u202f000 cash prize draws and R1\u202f000 Arcade Powerwall competitions across all portal formats.',deliverables:['Hero banners: Desktop 768\u00d7338, Mobile 446\u00d7353, Scroller 500\u00d7500, Portal 1920\u00d71080','Disney Games, Marvel & Nickelodeon licensed campaign graphics','Prize draw promotional materials','Vodacom brand CI maintained throughout'],gallery:['ZA/Playinc ZA & Arcade/Playinc Creatives/1366x768 - Arcade HERO Banner.webp','ZA/Playinc ZA & Arcade/Playinc Creatives/1366x768 - Arcade HERO Banner-1.webp','ZA/Playinc ZA & Arcade/Playinc Creatives/Playinc Vlive Banner.webp','ZA/Playinc ZA & Arcade/Playinc Creatives/Playinc Ducktales Rush LP 2.webp']},
+
+{title:'Arcade Competition Creatives \u2013 Snake Vs Block, Power Wall, Street Racer',client:'Vodacom ZA \u2014 Playinc Arcade',heroImg:'ZA/Playinc ZA & Arcade/Playinc Arcade Comps/1920x1080_GooDisplNATIVE_01.webp',market:'South Africa',role:'Graphic Designer',year:'2024',tags:['Competition Graphics','Arcade','Prize Draw'],overview:'Competition campaign graphics for three Playinc Arcade titles with branded prize packages \u2014 Samsung Series S consoles, Nintendo Switch, and Takealot vouchers (R20\u202f000+ total value).',deliverables:['Arcade game competition visuals for 3 titles','Prize-branded campaign assets (Samsung, Nintendo, Takealot)','Portal + social format adaptations','Vodacom CI compliance'],gallery:['ZA/Playinc ZA & Arcade/Playinc Arcade Comps/1920x1080_GooDisplNATIVE_01.webp','ZA/Playinc ZA & Arcade/Playinc Arcade Comps/1600x960 3.webp','ZA/Playinc ZA & Arcade/Playinc Arcade Comps/768x338 - vlive HERO banner 3.webp','ZA/Playinc ZA & Arcade/Playinc Arcade Comps/500x500 - vlive square.webp']},
+
+{title:'Maneno & Ubbu \u2013 Full Off-Portal Acquisition Campaign Flows',client:'Vodacom ZA \u2014 vLive',heroImg:'ZA/Vlive Campaigns + Landing Page Flows/Off-Portal and On-Portal Flows/Maneno 3.webp',market:'South Africa',role:'Web + Graphic Designer',year:'2024',tags:['Landing Pages','User Flows','20+ Banner Sizes','Education'],overview:'Complete off-portal acquisition LP flows for two new vLive service launches \u2014 Maneno (digital reading for children) and Ubbu (kids coding). Each flow included landing page, accept/decline CTAs, welcome/error states, and 20+ banner sizes.',deliverables:['2 acquisition landing pages (Maneno & Ubbu)','Accept/Decline/Welcome/Error page states','300\u00d7250, 728\u00d790, 970\u00d7250, 160\u00d7600, 320\u00d750 banner formats','Mobile-first responsive layouts'],gallery:['ZA/Vlive Campaigns + Landing Page Flows/Off-Portal and On-Portal Flows/Maneno 3.webp','ZA/Vlive Campaigns + Landing Page Flows/Off-Portal and On-Portal Flows/Ubbu Flow.webp']},
+
+{title:'vLive Portal Campaigns \u2013 Banners, Landing Pages & Partner Launches',client:'Vodacom ZA \u2014 vLive',heroImg:'ZA/Vlive Campaigns + Landing Page Flows/Vlive Banner HD.webp',market:'South Africa',role:'Graphic + Web Designer',year:'2024',tags:['Hero Banners','Landing Pages','Partner Campaigns','Multi-Format'],overview:'Ongoing campaign design for the vLive portal \u2014 hero banners, partner LP flows, off-portal acquisition campaigns for Babbel, StudySmarter, Soulm8, Montessori, MyMastery, Tinder, ZEE5, and LesMills+.',deliverables:['50+ hero banners across desktop and mobile formats','Partner launch LPs for 10+ services','Off-portal acquisition campaign flows','MyMuze playlist cover artwork'],gallery:['ZA/Vlive Campaigns + Landing Page Flows/Vlive 768x338 Desktop Banner.webp','ZA/Vlive Campaigns + Landing Page Flows/Tinder.webp','ZA/Vlive Campaigns + Landing Page Flows/Babbel.webp','ZA/Vlive Campaigns + Landing Page Flows/LesMills+.webp','ZA/Vlive Campaigns + Landing Page Flows/Zee5.webp','ZA/Vlive Campaigns + Landing Page Flows/StudySmarter.webp','ZA/Vlive Campaigns + Landing Page Flows/Soulm8.webp','ZA/Vlive Campaigns + Landing Page Flows/Montessori.webp']},
+
+{title:'GTM Strategy, Trace+ Partnership & Campaign Presentations',client:'Vodacom ZA \u2014 Music',heroImg:'ZA/Vodacom Music and My Muze/Old Assets/Trace X VodaMusic iPad.webp',market:'South Africa',role:'Presentation Designer',year:'2024',tags:['GTM Strategy','Partnership Decks','Campaign Planning'],overview:'Designed and polished three major Vodacom Music presentations \u2014 the Go-To-Market strategy deck, Vodacom Music \u00d7 Trace+ partnership proposal, and campaign strategy presentation.',deliverables:['Vodacom Music GTM Strategy Deck','Trace+ Partnership Proposal Presentation','Campaign Strategy Presentation','Branded templates, infographics, layout design'],gallery:['ZA/Vodacom Music and My Muze/Old Assets/Trace X VodaMusic iPad.webp','ZA/Vodacom Music and My Muze/Old Assets/Trace X VodaMusic 1.webp','ZA/Vodacom Music and My Muze/Old Assets/Trace Urban Hit.webp','ZA/Vodacom Music and My Muze/Old Assets/Trace + Logo 1.webp'],downloads:[{label:'GTM vLive Deck (PDF)',href:'Presentations & Guidelines/GTM - vlive.pdf'},{label:'Trace+ Deck (PDF)',href:'Presentations & Guidelines/Trace +.pdf'}]},
+
+{title:'Product Video, Artist Campaigns & MyMuze Visual Identity',client:'Vodacom ZA \u2014 Music & MyMuze',heroVideo:'ZA/Vodacom Music and My Muze/VMusic Product Video_2.mp4',market:'South Africa',role:'Video Producer + Designer',year:'2024',tags:['Product Video','Artist Campaigns','Playlist Covers','Engagement Reels'],overview:'Produced the Vodacom Music product video, Reece Effect and Tshwala Bam engagement videos, and campaign artwork for Blxckie, DJ Tira, and seasonal events. Designed MyMuze playlist covers and portal banners.',deliverables:['Vodacom Music product video','Reece Effect + Tshwala Bam engagement reels','Blxckie, DJ Tira artist campaign artwork','MyMuze playlist covers and portal banners','Youth/Women\'s Month seasonal campaigns'],gallery:['ZA/Vodacom Music and My Muze/Tshwala Bam Comp.webp','ZA/Vodacom Music and My Muze/Blxckie 3.webp','ZA/Vodacom Music and My Muze/DJ Tirax.webp','ZA/Vodacom Music and My Muze/VodaBanner 3 1.webp','ZA/Vodacom Music and My Muze/1200x1200.webp','ZA/Vodacom Music and My Muze/Old Assets/My Muze Vlive Women\'s month Banner 2.webp']},
+
+{title:'Off-Portal Landing Pages, Banner Campaigns & TV Ad',client:'O2 Germany (Telef\u00f3nica)',heroVideo:'Europe/Germany/o2 DE/o2-TV-Ad-FINAL.mp4',market:'Germany',role:'Web + Graphic Designer',year:'2024',tags:['Landing Pages','Smadex','TV Ad','Localisation DE'],overview:'Comprehensive campaign delivery for O2 Germany\'s marketplace \u2014 acquisition landing pages, Smadex programmatic banner sets, and TV advertisement. Partners: 7Mind, Gymondo, Les Mills, Fastic, gaming verticals.',deliverables:['Acquisition LPs for 7Mind, Gymondo, Les Mills, Fastic','Smadex programmatic banner sets','TV advertisement (storyboarded and produced)','O2 Extras hero banner updates','German language localisation'],gallery:['Europe/Germany/o2 DE/TV Ad Storyboard.webp']},
+
+{title:'Service Launch Campaigns \u2013 7Mind, Edoki, Getmo',client:'Virgin Media o2 UK',heroImg:'Europe/Virgin Media o2 UK/VM UK- Getmo Designs.webp',market:'United Kingdom',role:'Web + Graphic Designer',year:'2024',tags:['Landing Pages','Smadex Banners','Service Launch'],overview:'Off-portal landing pages and Smadex banner campaigns for three new Virgin Media service launches \u2014 7Mind mindfulness, Edoki kids education, and Getmo gaming.',deliverables:['7Mind off-portal LP + Smadex banners','Edoki kids education LP + banners','Getmo gaming Smadex campaign','Multi-format banner adaptations'],gallery:['Europe/Virgin Media o2 UK/VM UK- Getmo Designs.webp','Europe/Virgin Media o2 UK/1080x1080_GooDisplNATIVE_01.webp','Europe/Virgin Media o2 UK/1200x1500_GooDisplNATIVE_01.webp','Europe/Virgin Media o2 UK/1200x628_GooDisplNATIVE_01.webp']},
+
+{title:'Marketplace Banners, Wallet Push Notifications & SMADEX',client:'Samsung Spain',heroImg:'Europe/Spain/Samsung/1200x628-responsive.webp',market:'Spain',role:'Graphic + Brand Designer',year:'2024',tags:['SMADEX','Push Notifications','Samsung Brand'],overview:'Full banner suite, SMADEX programmatic adaptations, and Wallet push notification designs for Samsung Spain\'s marketplace. Strict Samsung brand guidelines \u2014 colour primitives, Samsung Sharp Sans, visual hierarchy. Covers 7+ partner service launches.',deliverables:['Off-portal banners for Vaia, 7Mind, Les Mills, Getmo, Fastic, Kidjo','SMADEX generic format adaptations','Samsung Wallet push notification formats','PDP assets for marketplace partners','Samsung brand review passed'],gallery:['Europe/Spain/Samsung/1080 x 1920 - Responsive.webp','Europe/Spain/Samsung/1080 x 1920 - Responsive-1.webp','Europe/Spain/Samsung/1200x1200-responsive.webp']},
+
+{title:'Financial Services Marketplace \u2013 Campaign Banners',client:'BBVA Spain',heroImg:'Europe/Spain/BBVA/1200x628 - V2.webp',market:'Spain',role:'Graphic + Brand Designer',year:'2024',tags:['Display Banners','Responsive Ads','Financial Services'],overview:'Off-portal banner campaigns and responsive ad creatives for BBVA\'s financial services marketplace \u2014 multi-format display and social adaptations under BBVA brand governance.',deliverables:['Responsive banner suite (1080\u00d71920, 1200\u00d7628, 320\u00d7480)','Display ad adaptations','BBVA brand guidelines compliance'],gallery:['Europe/Spain/BBVA/1200x628 - V2.webp','Europe/Spain/BBVA/1080x1920.webp','Europe/Spain/BBVA/1200x628 - V2-1.webp','Europe/Spain/BBVA/1080x1920-1.webp','Europe/Spain/BBVA/320x480.webp']},
+
+{title:'App Marketplace Integration, Partner LPs & Promo Videos',client:'Orange Romania & Spain',heroVideo:'Europe/Orange Spain & Romania/OREG Jetpack Joyride Promo Video.mp4',market:'Romania & Spain',role:'UX/UI + Web Designer',year:'2024',tags:['App UI/UX','Landing Pages','Promo Video','Figma Prototype'],overview:'UI/UX design for integrating Mondia\'s marketplace into the My Orange App \u2014 in-app flows, dark/light modes, Romanian localisation. Off-portal landing pages for Fastic, 7Mind, Kidjo. Jetpack Joyride promotional video.',deliverables:['In-app partner card screens (dark + light mode)','PDP + subscription pop-up flows','3 acquisition LPs (Fastic, 7Mind, Kidjo)','Jetpack Joyride promo video','Figma prototype delivered','Romanian + Spanish localisation'],gallery:[]},
+
+{title:'Para Ti Marketplace \u2013 Multi-Partner Banners & Getmo Video',client:'Endesa Spain',heroImg:'Europe/Spain/Endesa/1200x628-responsive.webp',market:'Spain',role:'Graphic + Video Designer',year:'2024',tags:['Off-Portal Banners','Product Video','Energy Sector','Adyen'],overview:'Campaign banners, UI assets, and product video for Endesa\'s Para Ti marketplace \u2014 an i-framed service hub within their energy customer portal. Partners: Vaia, Getmo Games (Alsa Spain), Acontra+, generic services via Adyen payment.',deliverables:['Vaia, Getmo, Acontra+ partner banners','Getmo \u00d7 Alsa Spain product video','Generic Para Ti marketplace UI assets','Adyen payment flow visual assets'],gallery:['Europe/Spain/Endesa/1200x628-responsive.webp','Europe/Spain/Endesa/1080x1920.webp','Europe/Spain/Endesa/1200x1200.webp','Europe/Spain/Endesa/1080x1080.webp']},
+
+{title:'Off-Portal LPs, Native Banners & Dynamic Landing Pages',client:'A1 Austria',heroImg:'Europe/A1 Austria/1200x1200.webp',market:'Austria',role:'Web + Graphic Designer',year:'2024',tags:['Landing Pages','Native Banners','Dynamic LPs','Fitness'],overview:'Acquisition landing pages, native banner campaigns, and dynamic responsive landing pages for A1 Austria\'s fitness and education partners \u2014 Gymondo, Les Mills, and Kidjo.',deliverables:['Campaign page layouts for Les Mills+ and Kidjo','Native banner campaigns','Dynamic LP variants (LG/MD/XS breakpoints)','Responsive layout design'],gallery:['Europe/A1 Austria/1200x1200.webp','Europe/A1 Austria/1080x1920.webp','Europe/A1 Austria/Dynamic Landing Page/LG.webp','Europe/A1 Austria/Dynamic Landing Page/MD.webp','Europe/A1 Austria/Dynamic Landing Page/XS.webp','Europe/A1 Austria/Native Banners 9.webp']},
+
+{title:'Games Vertical Upgrade, Stage+ & LP Campaigns',client:'Vodafone Germany',heroImg:'Europe/Germany/Vodafone DE/Stage+.webp',market:'Germany',role:'UX + Brand Designer',year:'2024',tags:['UI Design','Design System','Gaming','Responsive LPs'],overview:'Visual upgrade of Vodafone Germany\'s games vertical from the legacy mENT portal to modern Monsooq/Getmo framework. Designed Stage+ portal assets, responsive landing pages, and multi-format banner campaigns.',deliverables:['mENT \u2192 Monsooq/Getmo visual migration','Stage+ portal assets','Responsive LP design across breakpoints','Games vertical UI components'],gallery:['Europe/Germany/Vodafone DE/Stage+.webp','Europe/Germany/Vodafone DE/main section.webp','Europe/Germany/Vodafone DE/XS-LP1.webp','Europe/Germany/Vodafone DE/1200x628-responsive.webp']},
+
+{title:'Monsooq Gaming Platform \u2014 Product Promo Video & UX',client:'Mondia Digital \u2014 Monsooq',heroVideo:'Other videos/Monsooq Demo VR002.mp4',market:'Germany / Global',role:'UX Designer + Video Producer',year:'2024\u201325',tags:['Product Video','Gaming Platform','White-Label','UX Design'],overview:'Product demonstration video and platform UX for Monsooq \u2014 Mondia\'s white-label gaming marketplace deployed across European and MENA operators including Vodafone, O2, and Orange. Showcases game catalogue, subscription flows, and operator integration.',deliverables:['Product demo video (scripted + produced)','Platform UI/UX design','Operator-branded skin variations','Game catalogue browsing experience','Subscription flow design'],gallery:[]},
+
+{title:'Ramadan Campaign Theme & MENA Portal Designs',client:'Zain KSA \u00b7 Du UAE \u00b7 Mobily \u00b7 STC',heroImg:'Middle East/Ramadan/1200x628_GooDisplNATIVE_01.webp',market:'MENA Region',role:'Creative + Web Designer',year:'2024',tags:['Ramadan Theme','Multi-Tenant','Arabic + English','Competitions'],overview:'Ramadan 2024 campaign theme across all MENA operator portals \u2014 login page redesigns, homepage updates, promo banners for Epic On, Muslim Pro, Tarteel. Zain Zone Sport Club competition with Red Sea cruise prize. Full bilingual Arabic/English design.',deliverables:['Ramadan theme across Zain KSA, Du UAE, Mobily, STC portals','Login + homepage redesigns','Epic On, Muslim Pro, Tarteel promo banners','Zain Zone competition visuals (Red Sea cruise prize)','Arabic (RTL) + English bilingual assets'],gallery:['Middle East/Ramadan/1200x1200_GooDisplNATIVE_01.webp','Middle East/Ramadan/1200x628.webp','Middle East/Ramadan/Du MyWorld LP.webp','Middle East/Ramadan/Omentel LP.webp','Middle East/Ramadan/Zain Zone LP.webp','Middle East/Ramadan/600x1200.webp']},
+
+{title:'Dis-Chem Baby City Competition & Hero Video',client:'Vodacom ZA \u2014 Mum & Baby',heroVideo:'ZA/Mum & Baby/Mum & baby HERO.mp4',market:'South Africa',role:'Graphic + Motion Designer',year:'2024',tags:['Hero Banners','Competition','Motion','Parenting'],overview:'Hero banner campaign for the Mum & Baby portal \u2014 R1\u202f000 Dis-Chem Baby City voucher prize competition. Produced the animated hero banner video in After Effects for the portal homepage, plus a 20K competition creative suite.',deliverables:['Animated hero banner video (After Effects)','900\u00d7900 hero thumbnail','20K competition creative suite','Portal banner formats (desktop + mobile)','Dis-Chem Baby City prize campaign graphics'],gallery:['ZA/Mum & Baby/spa comp.webp','ZA/Mum & Baby/Old Assets/Hero Banner Thumbnail 900x900.webp','ZA/Mum & Baby/Old Assets/Mum & Baby Dischem 2.webp']},
+
+// Wreck Room
+{title:'Glory+ Christian Content Platform',client:'Wreck Room \u2014 Independent',heroImg:'Wreck Room/About Us.webp',market:'South Africa',role:'Digital Strategist + Brand Designer',year:'2024',tags:['Digital Strategy','Brand Identity','OTT Platform','Revenue Model'],overview:'Comprehensive digital strategy and branding for a gospel OTT content platform. Brand naming concepts, logo design, Muvi platform architecture, 6-month marketing plan, content strategy breakdown, subscription + revenue model with telco partnerships, and R940K budget plan.',deliverables:['3 brand naming concepts (Glory+, FaithStream, The Light Network)','Logo design concepts','Muvi OTT platform architecture','6-month marketing plan','Content strategy: 30% movies / 30% sermons / 10% podcasts / 30% other','Subscription + ad revenue model','Telco partnership framework','R940K budget planning'],gallery:['Wreck Room/About Us.webp'],downloads:[{label:'Glory+ CI (PDF)',href:'Presentations & Guidelines/Glory+ CI (3).pdf'}]},
+
+{title:'Citrine Consulting',client:'Wreck Room \u2014 Citrine',heroImg:'ZA/Vodacom Music and My Muze/Old Assets/Banner - Hero.webp',market:'South Africa',role:'Brand Designer',year:'2025',tags:['Logo','Brand Guidelines','Collateral','Typography'],overview:'Full brand identity system for Citrine Consulting \u2014 a premium South African consulting firm. Logo suite, brand guidelines, colour palette, typography system, and all print + digital collateral including presentation templates, email signature, LinkedIn assets, and branded document templates.',deliverables:['Logo suite (horizontal, vertical, 3D, shape variants)','Brand guidelines PDF','Colour palette + typography system','Branded PowerPoint template','Email signature design','LinkedIn background + profile assets','Citrine Intro Deck PDF','Company profile document'],gallery:['Wreck Room/Citrine/Citrine Consulting Horizontal Logo - 3D.webp','Wreck Room/Citrine/Citrine Consulting Vertical Logo - 3D.webp','Wreck Room/Citrine/Citrine Email Signature Image.webp','Wreck Room/Citrine/Citrine Linkedin Background.webp'],downloads:[{label:'Brand Guidelines PDF',href:'Wreck Room/Citrine/Citrine Guideline.pdf'},{label:'Intro Deck PDF',href:'Presentations & Guidelines/Citrine Intro Deck .pdf'}]},
+
+{title:'Candy Crest',client:'Wreck Room \u2014 Candy Crest',heroImg:'Wreck Room/Candy Crest Ceremonial Logo.webp',market:'South Africa',role:'Illustrator + Brand Designer',year:'2024',tags:['Character Design','Illustration','Visual Identity'],overview:'Character design, illustration, and visual identity for a gaming-inspired sweet brand \u2014 vibrant colour theory, playful 2D illustration, and a memorable brand universe.',deliverables:['Character design suite','Illustration series','Visual identity system','Colour palette + typography'],gallery:[],downloads:[{label:'Candy Crest CI (PDF)',href:'Presentations & Guidelines/CC - Refined Crest Identity System [Updated].pdf'}]},
+
+
+{title:'Westside Kam & WESTSIDE',client:'Westside Kam',heroImg:'Presentations & Guidelines/Westside Phelifornia South Africa WHITE 1.webp',market:'Pretoria',role:'Brand + Graphic Designer',year:'2019\u2013Present',tags:['Mockups','Typography','Print','Social Media'],overview:'Ongoing creative partnership since 2019 \u2014 clothing mockups, typography-driven print materials, lookbook visuals, and social media content for a Pretoria streetwear label.',deliverables:['Clothing + product mockups','Typography-driven print materials','Lookbook photography + visuals','Social media content series'],gallery:['Presentations & Guidelines/Westside Phelifornia South Africa WHITE 1.webp'],downloads:[{label:'Phelifornia Collection (PDF)',href:'Presentations & Guidelines/Phelifornia Summer Collection 2.pdf'}]},
+
+
+{title:'Cloud Juice Vape Shop',client:'Cloud Juice Vape Shop',heroImg:'Dominic Hero Image.webp',market:'Centurion, SA',role:'Full Creative Director',year:'Oct 2022 \u2013 Jan 2024',tags:['Packaging','E-Commerce','Email Marketing','CMS'],overview:'Full creative ownership of Cloud Juice\'s brand and digital presence over 15 months. Directed product packaging, signage, e-commerce content on OpenCart and WordPress, social media graphics, and email marketing campaigns that drove measurable sales growth.',deliverables:['Product packaging design','In-store signage + POP materials','OpenCart + WordPress e-commerce','Email marketing campaign series','Social media content + templates','Brand CI consistency'],gallery:[]},
+
+
+{title:'Busa Shabangu',client:'Busa Shabangu',heroImg:'Dominic Hero Image.webp',market:'Remote',role:'Graphic Designer',year:'Jun 2020 \u2013 Aug 2021',tags:['Posters','Logo','Artist Branding'],overview:'Promotional posters, logo design, and demographic-targeted campaign materials for a music artist.',deliverables:['Artist logo design','Promotional poster series','Campaign materials','Social media graphics'],gallery:[]},
+
+{title:'SHANGO \u2013 Animated Short Film',client:'AFDA Film School \u2014 Graduation Project',heroVideo:'Wreck Room/Shango/Shango trailer with Title.mp4',heroImg:'Wreck Room/Shango/POSTER.webp',market:'South Africa',role:'Art Director + Animator',year:'2022',tags:['Art Direction','Animation','VFX','Character Design'],overview:'"The Battle Starts Within" \u2014 AFDA graduation film (2022). Art directed and designed this Afrofuturist animated short \u2014 concept art, character design, visual effects, and motion sequences exploring identity and ancestral power.',deliverables:['Full animated short film','Art direction + concept art','Character design + rigging','Visual effects sequences','Title sequence + credits'],gallery:['Wreck Room/Shango/POSTER.webp']},
+
+
+{title:'NKAPE \u2013 African Delivery Platform',client:'Wreck Room \u2014 NKAPE',heroImg:'Wreck Room/Nkape/NKape hero slide.webp',market:'South Africa',role:'Brand Strategist + UX Designer',year:'2025',tags:['App UX/UI','MTN Kasi-Mile Pitch','Fastjet Partnership','GTM Strategy','CI & Brand Guidelines'],overview:'Complete brand ecosystem and UX strategy for NKAPE \u2014 an Afrocentric delivery app targeting urban South African youth. Built from concept to launch-ready: brand identity, CI & brand guidelines, full app UX/UI, GTM strategy, MTN Kasi-Mile pitch, Fastjet partnership proposal, Drive Sessions activation, and "Drive the Culture" marketing deck.',deliverables:['Brand identity system + CI guidelines','Full app UX/UI (30 screens)','MTN Kasi-Mile delivery integration pitch','Fastjet partnership proposal','GTM Launch Strategy deck','Drive the Culture marketing deck','Drive Sessions launch campaign','Rider & driver app flow design'],gallery:['Wreck Room/Nkape/NKape hero slide.webp','Wreck Room/Nkape/freepik__highfidelity-mobile-app-ui-for-nkape-in-dark-mode-__40712.webp','Wreck Room/Nkape/MTN Delivery powered by Nkape - Dark Mode Logo.webp','Wreck Room/Nkape/freepik__owner-in-small-commercial-kitchen-door-takes-nkape__61582.webp','Presentations & Guidelines/MTN Kasi-Mile Concept.webp','Presentations & Guidelines/gemini-2.5-flash-image_A_vibrant_South_African_township_street_scene_at_golden_hour_a_branded_MTN_yello-0.webp'],downloads:[{label:'Drive The Culture Deck',href:'Presentations & Guidelines/Presentation - Nkape \u2013 Drive The Culture (2).pdf'},{label:'Nkape UX Deck',href:'Presentations & Guidelines/Nkape UX Deck_Draft(2) reduced.pdf'},{label:'Nkape Delivery Strategy',href:'Presentations & Guidelines/Nkape Delivery \u2013 Drive The Culture 2.pdf'},{label:'MTN Kasi-Mile Pitch',href:'Presentations & Guidelines/MTN Kasi-Mile x Nkape Partnership.pdf'}]},
+
+{title:'Lay & Slay \u2013 Beauty Brand Concept',client:'Wreck Room \u2014 Lay & Slay',heroVideo:'Presentations & Guidelines/Lay & Slay SLide Deck V3.mp4',heroImg:'Wreck Room/Lay and Slay/It\'s time to slay.webp',market:'South Africa',role:'Brand Designer + Motion Designer',year:'2024\u201325',tags:['Animated Pitch Deck','Look & Feel','Concept Document','Brand Identity'],overview:'Full brand concept, visual identity, and investor pitch for a bold African-inspired beauty and fashion startup. Developed from scratch \u2014 animated slide decks (V1\u2013V3), title sequence, look-and-feel document, concept strategy, and complete brand identity.',deliverables:['Animated pitch deck (V1, V2, V3)','Title sequence animation','Look & Feel document','Concept document + strategy','Brand identity system','Visual language + typography'],gallery:['Wreck Room/Lay and Slay/It\'s time to slay.webp'],downloads:[{label:'Pitch Deck PDF',href:'Presentations & Guidelines/Lay & Slay Pitch Deck.pdf'}]},
+];
+
+// ─── MODAL FUNCTIONS ───
+function findProject(card){
+  const titleEl=card.querySelector('.card-title,.wr-name');
+  if(!titleEl)return null;
+  const tt=titleEl.textContent.trim().toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ');
+  return PROJECTS.find(p=>{
+    const pt=p.title.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ');
+    const w=tt.split(' ').slice(0,4).join(' ');
+    return pt.startsWith(w)||pt.includes(w)||tt.includes(pt.split(' ').slice(0,4).join(' '));
+  })||null;
+}
+
+function openCase(card){
+  const p=findProject(card);
+  if(!p)return;
+  // hero
+  const h=document.getElementById('caseHero');
+  h.innerHTML=p.heroVideo
+    ?`<video autoplay muted loop playsinline><source src="${p.heroVideo}" type="video/mp4"></video>`
+    :`<img src="${p.heroImg}" alt="${p.title}">`;
+  // header
+  document.getElementById('caseClient').textContent=p.client;
+  document.getElementById('caseTitle').textContent=p.title;
+  // meta
+  const meta=[{l:'Market',v:p.market},{l:'Role',v:p.role},{l:'Year',v:p.year}];
+  if(p.jira)meta.push({l:'Jira',v:p.jira});
+  document.getElementById('caseMeta').innerHTML=meta.map(m=>`<div class="modal-meta-item"><div class="m-label">${m.l}</div><div class="m-value">${m.v}</div></div>`).join('');
+  // sections
+  let s='';
+  // tags
+  if(p.tags&&p.tags.length)s+=`<div class="modal-section"><div class="modal-tags-row">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>`;
+  // overview
+  s+=`<div class="modal-section"><h3>Overview</h3><p>${p.overview}</p></div>`;
+  // deliverables
+  if(p.deliverables&&p.deliverables.length)s+=`<div class="modal-section"><h3>Key Deliverables</h3><ul class="modal-ul">${p.deliverables.map(d=>`<li>${d}</li>`).join('')}</ul></div>`;
+  // gallery
+  if(p.gallery&&p.gallery.length){
+    const items=p.gallery.map(g=>{
+      const isVid=/\.(mp4|webm|mov)$/i.test(g);
+      return isVid?`<video autoplay muted loop playsinline><source src="${g}" type="video/mp4"></video>`:`<img src="${g}" alt="" loading="lazy">`;
+    }).join('');
+    s+=`<div class="modal-section"><h3>Gallery</h3><div class="modal-gallery">${items}</div></div>`;
+  }
+  // downloads
+  if(p.downloads&&p.downloads.length)s+=`<div class="modal-section"><h3>Downloads</h3><div class="modal-dl-row">${p.downloads.map(d=>`<a href="${d.href}" target="_blank" class="modal-dl-btn" download>&#x2913; ${d.label}</a>`).join('')}</div></div>`;
+  document.getElementById('caseSections').innerHTML=s;
+  // open
+  document.getElementById('caseModal').classList.add('open');
+  document.body.style.overflow='hidden';
+  document.getElementById('caseBox').scrollTop=0;
+}
+
+function closeCase(){
+  document.getElementById('caseModal').classList.remove('open');
+  document.body.style.overflow='';
+  // pause any hero videos
+  document.querySelectorAll('#caseHero video').forEach(v=>v.pause());
+}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCase();});
+
+// Wire up all project cards and WR cards
+document.querySelectorAll('.project-card,.wr-card').forEach(card=>{
+  card.addEventListener('click',e=>{
+    if(e.target.tagName==='A'||e.target.tagName==='BUTTON')return;
+    openCase(card);
+  });
+  // Add CTA hint to project cards
+  const body=card.querySelector('.card-body');
+  if(body&&!body.querySelector('.card-cta')){
+    const cta=document.createElement('div');
+    cta.className='card-cta';
+    cta.innerHTML='View Case Study &#x2192;';
+    body.appendChild(cta);
+  }
+});
+
+// ─── LIGHTBOX ───
+function openLightbox(src,isVideo){
+  const c=document.getElementById('lightboxContent');
+  if(isVideo){
+    c.innerHTML=`<video autoplay controls loop style="max-width:92vw;max-height:90vh;border-radius:6px"><source src="${src}" type="video/mp4"></video>`;
+  }else{
+    c.innerHTML=`<img src="${src}" alt="">`;
+  }
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  const lb=document.getElementById('lightbox');
+  lb.classList.remove('open');
+  lb.querySelectorAll('video').forEach(v=>v.pause());
+  document.getElementById('lightboxContent').innerHTML='';
+  if(!document.getElementById('caseModal').classList.contains('open'))document.body.style.overflow='';
+}
+
+// Lightbox for hero section
+document.querySelector('.hero')?.addEventListener('click',e=>{
+  const vid=document.querySelector('.hero-video-bg source');
+  if(vid){openLightbox(vid.src,true);e.stopPropagation();}
+});
+
+// Lightbox for modal gallery images/videos
+document.addEventListener('click',e=>{
+  const el=e.target.closest('.modal-gallery img,.modal-gallery video');
+  if(!el)return;
+  if(el.tagName==='VIDEO'){
+    const src=el.querySelector('source')?.src||el.src;
+    openLightbox(src,true);
+  }else{
+    openLightbox(el.src,false);
+  }
+});
+
+// Lightbox for card visuals (images only — videos already play inline)
+document.querySelectorAll('.card-visual,.wr-card>[style*="background-image"]').forEach(vis=>{
+  vis.addEventListener('click',e=>{
+    const bg=vis.style.backgroundImage;
+    if(bg&&bg.includes('url(')){
+      const src=bg.replace(/^url\(['"]?/,'').replace(/['"]?\)$/,'');
+      openLightbox(src,false);
+      e.stopPropagation();
+    }
+  });
+});
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('lightbox').classList.contains('open'))closeLightbox();});
+
+// Wire up discipline cards to filter + scroll
+const discMap={'ux design':'ux','graphic design':'graphic','web design':'web','creative design':'creative','video editing':'video','motion design':'motion','presentation design':'presentation','brand enhancement':'brand'};
+document.querySelectorAll('.disc-card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const name=(card.querySelector('.disc-name')?.textContent||'').trim().toLowerCase();
+    const cat=discMap[name]||'all';
+    const btn=document.querySelector(`[onclick="filterProjects('${cat}')"]`)||document.querySelector('[onclick="filterProjects(\'all\')"]');
+    if(btn)btn.click();
+    document.getElementById('work').scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
+
