@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Ubizo TV — Hi-Fi Prototype</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body {
+    margin: 0; padding: 0;
+    font-family: Inter, system-ui, sans-serif;
+    background: #1A0F0A;
+    color: #FFFBF6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  * { box-sizing: border-box; }
+  button { -webkit-tap-highlight-color: transparent; }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(232,90,28,0.06), transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(224,161,59,0.04), transparent 40%);
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="tokens.jsx"></script>
+<script type="text/babel" src="primitives.jsx"></script>
+<script type="text/babel" src="screens-01-05.jsx"></script>
+<script type="text/babel" src="screens-06-10.jsx"></script>
+<script type="text/babel" src="screens-11-15.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "theme": "dark",
+  "initialScreen": "home",
+  "showGallery": true
+}/*EDITMODE-END*/;
+
+// Stub for not-yet-built screens. Removed as each batch lands.
+function ScreenStub({ dark, label }) {
+  const t = ubzTheme(dark);
+  return (
+    <div style={{
+      width: '100%', height: '100%', background: t.bg, color: t.text2,
+      display: 'flex', flexDirection: 'column', alignItems: 'center',
+      justifyContent: 'center', padding: 40, textAlign: 'center', gap: 14,
+    }}>
+      <div style={ubzLabel({ size: 11, color: ubzTokens.orange500, track: 2 })}>In progress</div>
+      <div style={{
+        fontFamily: ubzType.display, fontSize: 28, fontWeight: 700,
+        letterSpacing: -0.6, color: t.text1,
+      }}>{label}</div>
+      <div style={{
+        fontFamily: ubzType.ui, fontSize: 13, color: t.text3, lineHeight: 1.5,
+        maxWidth: 240,
+      }}>This screen is queued in the next batch. The other built screens are fully interactive.</div>
+    </div>
+  );
+}
+const stub = (label) => (p) => <ScreenStub dark={p.dark} label={label} />;
+const has = (name) => typeof window[name] === 'function';
+const use = (name, fallbackLabel) => has(name)
+  ? ((p) => React.createElement(window[name], p))
+  : stub(fallbackLabel);
+
+const SCREENS = [
+  // A. Onboard & Subscribe
+  { key: 'splash',   label: '01 Splash',          render: (p) => has('ScreenSplash')   ? <ScreenSplash {...p} onNext={() => p.goto('welcome')} /> : <ScreenStub dark={p.dark} label="01 Splash" /> },
+  { key: 'welcome',  label: '02 Welcome',         render: (p) => has('ScreenWelcome')  ? <ScreenWelcome {...p} onNext={() => p.goto('subscribe')} onSkip={() => p.goto('home')} /> : <ScreenStub dark={p.dark} label="02 Welcome" /> },
+  { key: 'subscribe',label: '03 Carrier Subscribe', render: (p) => has('ScreenSubscribe') ? <ScreenSubscribe {...p} onBack={() => p.goto('welcome')} onContinue={() => p.goto('profile')} /> : <ScreenStub dark={p.dark} label="03 Carrier Subscribe" /> },
+  { key: 'profile',  label: '04 Profile Setup',   render: (p) => has('ScreenProfileSetup') ? <ScreenProfileSetup {...p} onBack={() => p.goto('subscribe')} onContinue={() => p.goto('home')} /> : <ScreenStub dark={p.dark} label="04 Profile Setup" /> },
+
+  // B. Home & Discover
+  { key: 'home',     label: '05 Home',            render: (p) => has('ScreenHome')     ? <ScreenHome {...p} /> : <ScreenStub dark={p.dark} label="05 Home" /> },
+  { key: 'browse',   label: '06 Browse',          render: (p) => has('ScreenBrowse')   ? <ScreenBrowse {...p} /> : <ScreenStub dark={p.dark} label="06 Browse by Vertical" /> },
+  { key: 'artists',  label: '07 Artist Grid',     render: (p) => has('ScreenArtists')  ? <ScreenArtists {...p} /> : <ScreenStub dark={p.dark} label="07 Artist Grid" /> },
+  { key: 'artist',   label: '08 Artist Detail',   render: (p) => has('ScreenArtistDetail') ? <ScreenArtistDetail {...p} onBack={() => p.goto('artists')} /> : <ScreenStub dark={p.dark} label="08 Artist Detail" /> },
+
+  // C. Watch & Listen
+  { key: 'player',   label: '09 Player',          render: (p) => has('ScreenPlayer')   ? <ScreenPlayer {...p} onBack={() => p.goto('artist')} /> : <ScreenStub dark={p.dark} label="09 Player" /> },
+  { key: 'schedule', label: '10 Live Schedule',   render: (p) => has('ScreenSchedule') ? <ScreenSchedule {...p} /> : <ScreenStub dark={p.dark} label="10 Live Schedule" /> },
+  { key: 'radio',    label: '11 Radio',           render: (p) => has('ScreenRadio')    ? <ScreenRadio {...p} /> : <ScreenStub dark={p.dark} label="11 Radio" /> },
+  { key: 'downloads',label: '12 Downloads',       render: (p) => has('ScreenDownloads')? <ScreenDownloads {...p} /> : <ScreenStub dark={p.dark} label="12 Downloads" /> },
+
+  // D. Community & Devotion
+  { key: 'devotion', label: '13 Daily Devotion',  render: (p) => has('ScreenDevotion') ? <ScreenDevotion {...p} /> : <ScreenStub dark={p.dark} label="13 Daily Devotion" /> },
+  { key: 'prayer',   label: '14 Prayer Wall',     render: (p) => has('ScreenPrayer')   ? <ScreenPrayer {...p} /> : <ScreenStub dark={p.dark} label="14 Prayer Wall" /> },
+  { key: 'me',       label: '15 Me',              render: (p) => has('ScreenMe')       ? <ScreenMe {...p} /> : <ScreenStub dark={p.dark} label="15 Me" /> },
+];
+
+function App() {
+  const [tweaks, setTweaks] = React.useState(TWEAK_DEFAULTS);
+  const [tweaksOpen, setTweaksOpen] = React.useState(false);
+  const [screen, setScreen] = React.useState(() => {
+    try { return localStorage.getItem('ubz_screen') || TWEAK_DEFAULTS.initialScreen; }
+    catch { return TWEAK_DEFAULTS.initialScreen; }
+  });
+  const [showGallery, setShowGallery] = React.useState(TWEAK_DEFAULTS.showGallery);
+
+  React.useEffect(() => {
+    try { localStorage.setItem('ubz_screen', screen); } catch {}
+  }, [screen]);
+
+  React.useEffect(() => {
+    const handler = (e) => {
+      const d = e.data || {};
+      if (d.type === '__activate_edit_mode') setTweaksOpen(true);
+      if (d.type === '__deactivate_edit_mode') setTweaksOpen(false);
+    };
+    window.addEventListener('message', handler);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', handler);
+  }, []);
+
+  const updateTweak = (key, value) => {
+    setTweaks(t => ({ ...t, [key]: value }));
+    try {
+      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: value } }, '*');
+    } catch {}
+  };
+
+  const dark = tweaks.theme === 'dark';
+  const goto = (key) => { setScreen(key); setShowGallery(false); };
+  const setTab = (tab) => {
+    const map = { home: 'home', watch: 'browse', radio: 'radio', me: 'me' };
+    goto(map[tab] || 'home');
+  };
+
+  const current = SCREENS.find(s => s.key === screen) || SCREENS[4];
+  const orange = ubzTokens.orange500;
+
+  return (
+    <div style={{
+      minHeight: '100vh', padding: '40px 20px 80px',
+      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 30,
+      position: 'relative', zIndex: 1,
+    }}>
+      {/* project chrome header */}
+      <div style={{
+        width: '100%', maxWidth: 1200, display: 'flex',
+        justifyContent: 'space-between', alignItems: 'flex-start',
+        color: '#C9B8A5', fontFamily: 'Inter',
+      }}>
+        <div>
+          <div style={{
+            fontFamily: 'Bricolage Grotesque, sans-serif', fontSize: 22,
+            fontWeight: 700, color: '#FFFBF6', letterSpacing: -0.4,
+          }}>
+            Ubizo TV · Hi-Fi Prototype
+          </div>
+          <div style={{ fontSize: 12, color: '#8A7865', marginTop: 4 }}>
+            15 screens · Light & Dark · "Let there be Light"
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <button onClick={() => setShowGallery(v => !v)} style={{
+            background: showGallery ? orange : 'transparent',
+            color: showGallery ? '#fff' : '#FFFBF6',
+            border: '1px solid rgba(255,241,231,0.2)', borderRadius: 999, padding: '8px 14px',
+            fontSize: 11, fontWeight: 700, letterSpacing: 1.4, textTransform: 'uppercase',
+            cursor: 'pointer', fontFamily: 'Inter',
+          }}>{showGallery ? 'Focus' : 'All 15'}</button>
+          <button onClick={() => updateTweak('theme', dark ? 'light' : 'dark')} style={{
+            background: 'transparent', color: '#FFFBF6',
+            border: '1px solid rgba(255,241,231,0.2)',
+            borderRadius: 999, padding: '8px 14px',
+            fontSize: 11, fontWeight: 700, letterSpacing: 1.4, textTransform: 'uppercase',
+            cursor: 'pointer', fontFamily: 'Inter',
+          }}>{dark ? '☀ Light' : '☾ Dark'}</button>
+        </div>
+      </div>
+
+      {/* main view */}
+      {!showGallery && (
+        <div style={{ display: 'flex', gap: 40, alignItems: 'flex-start', flexWrap: 'wrap', justifyContent: 'center' }}>
+          {/* screen nav rail */}
+          <div style={{
+            width: 220, padding: '20px 16px', background: 'rgba(255,241,231,0.03)',
+            borderRadius: 20, border: '1px solid rgba(255,241,231,0.08)',
+            display: 'flex', flexDirection: 'column', gap: 2, maxHeight: 870, overflowY: 'auto',
+          }}>
+            <div style={{
+              fontSize: 10, fontWeight: 700, letterSpacing: 1.6, textTransform: 'uppercase',
+              color: '#8A7865', padding: '6px 8px 10px',
+            }}>Screens</div>
+            {SCREENS.map(s => (
+              <button key={s.key} onClick={() => goto(s.key)} style={{
+                textAlign: 'left', padding: '10px 12px', borderRadius: 10,
+                background: screen === s.key ? orange : 'transparent',
+                color: screen === s.key ? '#fff' : '#C9B8A5',
+                border: 'none', cursor: 'pointer',
+                fontFamily: 'Inter', fontSize: 12, fontWeight: screen === s.key ? 700 : 500,
+                letterSpacing: 0.2,
+              }}>{s.label}</button>
+            ))}
+          </div>
+
+          <UbzPhone dark={dark} label={current.label}>
+            {current.render({ dark, goto, setTab })}
+          </UbzPhone>
+
+          {/* shortcut tiles */}
+          <div style={{ width: 220, display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <div style={{
+              padding: 16, borderRadius: 16, background: 'rgba(255,241,231,0.03)',
+              border: '1px solid rgba(255,241,231,0.08)', color: '#C9B8A5',
+            }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.6, textTransform: 'uppercase', color: '#8A7865' }}>Flow shortcuts</div>
+              {[
+                ['Onboard',   ['splash','welcome','subscribe','profile','home']],
+                ['Discover',  ['home','browse','artists','artist']],
+                ['Watch',     ['player','schedule','radio','downloads']],
+                ['Devotion',  ['devotion','prayer','me']],
+              ].map(([name, flow]) => (
+                <div key={name} style={{ marginTop: 12 }}>
+                  <div style={{ fontSize: 11, color: '#FFFBF6', fontWeight: 600, marginBottom: 6 }}>{name}</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+                    {flow.map(k => {
+                      const s = SCREENS.find(x => x.key === k);
+                      return (
+                        <button key={k} onClick={() => goto(k)} style={{
+                          padding: '5px 9px', fontSize: 10, borderRadius: 999,
+                          background: 'rgba(255,241,231,0.06)', color: '#C9B8A5',
+                          border: '1px solid rgba(255,241,231,0.1)', cursor: 'pointer',
+                          fontFamily: 'Inter',
+                        }}>{s && s.label.split(' ')[0]}</button>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{
+              padding: 16, borderRadius: 16, background: 'rgba(232,90,28,0.08)',
+              border: '1px solid rgba(232,90,28,0.3)', color: '#C9B8A5', fontSize: 12, lineHeight: 1.5,
+            }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.6, textTransform: 'uppercase', color: orange, marginBottom: 8 }}>Design notes</div>
+              Dark-first because the Sunday service starts before sunrise. Ubizo-orange reserved for primary actions and live indicators. Every screen authored once — tokens resolve per mode.
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* gallery: all 15 screens */}
+      {showGallery && (
+        <div style={{
+          display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 390px)',
+          gap: 32, justifyContent: 'center', padding: '20px 0',
+        }}>
+          {SCREENS.map(s => (
+            <div key={s.key} style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center' }}>
+              <UbzPhone dark={dark} label={s.label}>
+                {s.render({ dark, goto, setTab })}
+              </UbzPhone>
+              <div style={{ fontFamily: 'Inter', fontSize: 12, color: '#C9B8A5', fontWeight: 600, letterSpacing: 0.4 }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Tweaks panel */}
+      {tweaksOpen && (
+        <div style={{
+          position: 'fixed', bottom: 20, right: 20, zIndex: 9999,
+          width: 280, padding: 18, borderRadius: 16,
+          background: 'rgba(26,15,10,0.95)', border: '1px solid rgba(255,241,231,0.2)',
+          backdropFilter: 'blur(20px)', color: '#FFFBF6',
+          fontFamily: 'Inter', boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+        }}>
+          <div style={{
+            fontFamily: 'Bricolage Grotesque, sans-serif', fontSize: 18, fontWeight: 700,
+            letterSpacing: -0.3, marginBottom: 14,
+          }}>Tweaks</div>
+
+          <div style={{ marginBottom: 14 }}>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.4, textTransform: 'uppercase', color: '#8A7865', marginBottom: 8 }}>Theme</div>
+            <div style={{ display: 'flex', gap: 6 }}>
+              {['dark','light'].map(m => (
+                <button key={m} onClick={() => updateTweak('theme', m)} style={{
+                  flex: 1, padding: '10px 0', borderRadius: 10,
+                  background: tweaks.theme === m ? orange : 'transparent',
+                  color: tweaks.theme === m ? '#fff' : '#FFFBF6',
+                  border: '1px solid rgba(255,241,231,0.2)', cursor: 'pointer',
+                  fontSize: 11, fontWeight: 700, letterSpacing: 1.2, textTransform: 'uppercase',
+                  fontFamily: 'Inter',
+                }}>{m}</button>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ marginBottom: 14 }}>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.4, textTransform: 'uppercase', color: '#8A7865', marginBottom: 8 }}>Start screen</div>
+            <select value={tweaks.initialScreen}
+              onChange={e => updateTweak('initialScreen', e.target.value)}
+              style={{
+                width: '100%', padding: '10px', borderRadius: 10,
+                background: '#1A0F0A', color: '#FFFBF6',
+                border: '1px solid rgba(255,241,231,0.2)', fontFamily: 'Inter', fontSize: 12,
+              }}>
+              {SCREENS.map(s => <option key={s.key} value={s.key}>{s.label}</option>)}
+            </select>
+          </div>
+
+          <div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.4, textTransform: 'uppercase', color: '#8A7865', marginBottom: 8 }}>View</div>
+            <button onClick={() => { setShowGallery(!showGallery); updateTweak('showGallery', !showGallery); }} style={{
+              width: '100%', padding: '10px 0', borderRadius: 10,
+              background: showGallery ? orange : 'transparent',
+              color: showGallery ? '#fff' : '#FFFBF6',
+              border: '1px solid rgba(255,241,231,0.2)', cursor: 'pointer',
+              fontSize: 11, fontWeight: 700, letterSpacing: 1.2, textTransform: 'uppercase',
+              fontFamily: 'Inter',
+            }}>{showGallery ? 'Exit gallery' : 'Show all 15 screens'}</button>
+          </div>
+
+          <div style={{ fontSize: 10, color: '#8A7865', marginTop: 14, lineHeight: 1.5 }}>
+            Toggle theme to compare Light / Dark. Every screen built once — tokens resolve per mode.
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

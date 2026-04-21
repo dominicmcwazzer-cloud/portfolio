@@ -503,22 +503,29 @@ footer{padding:2.5rem 6rem;border-top:1px solid rgba(245,240,230,.05);display:fl
       </div>
     </div>
 
-    <!-- UX Project 02 (draft) -->
-    <div class="ux-card anim draft">
-      <div class="ux-visual">
-        <span class="ux-badge draft">In Development</span>
+    <!-- Ubizo TV (live) -->
+    <div class="ux-card anim">
+      <div class="ux-visual" style="background-image:url('ubizo-tv/assets/brand/promo-wide-1200.png')">
+        <!-- Hero video: autoplay loop of the official Ubizo TV promo (re-encoded from @ubizotv86 YouTube ad).
+             To swap in a YouTube embed instead, replace the <video> below with:
+             <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID&controls=0&modestbranding=1" allow="autoplay" style="position:absolute;inset:0;width:100%;height:100%;border:0;z-index:0;"></iframe> -->
+        <video src="ubizo-tv/assets/clips/promo-landscape.mp4"
+          autoplay muted loop playsinline preload="metadata"
+          poster="ubizo-tv/assets/brand/promo-wide-1200.png"
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;"></video>
+        <span class="ux-badge live" style="z-index:3">Live · 15 Screens</span>
         <span class="ux-num">02</span>
-        <span class="ux-placeholder-mark">02</span>
       </div>
       <div class="ux-body">
-        <div class="ux-eyebrow">TBD Â· 2026 Â· Solo</div>
-        <div class="ux-title">UX Project N°02</div>
-        <div class="ux-desc">The second prototype in the series â€" scope and brand to be defined. Same end-to-end approach: research, brand extension, flows, hi-fi screens, interactive prototype.</div>
+        <div class="ux-eyebrow">Pretoria · 2026 · Solo</div>
+        <div class="ux-title" style="color:#E85A1C">Ubizo TV — Let there be Light</div>
+        <div class="ux-desc">A UX prototype for Ubizo TV — South Africa's 24/7 gospel network — designed as a native streaming product. Carrier-billed onboarding, 4-tab IA, Sunday-morning dark mode, and a daily devotion ritual. 15 screens, 4 flows, Light &amp; Dark, React prototype.</div>
         <div class="ux-tags">
-          <span class="tag">UX</span><span class="tag">UI</span><span class="tag">Brand</span><span class="tag">Prototype</span>
+          <span class="tag">UX</span><span class="tag">UI</span><span class="tag">Brand</span><span class="tag">Streaming</span><span class="tag">iOS</span>
         </div>
         <div class="ux-actions">
-          <a href="#" class="ux-cta" aria-disabled="true">Coming Soon</a>
+          <a href="ubizo-tv/index.html" class="ux-cta">View Case Study →</a>
+          <a href="ubizo-tv/prototype.html" target="_blank" rel="noopener" class="ux-cta secondary">Open Prototype ↗</a>
         </div>
       </div>
     </div>
@@ -848,6 +855,74 @@ footer{padding:2.5rem 6rem;border-top:1px solid rgba(245,240,230,.05);display:fl
         <div class="modal-dl-row" style="margin-top:1rem">
           <a href="6ix-am-club/index.html" class="modal-dl-btn">View Full Case Study â†'</a>
           <a href="6ix-am-club/prototype.html" target="_blank" rel="noopener" class="modal-dl-btn">Open Live Prototype â†—</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 0b: Ubizo TV (UX prototype) -->
+  <div class="case-study anim" id="case-ubizo">
+    <div class="case-header">
+      <div>
+        <div class="case-brand" style="color:#E85A1C">Ubizo TV — Let there be Light</div>
+        <div class="case-subtitle">A UX prototype for South Africa's 24/7 gospel network — designed as a native streaming product. Carrier-billed onboarding, Sunday-morning dark mode, and a daily devotion ritual woven into the home rail. 15 screens, 4 flows, Light &amp; Dark, interactive React prototype.</div>
+        <div class="case-meta">
+          <div class="case-meta-item"><div class="case-meta-label">Role</div><div class="case-meta-value">UX + UI + Brand + Prototype · Solo</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Scope</div><div class="case-meta-value">15 Screens · 4 Flows · 14-Slide Deck · Light &amp; Dark</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Channel</div><div class="case-meta-value">DSTV 343 · @ubizotv86 · Pretoria</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Format</div><div class="case-meta-value">iOS Hi-Fi + Interactive Prototype</div></div>
+        </div>
+        <div class="case-disciplines"><span class="tag">UX Design</span><span class="tag cool">UI Design</span><span class="tag warm">Prototyping</span><span class="tag rose">Brand Extension</span><span class="tag gold">iOS</span></div>
+      </div>
+      <div class="case-visual" style="background-image:url('ubizo-tv/assets/brand/let-there-be-light-master.png');border-radius:var(--radius)">
+        <span class="glyph" style="color:#E85A1C">UBIZO</span>
+        <div class="case-icon-grid">
+          <div class="case-icon-card"><div class="num">15</div><div class="lbl">Screens</div></div>
+          <div class="case-icon-card"><div class="num">4</div><div class="lbl">User Flows</div></div>
+          <div class="case-icon-card"><div class="num">2</div><div class="lbl">Modes</div></div>
+          <div class="case-icon-card"><div class="num">14</div><div class="lbl">Deck Slides</div></div>
+          <div class="case-icon-card"><div class="num">13</div><div class="lbl">Artists</div></div>
+          <div class="case-icon-card"><div class="num">6AM</div><div class="lbl">Sundays</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="case-content">
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> The Challenge</h3>
+        <p>Ubizo TV is a real, on-air gospel network — DSTV 343, 24/7, with a loyal Sunday-morning audience and an active Instagram presence — but its digital experience stops at YouTube uploads. The challenge: design the missing product layer for a mobile-first, data-conscious, carrier-billed audience <em>without flattening the warmth of the channel</em>. Treat 6AM Sunday as the main event, build devotion in beside the entertainment, and make the subscription land in airtime — not on a card form.</p>
+        <div class="case-deliverables">
+          <strong>Key Deliverables:</strong><br>
+          15-screen hi-fi iOS prototype across 4 flows (Onboard · Discover · Watch · Devotion)<br>
+          Full self-derived brand system — Bricolage display, Fraunces editorial, dawn orange / maroon / gold token set<br>
+          14-slide editorial case study deck with embedded channel snippets · Light &amp; Dark modes · React + Babel interactive prototype
+        </div>
+      </div>
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> My Process</h3>
+        <ul>
+          <li><strong>Research</strong> — pulled tone, visual language, and Sunday rhythm from the channel itself, the @ubizotv86 YouTube uploads, four broadcast snippets re-encoded into the deck, and the IG roster of 13 gospel acts</li>
+          <li><strong>Brand extension</strong> — derived a full system from the existing logo and channel art: Bricolage Grotesque (display + UI), Fraunces italic (scripture moments), dawn-orange <code>#E85A1C</code> + maroon <code>#7B2A20</code> + restraint gold <code>#E0A13B</code></li>
+          <li><strong>Flows &amp; IA</strong> — 4 tabs (Home / Watch / Radio / Me), 4 flows (Onboard, Discover, Watch, Devotion). Devotion lives in the Home rail because it's a ritual, not a destination</li>
+          <li><strong>Hi-fi in both modes</strong> — 15 screens authored once with tokens, resolving per mode. Dark-first because Sunday Service starts before sunrise</li>
+          <li><strong>Interactive prototype</strong> — React + Babel standalone build with screen navigator, theme toggle, and an all-15 gallery view</li>
+        </ul>
+      </div>
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> Key Decisions</h3>
+        <ul>
+          <li><strong>Dark-first.</strong> The audience opens at 6AM in a low-lit kitchen — dark is the default, light is offered.</li>
+          <li><strong>Carrier billing, no card form.</strong> Cell C / MTN / Telkom direct-bill, R5/day · R29/wk · R99/mo, STOP-to-cancel by reply.</li>
+          <li><strong>4-tab nav, devotion in the rail.</strong> Devotion + Prayer Wall surface from Home — they're rituals, not destinations.</li>
+          <li><strong>Token-driven theming.</strong> <code>ubzTheme(dark)</code> resolves bg / text / surface — every screen authored once, themed twice.</li>
+          <li><strong>Documentary photography only.</strong> Real congregations, real choirs — never stock or AI imagery.</li>
+        </ul>
+      </div>
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> Outcome &amp; Walkthrough</h3>
+        <p>A second self-contained product artefact in the UX series — editorial case study deck plus an interactive prototype with all 15 screens, fully toggleable Light / Dark. The brand system was derived end-to-end from a single channel logo and the IG photo library, so the work shows the full arc: research → brand → flows → hi-fi → prototype.</p>
+        <div class="modal-dl-row" style="margin-top:1rem">
+          <a href="ubizo-tv/index.html" class="modal-dl-btn">View Full Case Study →</a>
+          <a href="ubizo-tv/prototype.html" target="_blank" rel="noopener" class="modal-dl-btn">Open Live Prototype ↗</a>
         </div>
       </div>
     </div>
