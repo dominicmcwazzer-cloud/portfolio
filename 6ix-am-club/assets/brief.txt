@@ -1,0 +1,454 @@
+================================================================
+6ix AM CLUB — HI-FI SCREEN DESIGN BRIEF
+For: Claude Design (or any AI design tool)
+Date: 20 April 2026
+Project lead: Dominic McWazzer
+Portfolio project — UX/UI Prototype #1 of 3
+================================================================
+
+--------------------------------
+1. PROJECT SNAPSHOT
+--------------------------------
+Design 15 hi-fidelity mobile screens for 6ix AM Club — a
+running-community app for a real club based in Pretoria,
+South Africa. The club currently operates via Instagram,
+WhatsApp, and Quicket (ticketing). The app unifies all three
+into a single member experience.
+
+This is a portfolio case study, not a shipping product. Prioritize
+visual impact, brand cohesion, and storytelling.
+
+Deliver: 15 screens at 390 × 844 (iPhone 15 Pro), both
+LIGHT and DARK mode variants.
+
+--------------------------------
+2. REFERENCE LINKS
+--------------------------------
+- Design System (Figma):
+  https://www.figma.com/design/8yifG4eYTECL1j1Ne0Sl0A
+- UX & Brand Direction (Figma):
+  https://www.figma.com/design/ARhzI4LE2Vuc3FpcYRmG8s
+- Client Instagram: https://www.instagram.com/6ixamclub_/
+- Next event (Quicket): https://www.quicket.co.za/events/370070-6ixamclub-run-community/
+- Run venue: Jack Budha, Pretoria (-25.7136709, 28.347838)
+
+--------------------------------
+3. BRAND DNA
+--------------------------------
+Mission
+"More than a running club — a community built on discipline,
+consistency, and positive energy. From beginners to experienced
+runners, everyone is welcome as we chase fitness, friendship,
+and greatness one step at a time."
+
+Four principles
+01. RAW > POLISHED — Grain, blur, imperfection. Lived-in, not clinical.
+02. EARLY > EVERYWHERE — Pre-dawn aesthetic. Dark by default.
+03. LOCAL > GLOBAL — Pretoria-specific, Jack Budha-rooted. Not generic Strava.
+04. COMMUNITY > COMPETITION — Leaderboards reward showing up, not elite pace.
+
+Voice
+WE SAY:
+- "See you at 6."
+- "5K. Free to join."
+- "Show up. That's the whole plan."
+- "Pretoria's morning crew."
+
+WE DON'T SAY:
+- "Crush your PR with AI-powered insights."
+- "Unlock premium features."
+- "Gamified fitness journey."
+- "Level up your wellness."
+
+--------------------------------
+4. TYPOGRAPHY — UPDATED DIRECTION
+--------------------------------
+The existing Vol.02 poster uses a distinctive display font that is
+MORE ABSTRACT than a standard Bold sans. Key traits observed:
+- Geometric with rounded/bulbous terminals
+- Condensed proportions
+- Modernist, almost display-stencil quality
+- The "6ix" script is a hand-drawn ink mark (use only for logo)
+
+RECOMMENDED DISPLAY FONTS (pick one, ranked)
+1. PP Neue Machina (Pangram Pangram) — closest match to the poster
+2. PP Editorial New Ultralight/Heavy — for editorial drama
+3. General Sans (Indian Type Foundry) — open-source fallback
+4. Space Grotesk — free alternative with good character
+
+BODY / UI FONT
+- Inter (current placeholder — keep for UI)
+- OR: Söhne if licensed
+- OR: Neue Haas Grotesk Display Pro
+
+SCRIPT / LOGO
+- Use the actual "6ix" hand-drawn mark from the existing brand.
+  Do NOT substitute. Reserve for splash screens, profile header,
+  and event branding only — never in UI text.
+
+Type scale (keep from design system)
+Display:  160 / Inter Black (swap to PP Neue Machina) / -4% / 100%
+H1:       56  / Bold / -2% / 110%
+H2:       40  / Bold / -1% / 120%
+H3:       28  / Semi Bold / 0% / 130%
+Body L:   18  / Regular / 160%
+Body M:   16  / Regular / 160%
+Body S:   14  / Regular / 160%
+Label:    12  / Bold / +20% tracking / 120%
+
+--------------------------------
+5. COLOR SYSTEM
+--------------------------------
+Brand
+- Ink    #000000  Primary canvas
+- Paper  #FFFFFF  Primary on-dark text & surfaces
+- Route  #FF5A1F  Accent — action, energy, route overlay only
+
+Neutrals (Tailwind-scale)
+50   #FAFAFA
+100  #F5F5F5
+200  #E5E5E5
+300  #D4D4D4
+400  #A3A3A3
+500  #737373
+600  #525252
+700  #404040
+800  #262626
+900  #171717
+950  #0A0A0A
+
+Semantic
+Success  #22C55E   PR achieved, goal met
+Warning  #F59E0B   Low energy, pace drop
+Error    #EF4444   Missed check-in
+Info     #3B82F6   Upcoming run, updates
+
+LIGHT MODE SURFACES
+BG:       #FAFAFA
+Surface:  #FFFFFF
+Border:   #E5E5E5
+Text 1:   #0A0A0A
+Text 2:   #525252
+Text 3:   #A3A3A3
+
+DARK MODE SURFACES
+BG:       #0A0A0A
+Surface:  #171717
+Border:   #262626
+Text 1:   #FFFFFF
+Text 2:   #D4D4D4
+Text 3:   #737373
+
+Route orange behavior
+- Use for primary CTAs, live-run indicators, leaderboard highlight
+  row, route overlays, "going" count, streak badge.
+- Do NOT use for decorative accents, gradients, or secondary UI.
+- Maintain AA contrast: orange on black, black on orange.
+
+--------------------------------
+6. LAYOUT & SPACING
+--------------------------------
+Base unit: 4pt
+Spacing scale: 4, 8, 12, 16, 24, 32, 48, 64, 96, 128
+Corner radius: 0, 4, 8, 12, 16, 24, 999 (full)
+
+Mobile grid
+- Frame: 390 × 844
+- Margins: 24 outer
+- Gutter: 14
+- Columns: 4
+
+Card padding default: 24
+Button padding: 20 vertical, 32 horizontal, radius 999
+Input padding: 20 vertical, 16 horizontal, radius 12
+
+--------------------------------
+7. HI-FI SCREEN LIST (15 screens × 2 modes = 30 total)
+--------------------------------
+Each screen must exist in both LIGHT and DARK variants.
+Use components so image swaps propagate across both modes.
+
+01. SPLASH
+    - Hero: full-bleed motion-blur runner photo
+    - Center: 6ix script + "AM CLUB" display
+    - Bottom: "ESTD 2026" small caps
+    - Fade-in animation cue
+
+02. MISSION (onboarding 1/3)
+    - Top: skip link (top right)
+    - Hero image: group running at dawn, 60% of screen
+    - Below: H1 headline "More than a running club"
+    - Body paragraph
+    - Primary CTA: "NEXT →"
+
+03. SIGN UP (onboarding 2/3)
+    - Back arrow
+    - H2: "Join the club"
+    - Phone number input (primary)
+    - "or continue with email" secondary
+    - Primary CTA: "CONTINUE"
+    - Footer legal
+
+04. PICK LEVEL (onboarding 3/3)
+    - Progress: "Step 3 of 3"
+    - H2: "What's your pace?"
+    - Three large selection cards: Beginner / Intermediate / Advanced
+      (each with icon + km/week descriptor)
+    - Primary CTA: "CONTINUE"
+
+05. HOME / NEXT RUN (nav: RUN active)
+    - Status strip: time + streak indicator
+    - Section: "NEXT RUN · VOL.02" label
+    - Hero date card: "02 MAY" — oversized display type
+    - Meta: 5 KM · 06:00 · Jack Budha · 42 going
+    - Primary: JOIN THE RUN — FREE (route orange)
+    - Secondary: VIEW ROUTE (outlined)
+    - "THIS WEEK" stats trio: Distance, Pace, Runs
+    - Bottom nav (5 tabs)
+
+06. EVENTS LIST (nav: EVENTS active)
+    - Header: "Events" + filter chip
+    - Section: "UPCOMING" (3 event cards)
+    - Each card: date block + distance + location + going count
+    - Section: "PAST" (dimmed, with attendance count)
+
+07. EVENT DETAIL
+    - Back arrow
+    - Map/route preview (top, 40% of screen)
+    - Event tag: "VOL.02 · 5KM RUN/WALK"
+    - Display date: 02 MAY 2026 · 6:00 AM
+    - Description + what to bring
+    - Going count + avatar row
+    - Primary CTA: "JOIN — FREE"
+
+08. TICKET CHECKOUT (Quicket-branded co-host)
+    - Close X
+    - Header: "Secure checkout · powered by Quicket"
+    - Event summary card
+    - Form fields: Quantity, Name, T-shirt size
+    - Total: R 0.00 (Free)
+    - Primary CTA: "CLAIM TICKET"
+
+09. CONFIRMATION
+    - Large checkmark (route orange)
+    - H2: "You're in."
+    - Body: "See you 02 May, 6am at Jack Budha."
+    - QR code card
+    - Secondary CTAs: Add to calendar, Invite a friend
+
+10. READY TO RUN
+    - Top: "Checked in at Jack Budha" chip
+    - Map preview
+    - Run specs card: 5 KM · Flat · 35 min target
+    - Countdown: "Starts in 0:24"
+    - Playlist selector
+    - Primary CTA: "START RUN"
+
+11. LIVE STATS
+    - Full dark background (always — even in light mode, this is "focus mode")
+    - LIVE pill + timer
+    - Huge distance number (2.8 KM)
+    - Secondary stats: pace, heart rate
+    - Live route map
+    - Large PAUSE button (route orange)
+
+12. RUN SUMMARY
+    - Header: "COMPLETED · 02 MAY"
+    - Distance + time hero
+    - Route map
+    - Stat trio: Pace, Kcal, Elevation
+    - Add photo + note
+    - Primary CTA: "SHARE TO FEED"
+
+13. LEADERBOARD (nav: BOARD active)
+    - Header + toggles: Week / Month / All-time
+    - Ranked list (6 members visible)
+    - User's row highlighted in route orange
+    - Each row: rank, avatar, name, avg pace, total km
+
+14. FEED (nav: FEED active)
+    - Header: "Feed" + new post "+"
+    - Post card: avatar + name + time + photo + caption
+    - Engagement: heart, comment, share
+    - Infinite scroll
+    - Empty state: "Post your first run"
+
+15. PROFILE / ME (nav: ME active)
+    - Header: "Me" + settings gear
+    - Large avatar (circular)
+    - Name + Level tag + Pretoria · Member since
+    - Stat trio: Streak (orange), Total km, Runs attended
+    - "BADGES" section with earned badge row
+    - Past runs list
+
+--------------------------------
+8. IMAGE REQUIREMENTS
+--------------------------------
+User is sourcing from Unsplash + their own IG (@6ixamclub_) +
+the actual 6ix AM Club logo file.
+
+Use a single IMAGE component in Figma so light/dark mode
+variants of the same screen reference the same image asset.
+When the image updates, both modes update.
+
+Image slots needed
+A. Splash hero (full-bleed, motion-blur)
+B. Mission hero (group run, sunrise)
+C. Event detail map (Jack Budha area)
+D. Run summary map (generic route map)
+E. Feed post photos (community portraits, 3 variations)
+F. Profile avatar (portrait headshot placeholder)
+G. Badge icons (6 variations)
+
+--------------------------------
+9. COMPONENT ARCHITECTURE
+--------------------------------
+Build as components with variants so light/dark toggles once:
+
+Button/
+  Variants: Primary, Secondary, Ghost, Dark
+  States: Default, Pressed, Disabled
+  Mode: Light, Dark
+
+Card/
+  Variants: Event, Stat, Leaderboard Row, Feed Post
+  Mode: Light, Dark
+
+Input/
+  Variants: Text, Phone, Select
+  States: Default, Focus, Filled, Error
+  Mode: Light, Dark
+
+Nav/Bottom
+  States: 5 active-tab variants
+  Mode: Light, Dark
+
+Chip/
+  Variants: Filter, Tag, Status
+  Mode: Light, Dark
+
+Image/
+  One master component with image fill
+  Swapping instance in one place updates everywhere
+
+--------------------------------
+10. DELIVERABLES
+--------------------------------
+[ ] 15 screens × 2 modes = 30 frames
+[ ] All components built with Light/Dark variants
+[ ] Image component shared across both modes
+[ ] Exportable PNG mockups for portfolio
+[ ] Interactive prototype (tap-through of all 4 user flows)
+[ ] Case study narrative (separate doc)
+
+--------------------------------
+11. CASE STUDY NARRATIVE (for portfolio)
+--------------------------------
+
+TITLE
+Turning a WhatsApp group and an Instagram page into a brand.
+
+SUBTITLE
+A product concept for 6ix AM Club — Pretoria's morning running
+community — unifying three fragmented platforms into one
+membership experience.
+
+ROLE
+UX & UI Design, Brand Extension, Prototype
+(Solo project, 2026)
+
+THE PROBLEM
+6ix AM Club is real. Every Saturday at 6AM, a group of runners
+meets at Jack Budha in Pretoria for a 5K. The club has a growing
+following, a strong visual identity, and a dedicated WhatsApp
+channel. But members have to jump across three platforms to
+stay involved: Instagram for announcements, WhatsApp for
+day-to-day chatter, and Quicket for ticketing. The aesthetic
+experience is tight on IG but completely broken everywhere else.
+
+THE QUESTION
+How do you turn a scattered community into a single product
+experience — without losing what made it intimate in the
+first place?
+
+THE APPROACH
+I treated the existing brand as the source of truth. The
+Vol.02 poster already defined the visual language: motion
+blur, editorial typography, a single orange accent, and raw
+community portraits. My job wasn't to invent a brand — it
+was to extend one into a digital product.
+
+I built in three layers:
+1. Design system — tokens distilled from the posters
+2. Information architecture — five core tabs derived from
+   actual user behavior (runs, events, feed, board, me)
+3. Product flows — four end-to-end journeys anchored in real
+   club moments (signing up, booking a run, tracking a run,
+   engaging with the community)
+
+KEY DECISIONS
+- Dark-first UI. The club runs at 6AM in the dark — the
+  product should feel like the moment.
+- Orange as scarcity. The route-orange from the existing
+  flyers stays reserved for primary actions and live-run
+  indicators only. Overuse would flatten it.
+- Quicket as co-host. Rather than replacing the club's
+  existing ticketing platform, the app embeds Quicket
+  checkout with brand-aligned styling. Product thinking,
+  not product ego.
+- Community, not competition. Leaderboards are sorted by
+  consistency (streaks, attendance) alongside distance —
+  mirroring the club's actual value system.
+
+OUTCOME
+15 hi-fidelity screens covering four user flows, in both
+light and dark modes, with a full design system extensible
+to future features (matchmaking, coaching, multi-chapter
+support).
+
+WHAT I LEARNED
+The hardest part wasn't the pixels — it was deciding what
+to leave out. A running app could easily become a Strava
+clone. Keeping it specific to this club, this city, and
+this 6AM ritual is what makes it a product, not a template.
+
+--------------------------------
+12. PORTFOLIO CASE STUDY SECTIONS
+--------------------------------
+For the portfolio page, structure as:
+
+1. Hero: brand mark + "6ix AM Club" + one-liner
+2. Context: images from the real club + IG embed
+3. Problem: the 3-platform fragmentation diagram
+4. Approach: design system > IA > flows > screens
+5. Design System showcase: color + type + components
+6. 4 user flow diagrams
+7. Screen showcase: 15 screens in light + dark
+8. Interactive prototype embed
+9. Key decisions (3-4 bullets)
+10. Reflection / what I learned
+
+--------------------------------
+13. SUCCESS METRICS (for the concept)
+--------------------------------
+< 60s  Onboarding time — sign up to Home
+80%    Ticket-to-attendance rate
+3+     Weekly runs logged per active member
+70%    Weekly digest open rate
+
+--------------------------------
+14. HANDOFF NOTES FOR CLAUDE DESIGN
+--------------------------------
+- Follow design system tokens exactly — no invented colors
+- Use Inter placeholder where specified; swap to PP Neue
+  Machina or equivalent modernist display font for all H1/H2
+- Keep Route orange scarce (primary CTAs + live indicators only)
+- Preserve whitespace — editorial layouts, not mobile-app-cramped
+- Motion blur and grain as texture, not illustration
+- Every component must support light AND dark mode
+- Image assets provided separately by the user
+- 6ix script logo: use provided SVG, never substitute
+
+--------------------------------
+END OF BRIEF
+--------------------------------

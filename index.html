@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <base href="./">
-<title>Dominic McWazzer – Insuetam Creatives Portfolio</title>
+<title>Dominic McWazzer — Digital Designer (UX · UI · Brand)</title>
+<meta name="description" content="Dominic McWazzer — Digital Designer specialising in UX, UI, product design, and brand. End-to-end product thinking from flows to hi-fi prototypes, with creative and brand craft underneath." />
+<meta name="author" content="Dominic McWazzer" />
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -116,6 +118,34 @@ section{padding:6rem 6rem;background:var(--paper);color:var(--text-l)}
 .tl-company{color:var(--text2-l);font-size:.9rem;margin-bottom:.5rem;font-style:italic}
 .tl-desc{color:var(--text3-l);font-size:.92rem;line-height:1.75;max-width:560px}
 .tl-skills{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.5rem}
+
+/* UX & PRODUCT */
+#ux{background:var(--paper)}
+.ux-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.4rem;margin-top:1.5rem}
+.ux-card{background:var(--paper2);border:1px solid var(--paper3);border-radius:var(--rl);overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;display:flex;flex-direction:column;position:relative;color:inherit}
+.ux-card:hover{transform:translateY(-3px);border-color:rgba(184,146,26,.3);box-shadow:0 14px 40px rgba(13,13,11,.07)}
+.ux-visual{height:220px;background-size:cover;background-position:center;position:relative;overflow:hidden;background-color:var(--ink)}
+.ux-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,11,.55),rgba(13,13,11,0) 55%);z-index:1}
+.ux-badge{position:absolute;top:.9rem;left:.9rem;z-index:3;font-family:var(--fm);font-size:.56rem;padding:.28rem .66rem;background:rgba(13,13,11,.7);backdrop-filter:blur(10px);color:var(--paper);letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(245,240,230,.15);border-radius:2px}
+.ux-badge.live{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.ux-badge.draft{background:rgba(13,13,11,.5);color:var(--text2-d)}
+.ux-num{position:absolute;bottom:.9rem;right:1rem;z-index:3;font-family:var(--fd);font-size:2.2rem;letter-spacing:.06em;color:var(--paper);opacity:.85;line-height:1}
+.ux-body{padding:1.4rem 1.5rem 1.5rem;display:flex;flex-direction:column;gap:.6rem;flex:1}
+.ux-eyebrow{font-family:var(--fm);font-size:.6rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase}
+.ux-title{font-family:var(--fd);font-size:1.7rem;letter-spacing:.05em;line-height:1.1;color:var(--ink)}
+.ux-desc{font-size:.9rem;color:var(--text2-l);line-height:1.65}
+.ux-tags{display:flex;flex-wrap:wrap;gap:.25rem;margin-top:.3rem}
+.ux-tags .tag{font-size:.58rem;padding:.2rem .55rem;background:var(--gold-dim);color:var(--gold);font-family:var(--fm);letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(184,146,26,.18);border-radius:2px}
+.ux-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--paper3)}
+.ux-cta{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--fm);font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.55rem 1rem;background:var(--ink);color:var(--paper);border:1px solid var(--ink);transition:all .22s;border-radius:2px}
+.ux-cta:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.ux-cta.secondary{background:transparent;color:var(--ink);border-color:var(--paper4)}
+.ux-cta.secondary:hover{background:var(--paper3);color:var(--ink);border-color:var(--paper4)}
+.ux-card.draft{opacity:.78}
+.ux-card.draft .ux-visual{background:repeating-linear-gradient(135deg,var(--paper3) 0 18px,var(--paper2) 18px 36px);filter:grayscale(.4)}
+.ux-card.draft .ux-visual::after{display:none}
+.ux-card.draft .ux-cta{pointer-events:none;opacity:.6}
+.ux-placeholder-mark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:5rem;color:var(--text3-l);letter-spacing:.1em;opacity:.25;z-index:2}
 
 /* SELECTED WORK */
 #work{background:var(--ink)}
@@ -297,11 +327,12 @@ footer{padding:2.5rem 6rem;border-top:1px solid rgba(245,240,230,.05);display:fl
   </a>
   <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
   <ul>
+    <li><a href="#ux">UX & Product</a></li>
+    <li><a href="#casestudies">Cases</a></li>
+    <li><a href="#work">Work</a></li>
     <li><a href="#story">Story</a></li>
     <li><a href="#disciplines">Disciplines</a></li>
     <li><a href="#journey">Journey</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#casestudies">Cases</a></li>
     <li><a href="#wreckroom">Wreck Room</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -313,12 +344,12 @@ footer{padding:2.5rem 6rem;border-top:1px solid rgba(245,240,230,.05);display:fl
   <video class="hero-video-bg" autoplay muted loop playsinline><source src="Showreel, hero background video loop.mp4" type="video/mp4"></video>
   <div class="hero-bg-logo"><img src="Insuetam Creatives logo/logo-hero.webp" alt=""></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Insuetam Creatives · Founder &amp; Creative Director</div>
+    <div class="hero-eyebrow">Insuetam Creatives · Founder &amp; Digital Designer</div>
     <div class="hero-brand-name">Dominic McWazzer</div>
-    <h1>CREATIVE<br>DESIGNER</h1>
-    <p class="hero-sub"><em>Creative thinking. Purposeful design.</em><br><strong>Animator, Illustrator &amp; UX Designer</strong> — a multidisciplinary creative telling brand stories through motion graphics, campaign visuals, and digital strategy for global brands across Africa, Europe &amp; the Middle East.</p>
+    <h1>DIGITAL<br>DESIGNER</h1>
+    <p class="hero-sub"><em>Product thinking. Brand craft.</em><br><strong>UX · UI · Brand · Prototype</strong> — end-to-end digital design: shaping product experiences from flows and wireframes to hi-fi prototypes, with a decade of brand &amp; creative work underneath for global brands across Africa, Europe &amp; the Middle East.</p>
     <div class="hero-actions">
-      <a href="#work" class="btn btn-primary">View My Work →</a>
+      <a href="#ux" class="btn btn-primary">See UX Work →</a>
       <a href="#contact" class="btn btn-outline">Get in Touch</a>
     </div>
     <div class="hero-stats">
@@ -332,10 +363,11 @@ footer{padding:2.5rem 6rem;border-top:1px solid rgba(245,240,230,.05);display:fl
 <!-- â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ MY STORY â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ -->
 <section id="story">
   <div class="section-label">My Story</div>
-  <div class="section-title">From animation to global brands.</div>
+  <div class="section-title">From animation to digital product design.</div>
   <div class="story-grid">
     <div class="story-text">
-      <p>Every creative has an origin story. Mine began at AFDA Film School in Johannesburg, where I earned my Bachelor of Arts in Motion Picture Medium, specialising in Animation and Special Effects. That foundation in visual storytelling â€" understanding how frame, composition, and movement create meaning â€" became the lens through which I approach every project today.</p>
+      <p>I'm a <strong>Digital Designer</strong> — I work across UX, UI, brand, and digital product, shaping experiences from the first sketch of a user flow all the way to the hi-fi prototype you can tap through. My craft underneath that is motion, brand, and visual storytelling — which is where my story actually starts.</p>
+      <p>It began at AFDA Film School in Johannesburg, where I earned my Bachelor of Arts in Motion Picture Medium, specialising in Animation and Special Effects. That foundation in visual storytelling — understanding how frame, composition, and movement create meaning — became the lens through which I approach every interface, flow, and prototype I design today.</p>
       <p>After graduating in 2022, I cut my teeth at Cloud Juice Vape Shop, where I wasn't just a graphic designer â€" I was the entire creative department. I directed product packaging, managed e-commerce platforms on OpenCart and WordPress, ran email marketing campaigns, and designed everything from in-store signage to social media graphics. It taught me the power of owning an entire brand's visual identity end-to-end.</p>
       <p>In January 2024, I joined Mondia Digital's UX/UI and creative design team, where my work suddenly scaled from one local brand to fifteen global ones. I now design hero banners, off-portal landing pages, competition graphics, marketing presentations, and educational videos for brands like Vodacom, Vodafone, O2, Orange, Samsung, A1, Virgin Media, and Endesa â€" serving audiences across South Africa, Germany, Austria, the UK, Spain, Romania, Saudi Arabia, the UAE, and Kuwait.</p>
       <p>Parallel to this, I run my independent studio Wreck Room, where I take on branding, illustration, animation, and digital strategy projects â€" from Afrocentric fashion ventures to OTT gospel streaming platforms. I integrate AI tools like ChatGPT and Freepik AI into my workflows to deliver creative solutions that are both efficient and impactful.</p>
@@ -378,9 +410,9 @@ footer{padding:2.5rem 6rem;border-top:1px solid rgba(245,240,230,.05);display:fl
 
 <!-- â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ DISCIPLINES â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ -->
 <section id="disciplines" style="background:var(--bg2)">
-  <div class="section-label">Creative Disciplines</div>
-  <div class="section-title">Eight crafts, one vision.</div>
-  <div class="section-desc">My work spans eight interconnected creative disciplines â€" each honed through real projects for global brands, startups, and independent clients. Together they form a complete creative toolkit.</div>
+  <div class="section-label">Design Disciplines</div>
+  <div class="section-title">UX-led, end-to-end.</div>
+  <div class="section-desc">My practice is led by UX &amp; product thinking â€" flows, wireframes, prototyping, design systems â€" with seven more disciplines stacked underneath. The mix is deliberate: technical UX, grounded in real brand and visual craft.</div>
   <div class="disc-grid">
     <div class="disc-card anim"><span class="disc-icon">â—ˆ</span><div class="disc-name">UX Design</div><div class="disc-sub">User flows, wireframes, prototyping, dark/light modes, Figma, app marketplace integration</div></div>
     <div class="disc-card anim"><span class="disc-icon">â—‰</span><div class="disc-name">Graphic Design</div><div class="disc-sub">Hero banners, campaign creatives, display ads, competition graphics, packaging</div></div>
@@ -444,11 +476,81 @@ footer{padding:2.5rem 6rem;border-top:1px solid rgba(245,240,230,.05);display:fl
   </div>
 </section>
 
+<!-- â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ UX & PRODUCT â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ -->
+<section id="ux">
+  <div class="section-label">UX &amp; Product</div>
+  <div class="section-title">End-to-end product thinking.</div>
+  <div class="section-desc">Three self-initiated UX prototypes showing the full arc â€" problem framing, brand extension, user flows, hi-fi screens, interactive prototype. Each project carries its own visual system because brand is part of the design work. Case studies and live prototypes embedded below.</div>
+  <div class="ux-grid">
+
+    <!-- 6ix AM Club (live) -->
+    <div class="ux-card anim">
+      <div class="ux-visual" style="background-image:url('6ix-am-club/assets/ref-03.jpg')">
+        <span class="ux-badge live">Live Â· 15 Screens</span>
+        <span class="ux-num">01</span>
+      </div>
+      <div class="ux-body">
+        <div class="ux-eyebrow">Pretoria Â· 2026 Â· Solo</div>
+        <div class="ux-title">6ix AM Club</div>
+        <div class="ux-desc">A UX prototype for Pretoria's 6AM running crew â€" turning a WhatsApp group and an Instagram page into a bookable, trackable, ticketed running-club product. 15 screens, 4 flows, Light &amp; Dark, React prototype.</div>
+        <div class="ux-tags">
+          <span class="tag">UX</span><span class="tag">UI</span><span class="tag">Brand</span><span class="tag">Prototype</span><span class="tag">iOS</span>
+        </div>
+        <div class="ux-actions">
+          <a href="6ix-am-club/index.html" class="ux-cta">View Case Study â†'</a>
+          <a href="6ix-am-club/prototype.html" target="_blank" rel="noopener" class="ux-cta secondary">Open Prototype â†—</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- UX Project 02 (draft) -->
+    <div class="ux-card anim draft">
+      <div class="ux-visual">
+        <span class="ux-badge draft">In Development</span>
+        <span class="ux-num">02</span>
+        <span class="ux-placeholder-mark">02</span>
+      </div>
+      <div class="ux-body">
+        <div class="ux-eyebrow">TBD Â· 2026 Â· Solo</div>
+        <div class="ux-title">UX Project N°02</div>
+        <div class="ux-desc">The second prototype in the series â€" scope and brand to be defined. Same end-to-end approach: research, brand extension, flows, hi-fi screens, interactive prototype.</div>
+        <div class="ux-tags">
+          <span class="tag">UX</span><span class="tag">UI</span><span class="tag">Brand</span><span class="tag">Prototype</span>
+        </div>
+        <div class="ux-actions">
+          <a href="#" class="ux-cta" aria-disabled="true">Coming Soon</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- UX Project 03 (draft) -->
+    <div class="ux-card anim draft">
+      <div class="ux-visual">
+        <span class="ux-badge draft">In Development</span>
+        <span class="ux-num">03</span>
+        <span class="ux-placeholder-mark">03</span>
+      </div>
+      <div class="ux-body">
+        <div class="ux-eyebrow">TBD Â· 2026 Â· Solo</div>
+        <div class="ux-title">UX Project N°03</div>
+        <div class="ux-desc">The third and final prototype in the series â€" scope and brand to be defined. Completing the portfolio arc across three distinct product contexts.</div>
+        <div class="ux-tags">
+          <span class="tag">UX</span><span class="tag">UI</span><span class="tag">Brand</span><span class="tag">Prototype</span>
+        </div>
+        <div class="ux-actions">
+          <a href="#" class="ux-cta" aria-disabled="true">Coming Soon</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ SELECTED WORK â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ -->
 <section id="work" style="background:var(--bg2)">
-  <div class="section-label">Selected Work</div>
-  <div class="section-title">Projects by discipline.</div>
-  <div class="section-desc">Each project is tagged with the disciplines it exercised â€" filter by skill to see how each craft appears across different brands and contexts.</div>
+  <div class="section-label">Creative, Brand &amp; Web Work</div>
+  <div class="section-title">The practice underneath.</div>
+  <div class="section-desc">The brand, creative, and web projects that sit underneath the UX practice â€" hero banners, landing pages, off-portal flows, campaigns, video &amp; motion for global brands. Filter by discipline to see how the craft plays out across Africa, Europe, and the Middle East.</div>
   <div class="portfolio-filter">
     <button class="filter-btn active" onclick="filterProjects('all')">All</button>
     <button class="filter-btn" onclick="filterProjects('ux')">UX Design</button>
@@ -461,6 +563,14 @@ footer{padding:2.5rem 6rem;border-top:1px solid rgba(245,240,230,.05);display:fl
     <button class="filter-btn" onclick="filterProjects('creative')">Creative</button>
   </div>
   <div class="portfolio-grid">
+    <!--
+      DEPTH PASS — round 1 (complete):  Orange RO/ES · Vodafone Germany · Monsooq
+      DEPTH PASS — pending future rounds, expand with problem / approach / decisions / contribution:
+        - Playinc Disney/Marvel · Playinc Arcade · Maneno & Ubbu · vLive Campaigns
+        - Vodacom Music Presentations · Vodacom Music Video · O2 Germany · Virgin Media UK
+        - Samsung Spain · BBVA Spain · Endesa Spain · A1 Austria · MENA Ramadan · Mum & Baby
+      (14 cards remaining)
+    -->
 
     <!-- Playinc Disney/Marvel -->
     <div class="project-card anim" data-cat="graphic creative brand">
@@ -587,10 +697,10 @@ footer{padding:2.5rem 6rem;border-top:1px solid rgba(245,240,230,.05);display:fl
       <div class="card-visual grad-orange"><video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1"><source src="Europe/Orange Spain %26 Romania/OREG Jetpack Joyride Promo Video.mp4" type="video/mp4"></video><div class="overlay"></div><div class="card-badge">Romania &amp; Spain</div><div class="card-discipline">UX + Web + Video</div></div>
       <div class="card-body">
         <div class="card-client">Orange Romania &amp; Spain</div>
-        <div class="card-title">App Marketplace Integration, Partner LPs &amp; Promo Videos</div>
-        <div class="card-desc">UI/UX design for integrating Mondia's marketplace into the My Orange App â€" in-app flows, dark/light modes, Romanian localisation. Off-portal landing pages for Fastic, 7Mind, Kidjo. Jetpack Joyride promotional video.</div>
-        <div class="card-tags"><span class="card-tag">App UI/UX</span><span class="card-tag">Landing Pages</span><span class="card-tag">Promo Video</span><span class="card-tag">Figma Prototype</span></div>
-        <div class="card-spec"><strong>Contribution:</strong> Full UX flow design (dark + light mode) + 3 acquisition LPs + promotional video production</div>
+        <div class="card-title">My Orange App â€" Marketplace UX Integration, Partner LPs &amp; Promo Videos</div>
+        <div class="card-desc"><strong>Problem:</strong> Orange needed Mondia's gaming/entertainment marketplace embedded <em>inside</em> the existing My Orange App without the handoff feeling like a third-party pop-out. Native chrome, native theming, native language. <strong>Approach:</strong> mapped the entry/exit flow between Orange's native surface and the marketplace, designed in-app flows against Orange's existing design tokens, and built dark + light variants that resolve against the operator's theme. Shipped with Romanian localisation (typography +8% reflow, line-height adjustments for diacritics). Supporting work: 3 off-portal acquisition LPs (Fastic Â· 7Mind Â· Kidjo) and the Jetpack Joyride promotional video.</div>
+        <div class="card-tags"><span class="card-tag">App UI/UX</span><span class="card-tag">In-App Flows</span><span class="card-tag">Dark + Light</span><span class="card-tag">Localisation</span><span class="card-tag">Figma Prototype</span><span class="card-tag">Landing Pages</span><span class="card-tag">Promo Video</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Full in-app UX flow (dark + light) Â· RO/ES localisation pass Â· 3 acquisition LPs Â· promotional video production <strong>Â·</strong> Figma prototype reviewed with Orange PM + Mondia platform team</div>
       </div>
     </div>
 
@@ -623,10 +733,10 @@ footer{padding:2.5rem 6rem;border-top:1px solid rgba(245,240,230,.05);display:fl
       <div class="card-visual grad-vf" style="background-image:url('Europe/Germany/Vodafone DE/Stage%2B.webp');background-position:center center"><div class="overlay"></div><div class="card-badge">Germany</div><div class="card-discipline">UX + Brand + Web</div></div>
       <div class="card-body">
         <div class="card-client">Vodafone Germany</div>
-        <div class="card-title">Games Vertical Upgrade, Stage+ &amp; LP Campaigns</div>
-        <div class="card-desc">Visual upgrade of VFDE's games vertical from legacy mENT to Monsooq/Getmo. Designed Stage+ portal assets, responsive landing pages, and multi-format banner campaigns.</div>
-        <div class="card-tags"><span class="card-tag">UI Design</span><span class="card-tag">Design System</span><span class="card-tag">Gaming</span><span class="card-tag">Responsive LPs</span></div>
-        <div class="card-spec"><strong>Contribution:</strong> Led design system migration (mENT â†' Monsooq/Getmo) + responsive LP design across breakpoints</div>
+        <div class="card-title">Games Vertical â€" Design System Migration (mENT â†' Monsooq/Getmo)</div>
+        <div class="card-desc"><strong>Problem:</strong> VFDE's games vertical was running on Mondia's legacy mENT design system. The platform was migrating to Monsooq/Getmo, which meant every games-portal touchpoint â€" portal pages, LPs, banner sets â€" had to be rebuilt on the new system without regressing the VFDE brand surface. <strong>Approach:</strong> audited the existing mENT surfaces, mapped each to its Monsooq equivalent (token remap, component swap, layout rewire), and rebuilt Stage+ portal assets plus a responsive LP system across LG/MD/XS breakpoints. Design system thinking over page-by-page redesign â€" each decision had to compose with every other VFDE market rolling through the same migration.</div>
+        <div class="card-tags"><span class="card-tag">Design System</span><span class="card-tag">System Migration</span><span class="card-tag">Responsive</span><span class="card-tag">Gaming</span><span class="card-tag">Token Remap</span><span class="card-tag">Component Swap</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Led the games vertical mENT â†' Monsooq/Getmo design migration Â· Stage+ portal assets Â· responsive LP system across LG/MD/XS breakpoints <strong>Â·</strong> delivered inside Mondia's multi-operator design-system governance</div>
       </div>
     </div>
 
@@ -635,10 +745,10 @@ footer{padding:2.5rem 6rem;border-top:1px solid rgba(245,240,230,.05);display:fl
       <div class="card-visual grad-vf" style="background-color:#0a0a1a"><video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1"><source src="Other videos/Monsooq Demo VR002.mp4" type="video/mp4"></video><div class="overlay"></div><div class="card-badge">Germany</div><div class="card-discipline">UX + Video + Brand</div></div>
       <div class="card-body">
         <div class="card-client">Mondia Digital &mdash; Monsooq</div>
-        <div class="card-title">Monsooq Gaming Platform &mdash; Product Promo Video &amp; UX</div>
-        <div class="card-desc">Product demonstration video and platform UX for Monsooq &mdash; Mondia's white-label gaming marketplace deployed across European and MENA operators including Vodafone, O2, and Orange.</div>
-        <div class="card-tags"><span class="card-tag">Product Video</span><span class="card-tag">Gaming Platform</span><span class="card-tag">White-Label</span><span class="card-tag">UX Design</span></div>
-        <div class="card-spec"><strong>Contribution:</strong> Produced product demo video + UI/UX design for multi-operator gaming marketplace</div>
+        <div class="card-title">Monsooq Gaming Platform â€" White-Label UX Across 7+ Operators</div>
+        <div class="card-desc"><strong>Problem:</strong> Monsooq is Mondia's white-label gaming marketplace shipped to Vodafone, O2, Orange, and multiple MENA operators. Each operator brings its own brand, theming, tokens, localisation, and payment integration â€" but the underlying UX has to stay consistent so the platform team only maintains one product. <strong>Approach:</strong> designed the core UX as an operator-agnostic surface (flows, IA, component behaviours), with a thin theming layer that each operator's brand plugs into â€" so VFDE, O2, Orange, and MENA markets all run the same flows with their own skin. Produced the product demo video (After Effects + motion) that accompanied platform sales to new operators. White-label thinking throughout: every decision composes across markets.</div>
+        <div class="card-tags"><span class="card-tag">White-Label UX</span><span class="card-tag">Multi-Operator</span><span class="card-tag">Design System</span><span class="card-tag">Product Video</span><span class="card-tag">Gaming Platform</span><span class="card-tag">After Effects</span></div>
+        <div class="card-spec"><strong>Contribution:</strong> Core platform UX (operator-agnostic, theming-driven) Â· product demo video (motion) Â· supported platform sales/onboarding with new operators <strong>Â·</strong> cross-operator consistency across EU + MENA markets</div>
       </div>
     </div>
 
@@ -674,6 +784,74 @@ footer{padding:2.5rem 6rem;border-top:1px solid rgba(245,240,230,.05);display:fl
   <div class="section-label">Case Studies</div>
   <div class="section-title">Deep dives into premium work.</div>
   <div class="section-desc">Each case study shows how multiple disciplines come together on a single brand â€" with real delivery specs and creative process.</div>
+
+  <!-- CASE 0: 6ix AM Club (UX prototype) -->
+  <div class="case-study anim" id="case-6ixam">
+    <div class="case-header">
+      <div>
+        <div class="case-brand" style="color:#FF5A1F">6ix AM Club</div>
+        <div class="case-subtitle">A UX prototype for Pretoria's 6AM running crew â€" turning a WhatsApp group and an Instagram page into a bookable, trackable, ticketed running-club product. 15 screens, 4 flows, Light &amp; Dark, interactive React prototype.</div>
+        <div class="case-meta">
+          <div class="case-meta-item"><div class="case-meta-label">Role</div><div class="case-meta-value">UX + UI + Brand + Prototype Â· Solo</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Scope</div><div class="case-meta-value">15 Screens Â· 4 Flows Â· Light &amp; Dark</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Base</div><div class="case-meta-value">Jack Budha Â· Mamelodi Â· Pretoria</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Format</div><div class="case-meta-value">iOS Hi-Fi + Interactive Prototype</div></div>
+        </div>
+        <div class="case-disciplines"><span class="tag">UX Design</span><span class="tag cool">UI Design</span><span class="tag warm">Prototyping</span><span class="tag rose">Brand Extension</span><span class="tag gold">iOS</span></div>
+      </div>
+      <div class="case-visual" style="background-image:url('6ix-am-club/assets/ref-03.jpg');border-radius:var(--radius)">
+        <span class="glyph" style="color:#FF5A1F">6AM</span>
+        <div class="case-icon-grid">
+          <div class="case-icon-card"><div class="num">15</div><div class="lbl">Screens</div></div>
+          <div class="case-icon-card"><div class="num">4</div><div class="lbl">User Flows</div></div>
+          <div class="case-icon-card"><div class="num">2</div><div class="lbl">Modes</div></div>
+          <div class="case-icon-card"><div class="num">13</div><div class="lbl">Deck Slides</div></div>
+          <div class="case-icon-card"><div class="num">5KM</div><div class="lbl">Weekly Run</div></div>
+          <div class="case-icon-card"><div class="num">6AM</div><div class="lbl">Saturdays</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="case-content">
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> The Challenge</h3>
+        <p>6ix AM Club is a real running community in Pretoria meeting every Saturday at 6AM at Jack Budha in Mamelodi. The club already had an Instagram following and an active WhatsApp group â€" but no product layer to bind it together, take bookings, track personal records, or host ticketed events. The challenge: design that product layer <em>without losing the community voice</em>. Keep the motion-blur, monochrome-editorial feel of the existing club content and build a bookable, trackable product underneath it.</p>
+        <div class="case-deliverables">
+          <strong>Key Deliverables:</strong><br>
+          15-screen hi-fi iOS prototype across 4 flows (Onboarding Â· Book a Run Â· Run Day Â· Community)<br>
+          Full brand extension â€" type system, route-orange accent, grain texture, component tokens<br>
+          13-slide editorial case study deck Â· Light &amp; Dark modes Â· React + Babel interactive prototype
+        </div>
+      </div>
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> My Process</h3>
+        <ul>
+          <li><strong>Research</strong> â€" pulled tone, visual language, and run-day rhythm directly from the club's own IG and WhatsApp content</li>
+          <li><strong>Brand extension</strong> â€" extended the existing "6ix AM CLUB" mark into a full type system (Bricolage Grotesque display, Unica One accent, Homemade Apple script, JetBrains Mono for numerics), plus grain texture and route-orange <code>#FF5A1F</code> as the single accent</li>
+          <li><strong>Flows &amp; wireframes</strong> â€" mapped four user flows: Onboarding, Book a Run, Run Day (live stats + summary), Community (leaderboard + feed + profile)</li>
+          <li><strong>Hi-fi in both modes</strong> â€" 15 screens designed once with tokens, resolving per mode â€" dark-first because runs start before sunrise</li>
+          <li><strong>Interactive prototype</strong> â€" React + Babel standalone build with screen navigator, theme toggle, and an all-15 gallery view</li>
+        </ul>
+      </div>
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> Key Decisions</h3>
+        <ul>
+          <li><strong>Dark-first.</strong> The club runs before sunrise â€" the app should too. Light is secondary, not default.</li>
+          <li><strong>Orange as signal, not decoration.</strong> Route-orange <code>#FF5A1F</code> is reserved for primary actions and live indicators only.</li>
+          <li><strong>Token-driven theming.</strong> Every screen built once; colour resolves per mode â€" no duplicate files.</li>
+          <li><strong>Integration boundaries defined.</strong> Quicket for ticketing, WhatsApp for community, Google Maps for location â€" designed <em>around</em> them, not replacing them.</li>
+          <li><strong>Community voice preserved.</strong> Script "6ix" mark + editorial numerics keep the existing IG feel inside a real product surface.</li>
+        </ul>
+      </div>
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> Outcome &amp; Walkthrough</h3>
+        <p>A self-contained product artefact â€" editorial case study deck plus an interactive prototype you can tap through end-to-end. Each screen exists in both modes; the theme toggle is live. The case study deck walks through the same process in full editorial format, stage-by-stage.</p>
+        <div class="modal-dl-row" style="margin-top:1rem">
+          <a href="6ix-am-club/index.html" class="modal-dl-btn">View Full Case Study â†'</a>
+          <a href="6ix-am-club/prototype.html" target="_blank" rel="noopener" class="modal-dl-btn">Open Live Prototype â†—</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- CASE 1: Vodacom vLive -->
   <div class="case-study anim">

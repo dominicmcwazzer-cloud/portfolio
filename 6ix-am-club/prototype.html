@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>6ix AM Club — Hi-Fi Prototype</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Unica+One&family=Homemade+Apple&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body {
+    margin: 0; padding: 0;
+    font-family: Inter, system-ui, sans-serif;
+    background: #141414;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  * { box-sizing: border-box; }
+  button { -webkit-tap-highlight-color: transparent; }
+
+  /* custom scrollbars inside phones */
+  ::-webkit-scrollbar { width: 0; height: 0; }
+
+  /* chrome background texture */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(255,90,31,0.05), transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(255,90,31,0.03), transparent 40%);
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="tokens.jsx"></script>
+<script type="text/babel" src="primitives.jsx"></script>
+<script type="text/babel" src="screens-01-05.jsx"></script>
+<script type="text/babel" src="screens-06-10.jsx"></script>
+<script type="text/babel" src="screens-11-15.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "theme": "dark",
+  "initialScreen": "home",
+  "showGallery": true
+}/*EDITMODE-END*/;
+
+const SCREENS = [
+  { key: 'splash',      label: '01 Splash',       render: (p) => <ScreenSplash {...p} onNext={() => p.goto('mission')} /> },
+  { key: 'mission',     label: '02 Mission',      render: (p) => <ScreenMission {...p} onNext={() => p.goto('signup')} onSkip={() => p.goto('home')} /> },
+  { key: 'signup',      label: '03 Sign Up',      render: (p) => <ScreenSignUp {...p} onBack={() => p.goto('mission')} onContinue={() => p.goto('pickLevel')} /> },
+  { key: 'pickLevel',   label: '04 Pick Level',   render: (p) => <ScreenPickLevel {...p} onBack={() => p.goto('signup')} onContinue={() => p.goto('home')} /> },
+  { key: 'home',        label: '05 Home',         render: (p) => <ScreenHome {...p} /> },
+  { key: 'events',      label: '06 Events',       render: (p) => <ScreenEvents {...p} /> },
+  { key: 'eventDetail', label: '07 Event Detail', render: (p) => <ScreenEventDetail {...p} onBack={() => p.goto('events')} /> },
+  { key: 'checkout',    label: '08 Checkout',     render: (p) => <ScreenCheckout {...p} onBack={() => p.goto('eventDetail')} /> },
+  { key: 'confirm',     label: '09 Confirmation', render: (p) => <ScreenConfirm {...p} /> },
+  { key: 'ready',       label: '10 Ready to Run', render: (p) => <ScreenReady {...p} /> },
+  { key: 'live',        label: '11 Live Stats',   render: (p) => <ScreenLive {...p} /> },
+  { key: 'summary',     label: '12 Run Summary',  render: (p) => <ScreenSummary {...p} /> },
+  { key: 'board',       label: '13 Leaderboard',  render: (p) => <ScreenBoard {...p} /> },
+  { key: 'feed',        label: '14 Feed',         render: (p) => <ScreenFeed {...p} /> },
+  { key: 'me',          label: '15 Profile',      render: (p) => <ScreenMe {...p} /> },
+];
+
+function App() {
+  const [tweaks, setTweaks] = React.useState(TWEAK_DEFAULTS);
+  const [tweaksOpen, setTweaksOpen] = React.useState(false);
+  const [screen, setScreen] = React.useState(() => {
+    try { return localStorage.getItem('six_screen') || TWEAK_DEFAULTS.initialScreen; }
+    catch { return TWEAK_DEFAULTS.initialScreen; }
+  });
+  const [showGallery, setShowGallery] = React.useState(TWEAK_DEFAULTS.showGallery);
+
+  React.useEffect(() => {
+    try { localStorage.setItem('six_screen', screen); } catch {}
+  }, [screen]);
+
+  // Tweaks messaging
+  React.useEffect(() => {
+    const handler = (e) => {
+      const d = e.data || {};
+      if (d.type === '__activate_edit_mode') setTweaksOpen(true);
+      if (d.type === '__deactivate_edit_mode') setTweaksOpen(false);
+    };
+    window.addEventListener('message', handler);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', handler);
+  }, []);
+
+  const updateTweak = (key, value) => {
+    setTweaks(t => ({ ...t, [key]: value }));
+    try {
+      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: value } }, '*');
+    } catch {}
+  };
+
+  const dark = tweaks.theme === 'dark';
+  const goto = (key) => { setScreen(key); setShowGallery(false); };
+  const setTab = (tab) => {
+    const map = { run: 'home', events: 'events', board: 'board', feed: 'feed', me: 'me' };
+    goto(map[tab] || 'home');
+  };
+
+  const current = SCREENS.find(s => s.key === screen) || SCREENS[4];
+
+  return (
+    <div style={{
+      minHeight: '100vh', padding: '40px 20px 80px',
+      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 30,
+      position: 'relative', zIndex: 1,
+    }}>
+      {/* project chrome header */}
+      <div style={{
+        width: '100%', maxWidth: 1200, display: 'flex',
+        justifyContent: 'space-between', alignItems: 'flex-start',
+        color: '#d4d4d4', fontFamily: 'Inter',
+      }}>
+        <div>
+          <div style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontSize: 22, fontWeight: 700, color: '#fff', letterSpacing: -0.4 }}>
+            6ix AM Club · Hi-Fi Prototype
+          </div>
+          <div style={{ fontSize: 12, color: '#737373', marginTop: 4 }}>
+            15 screens · Light & Dark · Pretoria's morning crew
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <button onClick={() => setShowGallery(v => !v)} style={{
+            background: showGallery ? '#FF5A1F' : 'transparent',
+            color: showGallery ? '#000' : '#fff',
+            border: '1px solid #404040', borderRadius: 999, padding: '8px 14px',
+            fontSize: 11, fontWeight: 700, letterSpacing: 1.4, textTransform: 'uppercase',
+            cursor: 'pointer', fontFamily: 'Inter',
+          }}>{showGallery ? 'Focus' : 'All 15'}</button>
+          <button onClick={() => updateTweak('theme', dark ? 'light' : 'dark')} style={{
+            background: 'transparent', color: '#fff', border: '1px solid #404040',
+            borderRadius: 999, padding: '8px 14px',
+            fontSize: 11, fontWeight: 700, letterSpacing: 1.4, textTransform: 'uppercase',
+            cursor: 'pointer', fontFamily: 'Inter',
+          }}>{dark ? '☀ Light' : '☾ Dark'}</button>
+        </div>
+      </div>
+
+      {/* main view */}
+      {!showGallery && (
+        <div style={{ display: 'flex', gap: 40, alignItems: 'flex-start', flexWrap: 'wrap', justifyContent: 'center' }}>
+          {/* screen nav rail */}
+          <div style={{
+            width: 220, padding: '20px 16px', background: 'rgba(255,255,255,0.03)',
+            borderRadius: 20, border: '1px solid rgba(255,255,255,0.08)',
+            display: 'flex', flexDirection: 'column', gap: 2, maxHeight: 870, overflowY: 'auto',
+          }}>
+            <div style={{
+              fontSize: 10, fontWeight: 700, letterSpacing: 1.6, textTransform: 'uppercase',
+              color: '#737373', padding: '6px 8px 10px',
+            }}>Screens</div>
+            {SCREENS.map(s => (
+              <button key={s.key} onClick={() => goto(s.key)} style={{
+                textAlign: 'left', padding: '10px 12px', borderRadius: 10,
+                background: screen === s.key ? '#FF5A1F' : 'transparent',
+                color: screen === s.key ? '#000' : '#d4d4d4',
+                border: 'none', cursor: 'pointer',
+                fontFamily: 'Inter', fontSize: 12, fontWeight: screen === s.key ? 700 : 500,
+                letterSpacing: 0.2,
+              }}>{s.label}</button>
+            ))}
+          </div>
+
+          <SixPhone dark={dark} label={current.label}>
+            {current.render({ dark, goto, setTab })}
+          </SixPhone>
+
+          {/* shortcut tiles */}
+          <div style={{ width: 220, display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <div style={{
+              padding: 16, borderRadius: 16, background: 'rgba(255,255,255,0.03)',
+              border: '1px solid rgba(255,255,255,0.08)', color: '#d4d4d4',
+            }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.6, textTransform: 'uppercase', color: '#737373' }}>Flow shortcuts</div>
+              {[
+                ['Onboarding', ['splash','mission','signup','pickLevel','home']],
+                ['Book a run', ['home','eventDetail','checkout','confirm']],
+                ['Run day',    ['ready','live','summary']],
+                ['Community',  ['board','feed','me']],
+              ].map(([name, flow]) => (
+                <div key={name} style={{ marginTop: 12 }}>
+                  <div style={{ fontSize: 11, color: '#fff', fontWeight: 600, marginBottom: 6 }}>{name}</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+                    {flow.map(k => {
+                      const s = SCREENS.find(x => x.key === k);
+                      return (
+                        <button key={k} onClick={() => goto(k)} style={{
+                          padding: '5px 9px', fontSize: 10, borderRadius: 999,
+                          background: 'rgba(255,255,255,0.06)', color: '#d4d4d4',
+                          border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer',
+                          fontFamily: 'Inter',
+                        }}>{s && s.label.split(' ')[0]}</button>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{
+              padding: 16, borderRadius: 16, background: 'rgba(255,90,31,0.08)',
+              border: '1px solid rgba(255,90,31,0.3)', color: '#d4d4d4', fontSize: 12, lineHeight: 1.5,
+            }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.6, textTransform: 'uppercase', color: '#FF5A1F', marginBottom: 8 }}>Design notes</div>
+              Dark-first, because the club runs before sunrise. Route-orange reserved for primary actions and live indicators only. Bricolage Grotesque stands in for PP Neue Machina; Homemade Apple for the "6ix" script.
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* gallery: all 15 screens */}
+      {showGallery && (
+        <div style={{
+          display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 390px)',
+          gap: 32, justifyContent: 'center', padding: '20px 0',
+        }}>
+          {SCREENS.map(s => (
+            <div key={s.key} style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center' }}>
+              <SixPhone dark={dark} label={s.label}>
+                {s.render({ dark, goto, setTab })}
+              </SixPhone>
+              <div style={{ fontFamily: 'Inter', fontSize: 12, color: '#d4d4d4', fontWeight: 600, letterSpacing: 0.4 }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Tweaks panel */}
+      {tweaksOpen && (
+        <div style={{
+          position: 'fixed', bottom: 20, right: 20, zIndex: 9999,
+          width: 280, padding: 18, borderRadius: 16,
+          background: 'rgba(20,20,20,0.95)', border: '1px solid #404040',
+          backdropFilter: 'blur(20px)', color: '#fff',
+          fontFamily: 'Inter', boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+        }}>
+          <div style={{
+            fontFamily: 'Bricolage Grotesque, sans-serif', fontSize: 18, fontWeight: 700,
+            letterSpacing: -0.3, marginBottom: 14,
+          }}>Tweaks</div>
+
+          <div style={{ marginBottom: 14 }}>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.4, textTransform: 'uppercase', color: '#737373', marginBottom: 8 }}>Theme</div>
+            <div style={{ display: 'flex', gap: 6 }}>
+              {['dark','light'].map(m => (
+                <button key={m} onClick={() => updateTweak('theme', m)} style={{
+                  flex: 1, padding: '10px 0', borderRadius: 10,
+                  background: tweaks.theme === m ? '#FF5A1F' : 'transparent',
+                  color: tweaks.theme === m ? '#000' : '#fff',
+                  border: '1px solid #404040', cursor: 'pointer',
+                  fontSize: 11, fontWeight: 700, letterSpacing: 1.2, textTransform: 'uppercase',
+                  fontFamily: 'Inter',
+                }}>{m}</button>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ marginBottom: 14 }}>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.4, textTransform: 'uppercase', color: '#737373', marginBottom: 8 }}>Start screen</div>
+            <select value={tweaks.initialScreen}
+              onChange={e => updateTweak('initialScreen', e.target.value)}
+              style={{
+                width: '100%', padding: '10px', borderRadius: 10,
+                background: '#0a0a0a', color: '#fff',
+                border: '1px solid #404040', fontFamily: 'Inter', fontSize: 12,
+              }}>
+              {SCREENS.map(s => <option key={s.key} value={s.key}>{s.label}</option>)}
+            </select>
+          </div>
+
+          <div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.4, textTransform: 'uppercase', color: '#737373', marginBottom: 8 }}>View</div>
+            <button onClick={() => { setShowGallery(!showGallery); updateTweak('showGallery', !showGallery); }} style={{
+              width: '100%', padding: '10px 0', borderRadius: 10,
+              background: showGallery ? '#FF5A1F' : 'transparent',
+              color: showGallery ? '#000' : '#fff',
+              border: '1px solid #404040', cursor: 'pointer',
+              fontSize: 11, fontWeight: 700, letterSpacing: 1.2, textTransform: 'uppercase',
+              fontFamily: 'Inter',
+            }}>{showGallery ? 'Exit gallery' : 'Show all 15 screens'}</button>
+          </div>
+
+          <div style={{ fontSize: 10, color: '#737373', marginTop: 14, lineHeight: 1.5 }}>
+            Toggle theme to compare Light / Dark. Every screen is built once — tokens resolve per mode.
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
