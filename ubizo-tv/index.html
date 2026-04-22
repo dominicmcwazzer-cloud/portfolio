@@ -691,7 +691,7 @@
     </div>
 
     <!-- Left: light side -->
-    <div style="position: absolute; top: 180px; left: 80px; width: 800px; color: var(--marono-900);">
+    <div style="position: absolute; top: 180px; left: 80px; width: 560px; color: var(--marono-900);">
       <div class="label">For the day</div>
       <h2 class="h2" style="margin-top: 22px; color: var(--marono-900);">
         Cream paper.<br/>For the daylight.
@@ -702,7 +702,7 @@
     </div>
 
     <!-- Right: dark side -->
-    <div style="position: absolute; top: 180px; right: 80px; width: 800px;">
+    <div style="position: absolute; top: 180px; right: 80px; width: 560px;">
       <div class="label">For the morning</div>
       <h2 class="h2" style="margin-top: 22px;">
         Warm dark.<br/>For 6 AM.
@@ -712,24 +712,47 @@
       </div>
     </div>
 
+    <!-- Same screen, both modes — tokens resolve per theme -->
+    <div style="position: absolute; top: 420px; left: 0; right: 0;
+      display: flex; justify-content: center; align-items: flex-start; gap: 60px;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 14px;">
+        <div style="font-family: var(--ui); font-size: 11px; font-weight: 700;
+          letter-spacing: 1.6px; text-transform: uppercase; color: var(--marono-500);">05 · Home · Light</div>
+        <div class="phone-shot" style="width: 260px; height: 560px;
+          box-shadow: 0 20px 40px rgba(42,14,9,0.2),
+                      0 0 0 6px #2a0e09, 0 0 0 8px rgba(42,14,9,0.12);">
+          <img src="assets/screens/05-home-light.png" alt="Home — light" />
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 14px;">
+        <div style="font-family: var(--ui); font-size: 11px; font-weight: 700;
+          letter-spacing: 1.6px; text-transform: uppercase; color: var(--ink-3);">05 · Home · Dark</div>
+        <div class="phone-shot" style="width: 260px; height: 560px;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.4),
+                      0 0 0 6px #0a0604, 0 0 0 8px rgba(255,241,231,0.08);">
+          <img src="assets/screens/05-home-dark.png" alt="Home — dark" />
+        </div>
+      </div>
+    </div>
+
     <!-- Token table comparison -->
-    <div style="position: absolute; bottom: 140px; left: 80px; right: 80px;
+    <div style="position: absolute; bottom: 90px; left: 80px; right: 80px;
       display: grid; grid-template-columns: 1fr 1fr; gap: 80px;">
       <!-- light -->
-      <div style="display: grid; grid-template-columns: 60px 1fr 200px; gap: 12px 18px; align-items: center;
-        font-family: var(--mono); font-size: 14px; color: var(--marono-500);">
-        <div style="width: 40px; height: 40px; background: var(--paper-0); border: 1px solid rgba(42,14,9,0.15); border-radius: 8px;"></div><div>bg</div><div>#FFFBF6</div>
-        <div style="width: 40px; height: 40px; background: var(--marono-900); border-radius: 8px;"></div><div>text-1</div><div>#2A0E09</div>
-        <div style="width: 40px; height: 40px; background: var(--orange-500); border-radius: 8px;"></div><div>primary</div><div>#E85A1C</div>
-        <div style="width: 40px; height: 40px; background: var(--gold-500); border-radius: 8px;"></div><div>accent</div><div>#E0A13B</div>
+      <div style="display: grid; grid-template-columns: 40px 1fr 120px; gap: 8px 14px; align-items: center;
+        font-family: var(--mono); font-size: 12px; color: var(--marono-500);">
+        <div style="width: 28px; height: 28px; background: var(--paper-0); border: 1px solid rgba(42,14,9,0.15); border-radius: 6px;"></div><div>bg</div><div>#FFFBF6</div>
+        <div style="width: 28px; height: 28px; background: var(--marono-900); border-radius: 6px;"></div><div>text-1</div><div>#2A0E09</div>
+        <div style="width: 28px; height: 28px; background: var(--orange-500); border-radius: 6px;"></div><div>primary</div><div>#E85A1C</div>
+        <div style="width: 28px; height: 28px; background: var(--gold-500); border-radius: 6px;"></div><div>accent</div><div>#E0A13B</div>
       </div>
       <!-- dark -->
-      <div style="display: grid; grid-template-columns: 60px 1fr 200px; gap: 12px 18px; align-items: center;
-        font-family: var(--mono); font-size: 14px; color: var(--ink-3);">
-        <div style="width: 40px; height: 40px; background: var(--ink-900); border: 1px solid rgba(255,241,231,0.2); border-radius: 8px;"></div><div>bg</div><div>#1A0F0A</div>
-        <div style="width: 40px; height: 40px; background: var(--paper-0); border-radius: 8px;"></div><div>text-1</div><div>#FFFBF6</div>
-        <div style="width: 40px; height: 40px; background: var(--orange-500); border-radius: 8px;"></div><div>primary</div><div>#E85A1C</div>
-        <div style="width: 40px; height: 40px; background: var(--gold-500); border-radius: 8px;"></div><div>accent</div><div>#E0A13B</div>
+      <div style="display: grid; grid-template-columns: 40px 1fr 120px; gap: 8px 14px; align-items: center;
+        font-family: var(--mono); font-size: 12px; color: var(--ink-3);">
+        <div style="width: 28px; height: 28px; background: var(--ink-900); border: 1px solid rgba(255,241,231,0.2); border-radius: 6px;"></div><div>bg</div><div>#1A0F0A</div>
+        <div style="width: 28px; height: 28px; background: var(--paper-0); border-radius: 6px;"></div><div>text-1</div><div>#FFFBF6</div>
+        <div style="width: 28px; height: 28px; background: var(--orange-500); border-radius: 6px;"></div><div>primary</div><div>#E85A1C</div>
+        <div style="width: 28px; height: 28px; background: var(--gold-500); border-radius: 6px;"></div><div>accent</div><div>#E0A13B</div>
       </div>
     </div>
 
