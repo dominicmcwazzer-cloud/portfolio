@@ -530,22 +530,22 @@ footer{padding:2.5rem 6rem;border-top:1px solid rgba(245,240,230,.05);display:fl
       </div>
     </div>
 
-    <!-- UX Project 03 (draft) -->
-    <div class="ux-card anim draft">
-      <div class="ux-visual">
-        <span class="ux-badge draft">In Development</span>
+    <!-- One Folder (live) -->
+    <div class="ux-card anim">
+      <div class="ux-visual" style="background:linear-gradient(135deg, #2E7D5B 0%, #6FA38A 45%, #FF7A4D 100%)">
+        <span class="ux-badge live" style="background:#2E7D5B">Live · 27 Screens</span>
         <span class="ux-num">03</span>
-        <span class="ux-placeholder-mark">03</span>
       </div>
       <div class="ux-body">
-        <div class="ux-eyebrow">TBD Â· 2026 Â· Solo</div>
-        <div class="ux-title">UX Project N°03</div>
-        <div class="ux-desc">The third and final prototype in the series â€" scope and brand to be defined. Completing the portfolio arc across three distinct product contexts.</div>
+        <div class="ux-eyebrow">South Africa · 2026 · Solo</div>
+        <div class="ux-title" style="color:#2E7D5B">One Folder · <em style="font-style:italic;font-weight:400;color:#FF7A4D">Nala. Kopano. Tshepo.</em></div>
+        <div class="ux-desc">A speculative UX proposal for a national patient-record + appointment system across South African public health, anchored against the NHI Act of 2024. Patient app, clinician app, and admin CMS — 27 screens, 6 hero flows, Light &amp; Dark, 12 languages, all anchored to seven real personas across nine provinces.</div>
         <div class="ux-tags">
-          <span class="tag">UX</span><span class="tag">UI</span><span class="tag">Brand</span><span class="tag">Prototype</span>
+          <span class="tag">UX</span><span class="tag">UI</span><span class="tag">Brand</span><span class="tag">Public Health</span><span class="tag">Multi-surface</span>
         </div>
         <div class="ux-actions">
-          <a href="#" class="ux-cta" aria-disabled="true">Coming Soon</a>
+          <a href="one-folder/index.html" class="ux-cta">View Case Study →</a>
+          <a href="one-folder/prototype.html" target="_blank" rel="noopener" class="ux-cta secondary">Open Prototype ↗</a>
         </div>
       </div>
     </div>
@@ -791,6 +791,76 @@ footer{padding:2.5rem 6rem;border-top:1px solid rgba(245,240,230,.05);display:fl
   <div class="section-label">Case Studies</div>
   <div class="section-title">Deep dives into premium work.</div>
   <div class="section-desc">Each case study shows how multiple disciplines come together on a single brand â€" with real delivery specs and creative process.</div>
+
+  <!-- CASE 0c: One Folder (UX prototype · public health) -->
+  <div class="case-study anim" id="case-onefolder">
+    <div class="case-header">
+      <div>
+        <div class="case-brand" style="color:#2E7D5B">One Folder · <em style="font-style:italic;font-weight:500;color:#FF7A4D">Nala. Kopano. Tshepo.</em></div>
+        <div class="case-subtitle">A speculative UX proposal for a national patient-record + appointment system across South African public health, anchored against the National Health Insurance Act of 2024. The legislation already mandates a portable electronic health record for every person in the country — One Folder is the missing front-end. Patient app, clinician app, and admin CMS, designed as <em>connective tissue</em> across the systems that already exist (HPRS, NHLS, CCMDD, MomConnect, Vula, SVS).</div>
+        <div class="case-meta">
+          <div class="case-meta-item"><div class="case-meta-label">Role</div><div class="case-meta-value">UX + UI + Brand + Prototype · Solo</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Scope</div><div class="case-meta-value">27 Screens · 3 Surfaces · 6 Flows · 16-Slide Deck · Light &amp; Dark</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Anchored to</div><div class="case-meta-value">NHI Act 20 of 2023 · POPIA · 9 SA provinces</div></div>
+          <div class="case-meta-item"><div class="case-meta-label">Format</div><div class="case-meta-value">iOS Hi-Fi · Desktop CMS · Interactive React Prototype</div></div>
+        </div>
+        <div class="case-disciplines"><span class="tag">UX Design</span><span class="tag cool">UI Design</span><span class="tag warm">Prototyping</span><span class="tag rose">Brand</span><span class="tag gold">Public Health</span><span class="tag">Multi-surface</span></div>
+      </div>
+      <div class="case-visual" style="background:linear-gradient(135deg, #2E7D5B 0%, #6FA38A 45%, #FF7A4D 100%);border-radius:var(--radius)">
+        <span class="glyph" style="color:#FCF7EE">ONE</span>
+        <div class="case-icon-grid">
+          <div class="case-icon-card"><div class="num">27</div><div class="lbl">Screens</div></div>
+          <div class="case-icon-card"><div class="num">3</div><div class="lbl">Surfaces</div></div>
+          <div class="case-icon-card"><div class="num">6</div><div class="lbl">Hero Flows</div></div>
+          <div class="case-icon-card"><div class="num">7</div><div class="lbl">Personas</div></div>
+          <div class="case-icon-card"><div class="num">12</div><div class="lbl">Languages</div></div>
+          <div class="case-icon-card"><div class="num">9</div><div class="lbl">Provinces</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="case-content">
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> The Challenge</h3>
+        <p>South African public health serves <strong>~52 million people</strong> on a paper-trail. Average PHC waiting time: <strong>3h 07m</strong>; <strong>40%</strong> of users say file retrieval is the main cause of long waits; <strong>~71,000 doctors and nurses</strong> have left the system since 2013. The NHI Act of 2024 legislates a unified electronic health record — but no human-facing surfaces exist yet. The challenge: design that record's front-end across patient, clinician, and admin surfaces, while honouring the constraints SA designers can't ignore — offline-first, sub-R2,000 Android, 12 official languages, asylum-seeker IDs, and a PHC nurse who reverts to paper if the system is slower than a pen.</p>
+        <div class="case-deliverables">
+          <strong>Key Deliverables:</strong><br>
+          27-screen interactive React prototype across three surfaces — patient app (12), clinician app (9), admin CMS (6)<br>
+          16-slide editorial case-study deck — civic dignity, Public Sans + Source Serif 4, embedded real prototype screens<br>
+          Full self-derived <em>Aloe &amp; Sun</em> brand system — botanical SA palette, Light &amp; Dark token resolution<br>
+          Seven grounded personas (Mam' Sibongile · Sister Lerato · Joseph · Mr Naidoo · Karabo · Thandiwe · Dr Mthembu) anchoring six hero flows
+        </div>
+      </div>
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> My Process</h3>
+        <ul>
+          <li><strong>Research</strong> — three parallel briefs: SA public-health digital state (HPRS, NHLS, MomConnect, Vula, CCMDD, Western Cape PHDC), international reference patterns (NHS App, Estonia Terviseportaal, Singapore HealthHub, Discovery, Epic Haiku, ABHA), and real-world constraints (connectivity, languages, literacy, clinician workflows, loadshedding). Cited and grounded — no romanticised users.</li>
+          <li><strong>Brand</strong> — derived <em>Aloe &amp; Sun</em> from scratch: aloe <code>#2E7D5B</code> (SA-native healing plant — symbolic without being literal) + sun coral <code>#FF7A4D</code> (sidesteps flag-orange). Public Sans (USWDS-validated default) + Source Serif 4 for ceremonial Sepedi.</li>
+          <li><strong>Personas &amp; flows</strong> — seven personas across patient, clinician, admin. Six hero flows, the killer being Mam' Sibongile's monthly chronic-script collection (5.3M users on CCMDD).</li>
+          <li><strong>Hi-fi in both modes</strong> — 27 screens authored once with tokens, resolving to light <code>paper0</code> or dark <code>forest900</code> per mode. Token-driven for night-shift nurses + light-sensitive elders.</li>
+          <li><strong>Interactive prototype</strong> — React + Babel standalone, surface switcher (Patient / Clinician / Admin), screen navigator, gallery view. The deck embeds the real prototype screens directly — no separate mocks.</li>
+        </ul>
+      </div>
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> Key Decisions</h3>
+        <ul>
+          <li><strong>Connective tissue, not greenfield.</strong> One Folder integrates HPRS, NHLS, CCMDD, SVS, Vula, MomConnect, EVDS — it doesn't replace them. The prototype is the missing human surface for systems already in place.</li>
+          <li><strong>The PHC nurse is the primary clinician user.</strong> Sub-90-second consult log, offline-first. If the system is slower than paper, it gets abandoned.</li>
+          <li><strong>The chronic-care script collector is the design persona.</strong> Mam' Sibongile (HTN/T2D, monthly CCMDD pickup) — millions of frequent flyers, highest-value users. The killer flow saves the queue entirely.</li>
+          <li><strong>Identity must accept asylum-seeker permits.</strong> Section 22, Section 24, refugee ID, clinic-linkage code — four routes. Constitutionally compliant — POPIA, Section 27.</li>
+          <li><strong>Privacy is patient-controlled.</strong> Estonia-pattern access log on the patient home: "who saw my folder this month." HIV / stigmatised conditions can be locked to a specific clinic. POPIA-aligned, trust as the killer feature.</li>
+          <li><strong>Multi-surface reach.</strong> Patient app + WhatsApp twin (zero-rated, MomConnect precedent) + USSD shortcuts + printable QR card. Universal — works on the cheapest handset, or no handset at all.</li>
+        </ul>
+      </div>
+      <div class="case-section">
+        <h3><span class="cs-dot"></span> Outcome &amp; Walkthrough</h3>
+        <p>The third — and biggest — UX prototype in the portfolio series. A complete, defensible, multi-surface speculative proposal that reads as informed, not naive. The deck embeds the real prototype screens directly so what reviewers see in the deck is exactly what runs in the live React build. Every screen is anchored to a real institution, a real clause of legislation, and a real SA constraint.</p>
+        <div class="modal-dl-row" style="margin-top:1rem">
+          <a href="one-folder/index.html" class="modal-dl-btn">View Full Case Study →</a>
+          <a href="one-folder/prototype.html" target="_blank" rel="noopener" class="modal-dl-btn">Open Live Prototype ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- CASE 0: 6ix AM Club (UX prototype) -->
   <div class="case-study anim" id="case-6ixam">

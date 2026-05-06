@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>One Folder — Case Study · Re bopa Nala ka Kopano le Tshepo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&family=Source+Serif+4:opsz,ital,wght@8..60,0,400;8..60,1,400;8..60,0,500;8..60,1,500;8..60,0,600;8..60,1,600;8..60,0,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html, body {
+    margin: 0; padding: 0;
+    background: #0F1815;
+    color: #FCF7EE;
+    font-family: 'Public Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  * { box-sizing: border-box; }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+  <section data-label="01 Cover"           id="slide-01"></section>
+  <section data-label="02 Premise"         id="slide-02"></section>
+  <section data-label="03 The paper trail" id="slide-03"></section>
+  <section data-label="04 The patchwork"   id="slide-04"></section>
+  <section data-label="05 Seven citizens"  id="slide-05"></section>
+  <section data-label="06 Aloe & Sun"      id="slide-06"></section>
+  <section data-label="07 Three surfaces"  id="slide-07"></section>
+  <section data-label="08 Killer flow"     id="slide-08"></section>
+  <section data-label="09 Nurse queue"     id="slide-09"></section>
+  <section data-label="10 Asylum identity" id="slide-10"></section>
+  <section data-label="11 Stock-out alert" id="slide-11"></section>
+  <section data-label="12 Light + Dark"    id="slide-12"></section>
+  <section data-label="13 Constraints"     id="slide-13"></section>
+  <section data-label="14 Architecture"    id="slide-14"></section>
+  <section data-label="15 Deliverables"    id="slide-15"></section>
+  <section data-label="16 Outcome"         id="slide-16"></section>
+</deck-stage>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="tokens.jsx"></script>
+<script type="text/babel" src="primitives.jsx"></script>
+<script type="text/babel" src="screens-patient-a.jsx"></script>
+<script type="text/babel" src="screens-patient-b.jsx"></script>
+<script type="text/babel" src="screens-clinician.jsx"></script>
+<script type="text/babel" src="screens-admin.jsx"></script>
+<script type="text/babel" src="slides.jsx"></script>
+<script type="text/babel" src="slides2.jsx"></script>
+<script type="text/babel" src="slides3.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+  // Mount each slide component into its corresponding <section>.
+  const mount = (id, Comp) => {
+    const el = document.getElementById(id);
+    if (!el || typeof Comp !== 'function') return;
+    const root = ReactDOM.createRoot(el);
+    root.render(<Comp />);
+  };
+  mount('slide-01', Slide01);
+  mount('slide-02', Slide02);
+  mount('slide-03', Slide03);
+  mount('slide-04', Slide04);
+  mount('slide-05', Slide05);
+  mount('slide-06', Slide06);
+  mount('slide-07', Slide07);
+  mount('slide-08', Slide08);
+  mount('slide-09', Slide09);
+  mount('slide-10', Slide10);
+  mount('slide-11', Slide11);
+  mount('slide-12', Slide12);
+  mount('slide-13', Slide13);
+  mount('slide-14', Slide14);
+  mount('slide-15', Slide15);
+  mount('slide-16', Slide16);
+</script>
+
+<script src="deck-stage.js"></script>
+
+</body>
+</html>

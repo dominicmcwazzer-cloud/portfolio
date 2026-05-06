@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>One Folder — Hi-Fi Prototype</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body {
+    margin: 0; padding: 0;
+    font-family: 'Public Sans', system-ui, sans-serif;
+    background: #FCF7EE;
+    color: #1A1410;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  * { box-sizing: border-box; }
+  button { -webkit-tap-highlight-color: transparent; }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(circle at 15% 8%, rgba(46,125,91,0.06), transparent 40%),
+      radial-gradient(circle at 85% 92%, rgba(255,122,77,0.05), transparent 40%);
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="tokens.jsx"></script>
+<script type="text/babel" src="primitives.jsx"></script>
+<script type="text/babel" src="screens-patient-a.jsx"></script>
+<script type="text/babel" src="screens-patient-b.jsx"></script>
+<script type="text/babel" src="screens-clinician.jsx"></script>
+<script type="text/babel" src="screens-admin.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const TWEAK_DEFAULTS = {
+  theme: 'light',
+  initialScreen: 'p-home',
+  showGallery: true,
+};
+
+function ScreenStub({ dark, label, frame = 'phone' }) {
+  const t = ofTheme(dark);
+  if (frame === 'desktop') {
+    return (
+      <OfDesktop dark={dark} label={label}>
+        <OfAdminSidebar dark={dark} />
+        <div style={{
+          flex: 1, padding: 60, display: 'flex', flexDirection: 'column',
+          alignItems: 'center', justifyContent: 'center', gap: 16, textAlign: 'center',
+        }}>
+          <OfSectionLabel dark={dark}>In progress</OfSectionLabel>
+          <OfTitle dark={dark}>{label}</OfTitle>
+          <div style={{ fontFamily: ofType.ui, fontSize: 14, color: t.text3, maxWidth: 360 }}>
+            This admin view is queued in the next batch.
+          </div>
+        </div>
+      </OfDesktop>
+    );
+  }
+  return (
+    <OfPhone dark={dark} label={label}>
+      <div style={{
+        width: '100%', height: '100%', background: t.bg, color: t.text2,
+        display: 'flex', flexDirection: 'column', alignItems: 'center',
+        justifyContent: 'center', padding: 40, textAlign: 'center', gap: 14,
+      }}>
+        <OfSectionLabel dark={dark}>In progress</OfSectionLabel>
+        <OfTitle dark={dark} size={24}>{label}</OfTitle>
+        <div style={{
+          fontFamily: ofType.ui, fontSize: 13, color: t.text3, lineHeight: 1.5,
+          maxWidth: 240,
+        }}>This screen is queued in the next batch. Other built screens are fully interactive.</div>
+      </div>
+    </OfPhone>
+  );
+}
+
+const has = (name) => typeof window[name] === 'function';
+const fall = (name, label, frame) => has(name)
+  ? ((p) => React.createElement(window[name], p))
+  : ((p) => <ScreenStub dark={p.dark} label={label} frame={frame} />);
+
+const SCREENS = [
+  // ──────────── PATIENT APP ────────────
+  { surface: 'patient', key: 'p-splash',     label: '01 Splash',           frame: 'phone',
+    render: fall('OfScreenSplash',     '01 Splash',          'phone') },
+  { surface: 'patient', key: 'p-identity',   label: '02 Identity',         frame: 'phone',
+    render: fall('OfScreenIdentity',   '02 Identity',        'phone') },
+  { surface: 'patient', key: 'p-voice',      label: '03 Voice Assist',     frame: 'phone',
+    render: fall('OfScreenVoice',      '03 Voice Assist',    'phone') },
+  { surface: 'patient', key: 'p-dependent',  label: '04 Dependent Stack',  frame: 'phone',
+    render: fall('OfScreenDependent',  '04 Dependent Stack', 'phone') },
+  { surface: 'patient', key: 'p-home',       label: '05 Home',             frame: 'phone',
+    render: fall('OfScreenPHome',      '05 Home',            'phone') },
+  { surface: 'patient', key: 'p-find',       label: '06 Find a Clinic',    frame: 'phone',
+    render: fall('OfScreenFind',       '06 Find a Clinic',   'phone') },
+  { surface: 'patient', key: 'p-book',       label: '07 Book Appointment', frame: 'phone',
+    render: fall('OfScreenBook',       '07 Book Appointment','phone') },
+  { surface: 'patient', key: 'p-walkin',     label: '08 Walk-in QR',       frame: 'phone',
+    render: fall('OfScreenWalkin',     '08 Walk-in QR',      'phone') },
+  { surface: 'patient', key: 'p-record',     label: '09 My Record',        frame: 'phone',
+    render: fall('OfScreenRecord',     '09 My Record',       'phone') },
+  { surface: 'patient', key: 'p-privacy',    label: '10 Privacy Lock',     frame: 'phone',
+    render: fall('OfScreenPrivacy',    '10 Privacy Lock',    'phone') },
+  { surface: 'patient', key: 'p-access',     label: '11 Access Log',       frame: 'phone',
+    render: fall('OfScreenAccess',     '11 Access Log',      'phone') },
+  { surface: 'patient', key: 'p-crisis',     label: '12 Crisis Tools',     frame: 'phone',
+    render: fall('OfScreenCrisis',     '12 Crisis Tools',    'phone') },
+
+  // ──────────── CLINICIAN APP ────────────
+  { surface: 'clinician', key: 'c-queue',     label: '13 Today’s Queue',  frame: 'phone',
+    render: fall('OfScreenQueue',      '13 Today’s Queue',  'phone') },
+  { surface: 'clinician', key: 'c-summary',   label: '14 Patient Summary',  frame: 'phone',
+    render: fall('OfScreenSummary',    '14 Patient Summary', 'phone') },
+  { surface: 'clinician', key: 'c-consult',   label: '15 Consult Capture',  frame: 'phone',
+    render: fall('OfScreenConsult',    '15 Consult Capture', 'phone') },
+  { surface: 'clinician', key: 'c-prescribe', label: '16 Prescribe',        frame: 'phone',
+    render: fall('OfScreenPrescribe',  '16 Prescribe',       'phone') },
+  { surface: 'clinician', key: 'c-refer',     label: '17 Refer via Vula',   frame: 'phone',
+    render: fall('OfScreenRefer',      '17 Refer via Vula',  'phone') },
+  { surface: 'clinician', key: 'c-fetch',     label: '18 Cross-Province',   frame: 'phone',
+    render: fall('OfScreenFetch',      '18 Cross-Province',  'phone') },
+  { surface: 'clinician', key: 'c-chw',       label: '19 CHW Field',        frame: 'phone',
+    render: fall('OfScreenChw',        '19 CHW Field',       'phone') },
+  { surface: 'clinician', key: 'c-locum',     label: '20 Locum Scope',      frame: 'phone',
+    render: fall('OfScreenLocum',      '20 Locum Scope',     'phone') },
+  { surface: 'clinician', key: 'c-handoff',   label: '21 End-of-Day',       frame: 'phone',
+    render: fall('OfScreenHandoff',    '21 End-of-Day',      'phone') },
+
+  // ──────────── ADMIN CMS ────────────
+  { surface: 'admin', key: 'a-overview',     label: '22 Provincial Overview', frame: 'desktop',
+    render: fall('OfScreenAOverview',  '22 Provincial Overview', 'desktop') },
+  { surface: 'admin', key: 'a-facility',     label: '23 Facility Detail',  frame: 'desktop',
+    render: fall('OfScreenAFacility',  '23 Facility Detail', 'desktop') },
+  { surface: 'admin', key: 'a-workforce',    label: '24 Workforce',        frame: 'desktop',
+    render: fall('OfScreenAWorkforce', '24 Workforce',       'desktop') },
+  { surface: 'admin', key: 'a-surveillance', label: '25 Surveillance',     frame: 'desktop',
+    render: fall('OfScreenASurveillance','25 Surveillance', 'desktop') },
+  { surface: 'admin', key: 'a-stock',        label: '26 Stock Predictions',frame: 'desktop',
+    render: fall('OfScreenAStock',     '26 Stock Predictions','desktop') },
+  { surface: 'admin', key: 'a-nhi',          label: '27 NHI Claims',       frame: 'desktop',
+    render: fall('OfScreenANhi',       '27 NHI Claims',      'desktop') },
+];
+
+function App() {
+  const [tweaks] = React.useState(TWEAK_DEFAULTS);
+  const [screen, setScreen] = React.useState(() => {
+    try { return localStorage.getItem('of_screen') || TWEAK_DEFAULTS.initialScreen; }
+    catch { return TWEAK_DEFAULTS.initialScreen; }
+  });
+  const [showGallery, setShowGallery] = React.useState(TWEAK_DEFAULTS.showGallery);
+  const [theme, setTheme] = React.useState(TWEAK_DEFAULTS.theme);
+  const [activeSurface, setActiveSurface] = React.useState('patient');
+
+  React.useEffect(() => {
+    try { localStorage.setItem('of_screen', screen); } catch {}
+  }, [screen]);
+
+  const dark = theme === 'dark';
+  const t = ofTheme(dark);
+  const goto = (k) => { setScreen(k); setShowGallery(false); };
+  const current = SCREENS.find(s => s.key === screen) || SCREENS[0];
+
+  const surfaceScreens = SCREENS.filter(s => s.surface === activeSurface);
+
+  document.body.style.background = dark ? ofTokens.forest900 : ofTokens.paper0;
+  document.body.style.color = dark ? ofTokens.paper0 : ofTokens.ink900;
+
+  return (
+    <div style={{
+      minHeight: '100vh', position: 'relative', zIndex: 1,
+      display: 'flex', flexDirection: 'column',
+    }}>
+      <header style={{
+        padding: '20px 28px', display: 'flex', alignItems: 'center', gap: 16,
+        borderBottom: `1px solid ${t.border}`,
+        background: dark ? ofTokens.forest900 : ofTokens.paper0,
+        position: 'sticky', top: 0, zIndex: 10,
+      }}>
+        <OfWordmark dark={dark} size={20} sub={false} />
+        <span style={ofLabel({ size: 9.5, color: t.text3, track: 1.4 })}>
+          Hi-Fi Prototype · Speculative · 2026
+        </span>
+        <span style={{ flex: 1 }} />
+
+        {/* Surface switcher */}
+        <div style={{
+          display: 'flex', gap: 4, padding: 4,
+          background: dark ? ofTokens.forest700 : ofTokens.paper100,
+          borderRadius: 999,
+        }}>
+          {ofSurfaces.map(s => (
+            <button key={s.key} onClick={() => {
+              setActiveSurface(s.key);
+              const first = SCREENS.find(sc => sc.surface === s.key);
+              if (first) goto(first.key);
+            }}
+              style={{
+                padding: '7px 14px', borderRadius: 999, border: 'none', cursor: 'pointer',
+                fontFamily: ofType.ui, fontSize: 11.5, fontWeight: 700, letterSpacing: 0.4,
+                background: activeSurface === s.key ? t.primary : 'transparent',
+                color: activeSurface === s.key ? '#FFFFFF' : t.text2,
+              }}>
+              {s.icon} {s.label}
+            </button>
+          ))}
+        </div>
+
+        <button onClick={() => setShowGallery(g => !g)}
+          style={{
+            padding: '8px 14px', borderRadius: 999, border: `1px solid ${t.border}`,
+            background: 'transparent', color: t.text1, cursor: 'pointer',
+            fontFamily: ofType.ui, fontSize: 12, fontWeight: 700, letterSpacing: 0.4,
+          }}>{showGallery ? 'Focus' : `All ${SCREENS.length}`}</button>
+
+        <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          style={{
+            padding: '8px 14px', borderRadius: 999, border: `1px solid ${t.border}`,
+            background: 'transparent', color: t.text1, cursor: 'pointer',
+            fontFamily: ofType.ui, fontSize: 12, fontWeight: 700, letterSpacing: 0.4,
+          }}>{dark ? '☀ Light' : '☾ Dark'}</button>
+      </header>
+
+      {showGallery ? (
+        <Gallery surfaceScreens={surfaceScreens} dark={dark} onPick={goto} />
+      ) : (
+        <Stage current={current} dark={dark} surfaceScreens={surfaceScreens}
+               screen={screen} onPick={goto} />
+      )}
+    </div>
+  );
+}
+
+function Gallery({ surfaceScreens, dark, onPick }) {
+  const t = ofTheme(dark);
+  return (
+    <div style={{
+      flex: 1, padding: '36px 28px 80px',
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+      gap: 28,
+    }}>
+      {surfaceScreens.map(s => {
+        const isDesktop = s.frame === 'desktop';
+        return (
+          <div key={s.key} role="button" tabIndex={0}
+            onClick={() => onPick(s.key)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onPick(s.key); }}
+            style={{
+              cursor: 'pointer',
+              display: 'flex', flexDirection: 'column', gap: 10,
+              alignItems: 'center',
+            }}>
+            <div style={{
+              width: '100%',
+              aspectRatio: isDesktop ? '16 / 10' : '390 / 844',
+              maxHeight: isDesktop ? 220 : 460,
+              borderRadius: isDesktop ? 12 : 28,
+              overflow: 'hidden', position: 'relative',
+              background: t.surface,
+              boxShadow: '0 12px 28px rgba(0,0,0,0.16)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <div style={{
+                transform: isDesktop ? 'scale(0.21)' : 'scale(0.36)',
+                transformOrigin: 'center', pointerEvents: 'none',
+              }}>
+                {s.render({ dark, goto: () => {} })}
+              </div>
+            </div>
+            <div style={ofLabel({ size: 10, color: t.text2, track: 1.2 })}>{s.label}</div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function Stage({ current, dark, surfaceScreens, screen, onPick }) {
+  const t = ofTheme(dark);
+  const isDesktop = current.frame === 'desktop';
+  return (
+    <div style={{
+      flex: 1, display: 'grid',
+      gridTemplateColumns: '260px 1fr',
+      minHeight: 'calc(100vh - 73px)',
+    }}>
+      {/* Nav rail */}
+      <aside style={{
+        padding: '24px 18px', borderRight: `1px solid ${t.border}`,
+        display: 'flex', flexDirection: 'column', gap: 4,
+        background: dark ? ofTokens.forest900 : ofTokens.paper0,
+        overflowY: 'auto',
+      }}>
+        <div style={ofLabel({ size: 9.5, color: t.text3, track: 1.4, weight: 700 })}>
+          {ofSurfaces.find(s => s.key === current.surface)?.label}
+        </div>
+        <div style={{ height: 8 }} />
+        {surfaceScreens.map(s => {
+          const on = s.key === screen;
+          return (
+            <button key={s.key} onClick={() => onPick(s.key)}
+              style={{
+                border: 'none', background: on ? (dark ? ofTokens.forest700 : '#FFFFFF') : 'transparent',
+                padding: '11px 13px', borderRadius: 10, cursor: 'pointer',
+                fontFamily: ofType.ui, fontSize: 12.5, fontWeight: on ? 700 : 500,
+                color: on ? t.primary : t.text2, textAlign: 'left',
+              }}>{s.label}</button>
+          );
+        })}
+      </aside>
+
+      {/* Phone / desktop stage */}
+      <main style={{
+        padding: isDesktop ? 40 : 60,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        background: dark ? ofTokens.forest900 : ofTokens.paper100,
+      }}>
+        <div style={{
+          filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.18))',
+          borderRadius: isDesktop ? 14 : 44,
+          overflow: 'hidden',
+          boxShadow: isDesktop ? 'none' : `0 0 0 8px ${dark ? '#0A1310' : '#1A1410'}, 0 0 0 10px rgba(255,241,231,0.08)`,
+        }}>
+          {current.render({ dark, goto: onPick })}
+        </div>
+      </main>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
+</body>
+</html>
