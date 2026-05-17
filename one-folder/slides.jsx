@@ -122,6 +122,9 @@ const Slide01 = () => (
       />
 
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: 1500 }}>
+        <div style={{ marginBottom: 44 }}>
+          <OfAloeMark size={132} />
+        </div>
         <div style={{
           fontFamily: ofType.ui, fontSize: TYPE_SCALE.tag, fontWeight: 700,
           letterSpacing: 4, textTransform: 'uppercase', color: ofTokens.aloe700,

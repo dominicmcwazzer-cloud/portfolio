@@ -379,21 +379,22 @@ function OfQrCode({ size = 160, color = ofTokens.ink900, bg = '#FFFFFF', code = 
   );
 }
 
-// ─── Aloe leaf glyph (used as brand mark) ───
+// ─── One Folder logo mark — a folder sprouting an aloe ───
 function OfAloeMark({ size = 40, color = ofTokens.aloe500 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 40 40" style={{ display: 'block' }}>
-      {/* stylised aloe rosette */}
-      <g fill={color}>
-        <ellipse cx="20" cy="22" rx="2.4" ry="14" transform="rotate(0 20 22)" />
-        <ellipse cx="20" cy="22" rx="2.4" ry="13" transform="rotate(45 20 22)" />
-        <ellipse cx="20" cy="22" rx="2.4" ry="13" transform="rotate(-45 20 22)" />
-        <ellipse cx="20" cy="22" rx="2.4" ry="11" transform="rotate(90 20 22)" />
-        <ellipse cx="20" cy="22" rx="2.4" ry="11" transform="rotate(-90 20 22)" />
-        <ellipse cx="20" cy="22" rx="2.4" ry="9"  transform="rotate(22 20 22)" />
-        <ellipse cx="20" cy="22" rx="2.4" ry="9"  transform="rotate(-22 20 22)" />
-        <circle cx="20" cy="22" r="3" fill={ofTokens.aloe700} />
+    <svg width={size} height={size} viewBox="0 0 120 120" style={{ display: 'block' }}>
+      {/* One Folder logo: the record (folder) + the aloe (healing, SA-native) */}
+      <rect width="120" height="120" rx="27" fill="#2E7D5B" />
+      <g fill="#FFAA88">
+        <ellipse cx="62" cy="49" rx="5.4" ry="23" />
+        <ellipse cx="62" cy="49" rx="5" ry="19" transform="rotate(34 62 49)" />
+        <ellipse cx="62" cy="49" rx="5" ry="19" transform="rotate(-34 62 49)" />
       </g>
+      <path
+        d="M24 60 L24 54 C24 49 28 45 33 45 L51 45 C54 45 56.5 46.5 58 49 L61 54 C62 56 64 57 66 57 L88 57 C93 57 97 61 97 66 L97 88 C97 93 93 97 88 97 L33 97 C28 97 24 93 24 88 Z"
+        fill="#FCF7EE"
+      />
+      <rect x="24" y="68" width="73" height="3.6" rx="1.8" fill="#2E7D5B" opacity="0.16" />
     </svg>
   );
 }
