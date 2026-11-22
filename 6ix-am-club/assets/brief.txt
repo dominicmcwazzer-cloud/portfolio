@@ -102,7 +102,7 @@ Label:    12  / Bold / +20% tracking / 120%
 Brand
 - Ink    #000000  Primary canvas
 - Paper  #FFFFFF  Primary on-dark text & surfaces
-- Route  #FF5A1F  Accent — action, energy, route overlay only
+- First Light  #A9BFFF  Accent — pre-dawn blue; action, live state, route overlay only
 
 Neutrals (Tailwind-scale)
 50   #FAFAFA
@@ -139,11 +139,12 @@ Text 1:   #FFFFFF
 Text 2:   #D4D4D4
 Text 3:   #737373
 
-Route orange behavior
+First Light behavior
 - Use for primary CTAs, live-run indicators, leaderboard highlight
   row, route overlays, "going" count, streak badge.
 - Do NOT use for decorative accents, gradients, or secondary UI.
-- Maintain AA contrast: orange on black, black on orange.
+- Maintain AA contrast: first light on black, ink on first light.
+- Buttons stay white on black; the accent never fills a whole CTA.
 
 --------------------------------
 6. LAYOUT & SPACING
@@ -201,7 +202,7 @@ Use components so image swaps propagate across both modes.
     - Section: "NEXT RUN · VOL.02" label
     - Hero date card: "02 MAY" — oversized display type
     - Meta: 5 KM · 06:00 · Jack Budha · 42 going
-    - Primary: JOIN THE RUN — FREE (route orange)
+    - Primary: JOIN THE RUN — FREE (first light)
     - Secondary: VIEW ROUTE (outlined)
     - "THIS WEEK" stats trio: Distance, Pace, Runs
     - Bottom nav (5 tabs)
@@ -230,7 +231,7 @@ Use components so image swaps propagate across both modes.
     - Primary CTA: "CLAIM TICKET"
 
 09. CONFIRMATION
-    - Large checkmark (route orange)
+    - Large checkmark (first light)
     - H2: "You're in."
     - Body: "See you 02 May, 6am at Jack Budha."
     - QR code card
@@ -250,7 +251,7 @@ Use components so image swaps propagate across both modes.
     - Huge distance number (2.8 KM)
     - Secondary stats: pace, heart rate
     - Live route map
-    - Large PAUSE button (route orange)
+    - Large PAUSE button (first light)
 
 12. RUN SUMMARY
     - Header: "COMPLETED · 02 MAY"
@@ -263,7 +264,7 @@ Use components so image swaps propagate across both modes.
 13. LEADERBOARD (nav: BOARD active)
     - Header + toggles: Week / Month / All-time
     - Ranked list (6 members visible)
-    - User's row highlighted in route orange
+    - User's row highlighted in first light
     - Each row: rank, avatar, name, avg pace, total km
 
 14. FEED (nav: FEED active)
@@ -277,7 +278,7 @@ Use components so image swaps propagate across both modes.
     - Header: "Me" + settings gear
     - Large avatar (circular)
     - Name + Level tag + Pretoria · Member since
-    - Stat trio: Streak (orange), Total km, Runs attended
+    - Stat trio: Streak (first light), Total km, Runs attended
     - "BADGES" section with earned badge row
     - Past runs list
 
@@ -374,7 +375,7 @@ first place?
 THE APPROACH
 I treated the existing brand as the source of truth. The
 Vol.02 poster already defined the visual language: motion
-blur, editorial typography, a single orange accent, and raw
+blur, editorial typography, black, white and silver, and raw
 community portraits. My job wasn't to invent a brand — it
 was to extend one into a digital product.
 
@@ -389,9 +390,9 @@ I built in three layers:
 KEY DECISIONS
 - Dark-first UI. The club runs at 6AM in the dark — the
   product should feel like the moment.
-- Orange as scarcity. The route-orange from the existing
-  flyers stays reserved for primary actions and live-run
-  indicators only. Overuse would flatten it.
+- First light, not fire. Run apps all shout orange; the club is
+  black, white and silver. One pale pre-dawn blue marks what is
+  live and what you earned, and nothing else.
 - Quicket as co-host. Rather than replacing the club's
   existing ticketing platform, the app embeds Quicket
   checkout with brand-aligned styling. Product thinking,
@@ -442,7 +443,7 @@ For the portfolio page, structure as:
 - Follow design system tokens exactly — no invented colors
 - Use Inter placeholder where specified; swap to PP Neue
   Machina or equivalent modernist display font for all H1/H2
-- Keep Route orange scarce (primary CTAs + live indicators only)
+- Keep First Light scarce (primary CTAs + live indicators only)
 - Preserve whitespace — editorial layouts, not mobile-app-cramped
 - Motion blur and grain as texture, not illustration
 - Every component must support light AND dark mode
