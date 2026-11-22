@@ -4,7 +4,7 @@ const sixTokens = {
   // Brand
   ink: '#000000',
   paper: '#FFFFFF',
-  route: '#FF5A1F',
+  route: '#A9BFFF',
 
   // Neutrals (Tailwind-scale)
   n50:  '#FAFAFA',

@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <title>6ix AM Club — Case Study</title>
+<meta name="description" content="6ix AM Club case study: a self-initiated UX proposal turning a Pretoria running crew's WhatsApp group and Instagram into a bookable, trackable club product. 15 screens, 4 flows, light and dark. By Dominic McWazzer, Insuetam Creatives.">
+<meta name="author" content="Dominic McWazzer">
+<link rel="canonical" href="https://dominicmcwazzer-cloud.github.io/portfolio/6ix-am-club/index.html">
+<meta property="og:title" content="6ix AM Club — Case Study">
+<meta property="og:description" content="6ix AM Club case study: a self-initiated UX proposal turning a Pretoria running crew's WhatsApp group and Instagram into a bookable, trackable club product. 15 screens, 4 flows, light and dark. By Dominic McWazzer, Insuetam Creatives.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://dominicmcwazzer-cloud.github.io/portfolio/6ix-am-club/index.html">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +19,7 @@
   :root {
     --ink: #0A0A0A;
     --paper: #FAFAFA;
-    --route: #FF5A1F;
+    --route: #A9BFFF;
     --n100: #F5F5F5;
     --n200: #E5E5E5;
     --n300: #D4D4D4;
@@ -127,10 +134,10 @@
     border: 2px solid var(--route);
   }
 
-  /* Keyframe — subtle orange pulse for live indicator */
-  @keyframes pulse-orange {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(255,90,31,0.6); }
-    50% { box-shadow: 0 0 0 16px rgba(255,90,31,0); }
+  /* Keyframe — subtle accent pulse for live indicator */
+  @keyframes pulse-accent {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(169,191,255,0.6); }
+    50% { box-shadow: 0 0 0 16px rgba(169,191,255,0); }
   }
 </style>
 </head>
@@ -413,7 +420,7 @@
       </h2>
       <p class="body-l">
         The Vol.02 poster already defined the visual language: motion blur,
-        editorial typography, a single orange accent, raw community portraits.
+        editorial typography, a black-and-white logo with a silver brush script, raw community portraits.
         My job wasn't to invent a brand — it was to extend one into a product.
       </p>
       <p class="body-l" style="margin-top: 24px;">
@@ -428,7 +435,7 @@
         <div class="lc-num">01</div>
         <div class="lc-body">
           <div class="lc-head">Design system</div>
-          <div class="lc-detail">Tokens distilled from the posters — not invented. Route orange,
+          <div class="lc-detail">Tokens distilled from the posters — not invented. First-light blue,
             Bricolage display, Inter UI, Homemade Apple for the script mark. Dark-first surfaces.</div>
         </div>
       </div>
@@ -492,17 +499,17 @@
     <div>
       <div class="eyebrow" style="margin-bottom: 18px;">§ Color</div>
       <h3 class="h-display" style="font-size: 64px; margin: 0 0 28px; color: #fff;">
-        Orange as <span style="color: var(--route); font-style: italic;">scarcity.</span>
+        First light, <span style="color: var(--route); font-style: italic;">not fire.</span>
       </h3>
       <p class="body-m" style="color: var(--n300); max-width: 48ch; margin-bottom: 36px;">
-        Route&nbsp;<span style="color: var(--route); font-family: var(--f-mono);">#FF5A1F</span>
-        stays reserved for primary CTAs and live-run indicators only. Overuse would flatten it.
-        Neutrals do the rest of the work.
+        Every run app shouts orange. The club's own colours are ink, paper and silver, so the one accent is
+        <span style="color: var(--route); font-family: var(--f-mono);">#A9BFFF</span>: the pale blue of the sky
+        just before 6 AM. It marks what's live and what you earned. Neutrals do the rest.
       </p>
 
       <!-- Color swatches -->
       <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-bottom: 14px;">
-        <div class="sw" style="background: #FF5A1F; color: #fff;"><span>Route</span><em>FF5A1F</em></div>
+        <div class="sw" style="background: #A9BFFF; color: #050A1F;"><span>First light</span><em>A9BFFF</em></div>
         <div class="sw" style="background: #0A0A0A; color: #fff; border: 1px solid var(--n800);"><span>Ink</span><em>0A0A0A</em></div>
         <div class="sw" style="background: #171717; color: #fff; border: 1px solid var(--n800);"><span>N-900</span><em>171717</em></div>
         <div class="sw" style="background: #404040; color: #fff;"><span>N-700</span><em>404040</em></div>
@@ -518,10 +525,10 @@
         .sw em { font-family: var(--f-mono); font-size: 10px; font-weight: 400; font-style: normal; opacity: 0.7; margin-top: 2px; letter-spacing: 0.5px; }
       </style>
 
-      <div style="margin-top: 28px; padding: 20px 24px; border-left: 3px solid var(--route); background: rgba(255,90,31,0.06);">
+      <div style="margin-top: 28px; padding: 20px 24px; border-left: 3px solid var(--route); background: rgba(169,191,255,0.06);">
         <div class="eyebrow" style="margin-bottom: 8px; font-size: 10px;">Rule</div>
         <div style="font-family: var(--f-display); font-size: 22px; font-weight: 600; color: #fff; line-height: 1.3; letter-spacing: -0.01em;">
-          Orange appears ≤ 2× per screen.
+          First light appears ≤ 2× per screen.
         </div>
       </div>
     </div>
@@ -646,13 +653,13 @@
       <div class="cc-row">
         <div class="cc-swatch dark" style="justify-content: center; align-items: center;">
           <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="width: 10px; height: 10px; border-radius: 999px; background: var(--route); animation: pulse-orange 1.6s infinite;"></span>
+            <span style="width: 10px; height: 10px; border-radius: 999px; background: var(--route); animation: pulse-accent 1.6s infinite;"></span>
             <span style="font-family: var(--f-mono); font-size: 13px; color: #fff; letter-spacing: 1.5px;">LIVE · 00:12:48</span>
           </div>
         </div>
         <div class="cc-swatch light" style="justify-content: center; align-items: center;">
           <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="width: 10px; height: 10px; border-radius: 999px; background: var(--route); animation: pulse-orange 1.6s infinite;"></span>
+            <span style="width: 10px; height: 10px; border-radius: 999px; background: var(--route); animation: pulse-accent 1.6s infinite;"></span>
             <span style="font-family: var(--f-mono); font-size: 13px; color: var(--ink); letter-spacing: 1.5px;">LIVE · 00:12:48</span>
           </div>
         </div>
@@ -1143,8 +1150,8 @@
     </div>
     <div class="dcard">
       <div class="d-num">02</div>
-      <div class="d-head">Orange as scarcity</div>
-      <div class="d-body">Route orange stays reserved for primary actions and live-run indicators only. Used ≤ 2× per screen. Overuse would flatten it.</div>
+      <div class="d-head">First light, not fire</div>
+      <div class="d-body">Run apps all shout orange; the club is black, white and silver. One pale pre-dawn blue marks what is live and what you earned, ≤ 2× per screen.</div>
       <div class="d-tag">Color</div>
     </div>
     <div class="dcard">

@@ -118,7 +118,7 @@ function ScreenEventDetail({ dark = true, onBack, goto }) {
               d="M60 240 Q 90 180, 140 190 T 230 150 Q 280 130, 310 175 T 340 230"
               fill="none" stroke={sixTokens.route} strokeWidth="4"
               strokeLinecap="round" strokeLinejoin="round"
-              strokeDasharray="1000" style={{ filter: 'drop-shadow(0 0 6px rgba(255,90,31,0.6))' }}
+              strokeDasharray="1000" style={{ filter: 'drop-shadow(0 0 6px rgba(169,191,255,0.6))' }}
             />
             <circle cx="60" cy="240" r="8" fill={sixTokens.route} />
             <circle cx="340" cy="230" r="8" fill="#fff" stroke={sixTokens.route} strokeWidth="3" />
@@ -311,7 +311,7 @@ function ScreenCheckout({ dark = true, onBack, goto }) {
                   <button key={s} onClick={() => setSize(s)} style={{
                     flex: 1, height: 48, borderRadius: 12,
                     border: `1.5px solid ${sel ? sixTokens.route : t.border}`,
-                    background: sel ? 'rgba(255,90,31,0.08)' : t.surface,
+                    background: sel ? 'rgba(169,191,255,0.08)' : t.surface,
                     color: sel ? sixTokens.route : t.text1,
                     fontFamily: sixType.ui, fontSize: 13, fontWeight: 700, cursor: 'pointer',
                   }}>{s}</button>
@@ -348,11 +348,11 @@ function ScreenConfirm({ dark = true, goto }) {
   const t = sixTheme(dark);
   return (
     <div style={{ width: '100%', height: '100%', background: t.bg, position: 'relative', overflow: 'hidden' }}>
-      {/* ambient orange glow */}
+      {/* ambient first-light glow */}
       <div style={{
         position: 'absolute', top: -120, left: '50%', transform: 'translateX(-50%)',
         width: 500, height: 500, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(255,90,31,0.25) 0%, transparent 60%)',
+        background: 'radial-gradient(circle, rgba(169,191,255,0.25) 0%, transparent 60%)',
         filter: 'blur(10px)',
       }} />
 
@@ -361,7 +361,7 @@ function ScreenConfirm({ dark = true, goto }) {
           <div style={{
             width: 96, height: 96, borderRadius: 999, margin: '0 auto',
             background: sixTokens.route, display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: `0 0 40px rgba(255,90,31,0.5)`,
+            boxShadow: `0 0 40px rgba(169,191,255,0.5)`,
           }}>
             <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
               <path d="M4 12.5l5 5L20 6.5" stroke="#000" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
@@ -490,7 +490,7 @@ function ScreenReady({ dark = true, goto }) {
           <div style={{
             fontFamily: sixType.display, fontSize: 120, fontWeight: 800,
             letterSpacing: -5, color: sixTokens.route, lineHeight: 0.9, margin: '8px 0 4px',
-            textShadow: `0 0 40px rgba(255,90,31,0.35)`,
+            textShadow: `0 0 40px rgba(169,191,255,0.35)`,
           }}>0:{secs.toString().padStart(2, '0')}</div>
           <div style={{ fontFamily: sixType.ui, fontSize: 14, color: t.text2, marginTop: 6 }}>
             5 KM · Flat loop · 35 min target
@@ -503,7 +503,7 @@ function ScreenReady({ dark = true, goto }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
               <div style={{
                 width: 50, height: 50, borderRadius: 10,
-                background: 'linear-gradient(135deg, #FF5A1F, #8B1D00)',
+                background: 'linear-gradient(135deg, #A9BFFF, #8B1D00)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg>

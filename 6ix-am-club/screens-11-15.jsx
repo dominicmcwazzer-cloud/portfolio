@@ -21,7 +21,7 @@ function ScreenLive({ goto }) {
       <div style={{
         position: 'absolute', top: '30%', left: '50%', transform: 'translateX(-50%)',
         width: 460, height: 460, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(255,90,31,0.22), transparent 65%)',
+        background: 'radial-gradient(circle, rgba(169,191,255,0.22), transparent 65%)',
         filter: 'blur(8px)',
       }} />
 
@@ -96,7 +96,7 @@ function ScreenLive({ goto }) {
         <button onClick={() => setPaused(!paused)} style={{
           width: 96, height: 96, borderRadius: 999, background: sixTokens.route, border: 'none',
           color: '#000', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: `0 0 30px rgba(255,90,31,0.5)`,
+          boxShadow: `0 0 30px rgba(169,191,255,0.5)`,
         }}>
           {paused ? (
             <svg width="30" height="30" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg>
@@ -201,7 +201,7 @@ function ScreenSummary({ dark = true, goto, setTab }) {
           <div style={{ display: 'flex', gap: 10, marginTop: 10 }}>
             <div style={{
               flex: 1, padding: 14, borderRadius: 14,
-              background: 'rgba(255,90,31,0.08)', border: '1px solid rgba(255,90,31,0.3)',
+              background: 'rgba(169,191,255,0.08)', border: '1px solid rgba(169,191,255,0.3)',
             }}>
               <div style={{ fontFamily: sixType.display, fontSize: 20, fontWeight: 700, color: sixTokens.route }}>12 ★</div>
               <div style={{ fontFamily: sixType.ui, fontSize: 11, color: t.text2, marginTop: 2 }}>Week streak</div>
@@ -278,7 +278,7 @@ function ScreenBoard({ dark = true, setTab }) {
             return (
               <button key={k} onClick={() => setMode(k)} style={{
                 padding: '8px 14px', borderRadius: 999,
-                background: sel ? 'rgba(255,90,31,0.12)' : 'transparent',
+                background: sel ? 'rgba(169,191,255,0.12)' : 'transparent',
                 border: `1px solid ${sel ? sixTokens.route : t.border}`,
                 color: sel ? sixTokens.route : t.text2,
                 fontFamily: sixType.ui, fontSize: 11, fontWeight: 700,
@@ -502,8 +502,8 @@ function ScreenMe({ dark = true, setTab }) {
             {badges.map((b, i) => (
               <div key={i} style={{
                 aspectRatio: '1.15', borderRadius: 14,
-                background: b.on ? (i === 0 ? 'rgba(255,90,31,0.1)' : t.surface) : 'transparent',
-                border: `1px solid ${b.on ? (i === 0 ? 'rgba(255,90,31,0.35)' : t.border) : t.border}`,
+                background: b.on ? (i === 0 ? 'rgba(169,191,255,0.1)' : t.surface) : 'transparent',
+                border: `1px solid ${b.on ? (i === 0 ? 'rgba(169,191,255,0.35)' : t.border) : t.border}`,
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
                 opacity: b.on ? 1 : 0.4,
               }}>

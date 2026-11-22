@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <title>6ix AM Club — Hi-Fi Prototype</title>
+<meta name="description" content="6ix AM Club interactive prototype: 15 iOS screens across Onboarding, Book a Run, Run Day and Community flows, dark-first. Self-initiated UX work by Dominic McWazzer, Insuetam Creatives.">
+<meta name="author" content="Dominic McWazzer">
+<link rel="canonical" href="https://dominicmcwazzer-cloud.github.io/portfolio/6ix-am-club/prototype.html">
+<meta property="og:title" content="6ix AM Club — Hi-Fi Prototype">
+<meta property="og:description" content="6ix AM Club interactive prototype: 15 iOS screens across Onboarding, Book a Run, Run Day and Community flows, dark-first. Self-initiated UX work by Dominic McWazzer, Insuetam Creatives.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://dominicmcwazzer-cloud.github.io/portfolio/6ix-am-club/prototype.html">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,8 +34,8 @@
     content: '';
     position: fixed; inset: 0; pointer-events: none; z-index: 0;
     background:
-      radial-gradient(circle at 20% 10%, rgba(255,90,31,0.05), transparent 40%),
-      radial-gradient(circle at 80% 90%, rgba(255,90,31,0.03), transparent 40%);
+      radial-gradient(circle at 20% 10%, rgba(169,191,255,0.05), transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(169,191,255,0.03), transparent 40%);
   }
 </style>
 </head>
@@ -133,7 +140,7 @@ function App() {
         </div>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <button onClick={() => setShowGallery(v => !v)} style={{
-            background: showGallery ? '#FF5A1F' : 'transparent',
+            background: showGallery ? '#A9BFFF' : 'transparent',
             color: showGallery ? '#000' : '#fff',
             border: '1px solid #404040', borderRadius: 999, padding: '8px 14px',
             fontSize: 11, fontWeight: 700, letterSpacing: 1.4, textTransform: 'uppercase',
@@ -164,7 +171,7 @@ function App() {
             {SCREENS.map(s => (
               <button key={s.key} onClick={() => goto(s.key)} style={{
                 textAlign: 'left', padding: '10px 12px', borderRadius: 10,
-                background: screen === s.key ? '#FF5A1F' : 'transparent',
+                background: screen === s.key ? '#A9BFFF' : 'transparent',
                 color: screen === s.key ? '#000' : '#d4d4d4',
                 border: 'none', cursor: 'pointer',
                 fontFamily: 'Inter', fontSize: 12, fontWeight: screen === s.key ? 700 : 500,
@@ -210,11 +217,11 @@ function App() {
             </div>
 
             <div style={{
-              padding: 16, borderRadius: 16, background: 'rgba(255,90,31,0.08)',
-              border: '1px solid rgba(255,90,31,0.3)', color: '#d4d4d4', fontSize: 12, lineHeight: 1.5,
+              padding: 16, borderRadius: 16, background: 'rgba(169,191,255,0.08)',
+              border: '1px solid rgba(169,191,255,0.3)', color: '#d4d4d4', fontSize: 12, lineHeight: 1.5,
             }}>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.6, textTransform: 'uppercase', color: '#FF5A1F', marginBottom: 8 }}>Design notes</div>
-              Dark-first, because the club runs before sunrise. Route-orange reserved for primary actions and live indicators only. Bricolage Grotesque stands in for PP Neue Machina; Homemade Apple for the "6ix" script.
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.6, textTransform: 'uppercase', color: '#A9BFFF', marginBottom: 8 }}>Design notes</div>
+              Dark-first, because the club runs before sunrise. First-light blue (the sky just before 6 AM) reserved for primary actions and live indicators only. Official club logo; Bricolage Grotesque stands in for PP Neue Machina.
             </div>
           </div>
         </div>
@@ -257,7 +264,7 @@ function App() {
               {['dark','light'].map(m => (
                 <button key={m} onClick={() => updateTweak('theme', m)} style={{
                   flex: 1, padding: '10px 0', borderRadius: 10,
-                  background: tweaks.theme === m ? '#FF5A1F' : 'transparent',
+                  background: tweaks.theme === m ? '#A9BFFF' : 'transparent',
                   color: tweaks.theme === m ? '#000' : '#fff',
                   border: '1px solid #404040', cursor: 'pointer',
                   fontSize: 11, fontWeight: 700, letterSpacing: 1.2, textTransform: 'uppercase',
@@ -284,7 +291,7 @@ function App() {
             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.4, textTransform: 'uppercase', color: '#737373', marginBottom: 8 }}>View</div>
             <button onClick={() => { setShowGallery(!showGallery); updateTweak('showGallery', !showGallery); }} style={{
               width: '100%', padding: '10px 0', borderRadius: 10,
-              background: showGallery ? '#FF5A1F' : 'transparent',
+              background: showGallery ? '#A9BFFF' : 'transparent',
               color: showGallery ? '#000' : '#fff',
               border: '1px solid #404040', cursor: 'pointer',
               fontSize: 11, fontWeight: 700, letterSpacing: 1.2, textTransform: 'uppercase',

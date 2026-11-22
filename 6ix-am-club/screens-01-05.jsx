@@ -303,7 +303,7 @@ function ScreenPickLevel({ dark = true, onBack, onContinue }) {
               style={{
                 padding: '20px 20px', borderRadius: 16,
                 border: `1.5px solid ${sel ? sixTokens.route : t.border}`,
-                background: sel ? 'rgba(255,90,31,0.06)' : t.surface,
+                background: sel ? 'rgba(169,191,255,0.06)' : t.surface,
                 display: 'flex', alignItems: 'center', gap: 16, cursor: 'pointer',
                 transition: 'all 150ms',
               }}
@@ -365,7 +365,7 @@ function ScreenHome({ dark = true, goto, setTab }) {
           <div style={{
             display: 'flex', alignItems: 'center', gap: 6,
             padding: '6px 12px', borderRadius: 999,
-            background: 'rgba(255,90,31,0.12)', border: '1px solid rgba(255,90,31,0.3)',
+            background: 'rgba(169,191,255,0.12)', border: '1px solid rgba(169,191,255,0.3)',
           }}>
             <svg width="12" height="14" viewBox="0 0 12 14" fill={sixTokens.route}>
               <path d="M6 0S1 4 1 8a5 5 0 0010 0c0-2-1-3-1-3s-1 2-2 2 0-4-2-7z"/>

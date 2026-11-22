@@ -1,60 +1,17 @@
 // 6ix AM Club — shared primitives
 
 // ───────── LOGO ─────────
-// "6ix" handwritten script + "AM CLUB" modernist stack + ESTD 2026
-function SixLogo({ size = 120, mono = true, dark = true, showEstd = true }) {
-  const c = dark ? '#fff' : '#0A0A0A';
-  const cSoft = dark ? 'rgba(255,255,255,0.7)' : 'rgba(10,10,10,0.7)';
-  return (
-    <div style={{
-      display: 'inline-flex', flexDirection: 'column', alignItems: 'center',
-      gap: size * 0.02, fontFamily: sixType.display, color: c,
-    }}>
-      {/* 6ix script — hand-drawn */}
-      <div style={{
-        fontFamily: sixType.script,
-        fontSize: size * 0.62, lineHeight: 1,
-        color: cSoft, letterSpacing: -2,
-        transform: 'translateX(-4%) rotate(-4deg)',
-        marginBottom: -size * 0.18,
-      }}>6ix</div>
-      {/* AM CLUB */}
-      <div style={{
-        fontFamily: sixType.display,
-        fontSize: size * 0.24, fontWeight: 700,
-        letterSpacing: size * 0.008,
-        color: c,
-      }}>
-        <span style={{ fontWeight: 300 }}>AM</span>
-        <span style={{ fontWeight: 800 }}> CLUB</span>
-      </div>
-      {showEstd && (
-        <div style={{
-          ...sixLabel({ size: size * 0.07, color: cSoft, track: size * 0.02, weight: 600 }),
-          marginTop: size * 0.02,
-        }}>ESTD 2026</div>
-      )}
-    </div>
-  );
+// Official club logo (file from the club): "6ix" brush script + AM CLUB + ESTD 2026
+const SIX_LOGO = { dark: 'assets/6ix-logo-on-dark.png', light: 'assets/6ix-logo-on-light.png' };
+function SixLogo({ size = 120, dark = true }) {
+  return <img src={dark ? SIX_LOGO.dark : SIX_LOGO.light} alt="6ix AM Club"
+    style={{ width: size * 1.25, height: 'auto', display: 'block' }} />;
 }
 
-// Compact horizontal mark for headers
+// Compact mark for headers
 function SixMarkInline({ dark = true }) {
-  const c = dark ? '#fff' : '#0A0A0A';
-  return (
-    <div style={{ display: 'inline-flex', alignItems: 'baseline', gap: 6, color: c }}>
-      <span style={{
-        fontFamily: sixType.script, fontSize: 24, transform: 'rotate(-4deg)',
-        display: 'inline-block', lineHeight: 1, opacity: 0.9,
-      }}>6ix</span>
-      <span style={{
-        fontFamily: sixType.display, fontSize: 12, fontWeight: 700,
-        letterSpacing: 1.5,
-      }}>
-        <span style={{ fontWeight: 300 }}>AM</span> CLUB
-      </span>
-    </div>
-  );
+  return <img src={dark ? SIX_LOGO.dark : SIX_LOGO.light} alt="6ix AM Club"
+    style={{ height: 34, width: 'auto', display: 'block' }} />;
 }
 
 // ───────── BUTTON ─────────
@@ -112,7 +69,7 @@ function SixChip({ children, variant = 'default', dark = true, style = {} }) {
   const t = sixTheme(dark);
   const variants = {
     default: { background: t.chipBg, color: t.text1, border: `1px solid ${t.border}` },
-    route:   { background: 'rgba(255,90,31,0.12)', color: sixTokens.route, border: `1px solid rgba(255,90,31,0.35)` },
+    route:   { background: 'rgba(169,191,255,0.12)', color: sixTokens.route, border: `1px solid rgba(169,191,255,0.35)` },
     solid:   { background: t.text1, color: t.bg, border: 'none' },
     live:    { background: sixTokens.route, color: '#000', border: 'none' },
     ghost:   { background: 'transparent', color: t.text2, border: `1px solid ${t.border}` },
